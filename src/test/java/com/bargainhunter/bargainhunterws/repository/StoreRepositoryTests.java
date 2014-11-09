@@ -1,9 +1,7 @@
 package com.bargainhunter.bargainhunterws.repository;
 
 import com.bargainhunter.bargainhunterws.Application;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
         loader = SpringApplicationContextLoader.class)
 public class StoreRepositoryTests {
     @Autowired
-    StoreRepository storeRepository;
+    IStoreRepository storeRepository;
 
     @Test
     public void testStoreRepositoryEntriesCount() throws Exception {
