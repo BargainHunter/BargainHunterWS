@@ -30,6 +30,4 @@ public class StoreRepositoryTests {
     public void testRepositoryIsNotNull() throws Exception {
         Assert.assertNotNull("The store repository should be not-null.", this.storeRepository);
     }
-
-
 }
