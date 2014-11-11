@@ -1,9 +1,6 @@
 package com.bargainhunter.bargainhunterws.repository;
 
-import com.bargainhunter.bargainhunterws.Application;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,16 +12,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Created by Tommy on 11/9/2014.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = Application.class,
+@ContextConfiguration(locations = "classpath:META-INF/test-context.xml",
         loader = SpringApplicationContextLoader.class)
 public class StoreRepositoryTests {
     @Autowired
     StoreRepository storeRepository;
-
-    @Test
-    public void testStoreRepositoryEntriesCount() throws Exception {
-        Assert.assertEquals(5, storeRepository.findAll().size());
-    }
 
     @Test
     public void testRepositoryIsNotNull() throws Exception {
