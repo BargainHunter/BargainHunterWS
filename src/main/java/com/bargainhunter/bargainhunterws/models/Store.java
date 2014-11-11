@@ -13,7 +13,7 @@ public class Store {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long storeId;
     private String country;
     private String city;
     private String address;
@@ -38,8 +38,8 @@ public class Store {
         return city;
     }
 
-    public Long getId() {
-        return id;
+    public Long getStoreId() {
+        return storeId;
     }
 
     public String getAddress() {
