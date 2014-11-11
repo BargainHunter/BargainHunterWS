@@ -11,7 +11,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.transaction.Transactional;
-import java.sql.Date;
 import java.util.Calendar;
 
 /**
@@ -31,12 +30,17 @@ public class OfferRepositoryTests {
         startDate.set(2014, Calendar.NOVEMBER, 11);
         Calendar expDate = Calendar.getInstance();
         expDate.set(2014, Calendar.NOVEMBER, 14);
+
+        Store myStore = new Store("Greece","Thessaloniki","Aristotelous",56,"54452",32.5674,28.5653);
         Offer offer = new Offer("Kreas", "-20% mosxarisio", 8, startDate.getTime(), expDate.getTime());
+        offer.setStore(myStore);
 
         offerRepository.save(offer);
 
         Offer dbOffer = offerRepository.findOne(offer.getOfferId());
         Assert.assertNotNull(dbOffer);
+        Assert.assertNotNull(dbOffer.getStore());
+
         Assert.assertEquals(8, offer.getPrice(),1e-15);
         Assert.assertEquals("Kreas", offer.getTitle());
     }
