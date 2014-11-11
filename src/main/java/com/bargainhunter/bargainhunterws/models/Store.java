@@ -20,7 +20,7 @@ public class Store {
     private double latitude;
     private double longitude;
     private String zip;
-    @OneToMany(mappedBy = "offer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<Offer> offers;
 
     {

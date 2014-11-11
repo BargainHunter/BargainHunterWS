@@ -14,7 +14,7 @@
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
-        <setting name="provider-name" value="Hibernate" />
+        <setting name="provider-name" value="" />
         <datasource-mapping>
           <factory-entry name="bargainhunter" value="dataSource" />
           <factory-entry name="bargainhunter-test" value="dataSource" />
