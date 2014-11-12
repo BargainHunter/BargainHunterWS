@@ -1,6 +1,7 @@
 package com.bargainhunter.bargainhunterws.services;
 
 import com.bargainhunter.bargainhunterws.Application;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +20,12 @@ public class StoreServiceTest {
     public void setUp() throws Exception {
     }
 
+    @After
+    public void tearDown() throws Exception {
+    }
+
     @Test
     public void testStoreService() throws Exception {
+
     }
 }
