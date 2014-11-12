@@ -1,5 +1,6 @@
 package com.bargainhunter.bargainhunterws.services;
 
+import com.bargainhunter.bargainhunterws.models.Store;
 import com.bargainhunter.bargainhunterws.repository.StoreRepository;
 import org.junit.After;
 import org.junit.Before;
@@ -10,11 +11,14 @@ import org.springframework.boot.test.SpringApplicationContextLoader;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Achilleas Naoumidis on 11/9/14.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:META-INF/application-context.xml",
+@ContextConfiguration(locations = "classpath:META-INF/test-context.xml",
         loader = SpringApplicationContextLoader.class)
 public class StoreServiceTest {
     @Autowired
@@ -22,11 +26,11 @@ public class StoreServiceTest {
 
     @Before
     public void setUp() throws Exception {
-//        List<Store> stores = new ArrayList<>();
-//        stores.add(new Store("Greece", "Serres", "Komninon", 1, "62123", 42.123456, 21.32155));
-//        stores.add(new Store("Greece", "Serres", "Irakleias", 2, "62123", 42.323456, 21.12155));
-//
-//        storeRepository.save(stores);
+        List<Store> stores = new ArrayList<>();
+        stores.add(new Store("Greece", "Serres", "Komninon", 1, "62123", 42.123456, 21.32155));
+        stores.add(new Store("Greece", "Serres", "Irakleias", 2, "62123", 42.323456, 21.12155));
+
+        storeRepository.save(stores);
     }
 
     @After
