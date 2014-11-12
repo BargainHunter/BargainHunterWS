@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - bargain_hunter@bargainhunter.dyndns.org" uuid="36f0a411-ebbb-4850-b449-73c71a82cc1d">
+    <database-info product="MySQL" version="5.1.66-community" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="bargain_hunter"/>
+    <table name="offer" schema="" catalog="bargain_hunter" type="TABLE">
+      <column name="offerId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="expDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="price" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="startDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="store_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="offerId"/>
+      <foreign-key name="FK_8608rpkblbcjnla3n2qvhvkd5" columns="store_id" ref-table="store" ref-schema="" ref-catalog="bargain_hunter" ref-columns="storeId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_8608rpkblbcjnla3n2qvhvkd5" unique="false" columns="store_id"/>
+    </table>
+    <table name="store" schema="" catalog="bargain_hunter" type="TABLE">
+      <column name="storeId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="address" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="addressNo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="city" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="country" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="latitude" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="longitude" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="zip" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="storeId"/>
+      <exported-key name="FK_8608rpkblbcjnla3n2qvhvkd5" table="offer" schema="" catalog="bargain_hunter" columns="store_id"/>
+    </table>
+  </data-source>
+</component>
