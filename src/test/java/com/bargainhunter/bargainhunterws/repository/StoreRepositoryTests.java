@@ -28,13 +28,48 @@ public class StoreRepositoryTests {
 
     @Test
     @Transactional
-    public void testName() throws Exception {
+    public void insertStoreToRepositoryTest() throws Exception {
         Store store = new Store("Greece", "Serres", "Edessis", 18, "62100", 41.546556, 35.345345);
         storeRepository.save(store);
 
         Store dbStore = storeRepository.findOne(store.getStoreId());
 
+        Assert.assertNotNull(dbStore);
+        Assert.assertEquals("Greece", dbStore.getCountry());
+        Assert.assertEquals("Serres", dbStore.getCity());
+        Assert.assertEquals(18, dbStore.getAddressNo());
+        Assert.assertEquals("62100", dbStore.getZip());
+        Assert.assertEquals(41.546556, dbStore.getLatitude(), 1e-15);
+        Assert.assertEquals(35.345345, dbStore.getLongitude(), 1e-15);
     }
 
+    @Test
+    @Transactional
+    public void insertStoresWithSameValuesTest() throws Exception {
+        Store firstStore = new Store("Greece", "Serres", "Edessis", 18, "62100", 41.546556, 35.345345);
+        Store secondStore = new Store("Greece", "Serres", "Edessis", 18, "62100", 41.546556, 35.345345);
 
+        storeRepository.save(firstStore);
+        storeRepository.save(secondStore);
+
+        Store dbFirstStore = storeRepository.findOne(firstStore.getStoreId());
+        Store dbSecondStore = storeRepository.findOne(secondStore.getStoreId());
+
+        Assert.assertNotNull(dbFirstStore);
+        Assert.assertNotNull(dbSecondStore);
+
+        Assert.assertEquals("Greece", dbFirstStore.getCountry());
+        Assert.assertEquals("Greece", dbSecondStore.getCountry());
+        Assert.assertEquals("Serres", dbFirstStore.getCity());
+        Assert.assertEquals("Serres", dbSecondStore.getCity());
+        Assert.assertEquals(18, dbFirstStore.getAddressNo());
+        Assert.assertEquals(18, dbSecondStore.getAddressNo());
+        Assert.assertEquals("62100", dbFirstStore.getZip());
+        Assert.assertEquals("62100", dbSecondStore.getZip());
+        Assert.assertEquals(41.546556, dbFirstStore.getLatitude(), 1e-15);
+        Assert.assertEquals(41.546556, dbSecondStore.getLatitude(), 1e-15);
+        Assert.assertEquals(35.345345, dbFirstStore.getLongitude(), 1e-15);
+        Assert.assertEquals(35.345345, dbSecondStore.getLongitude(), 1e-15);
+        Assert.assertNotEquals(dbFirstStore.getStoreId(), dbSecondStore.getStoreId());
+    }
 }
