@@ -17,7 +17,7 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="bargainhunter" value="36f0a411-ebbb-4850-b449-73c71a82cc1d" />
-          <factory-entry name="bargainhunter-test" />
+          <factory-entry name="bargainhunter-test" value="dataSource" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>

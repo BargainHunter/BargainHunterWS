@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2510418511">
+  <component name="DataSourceManagerImpl" format="xml" hash="982328097">
     <data-source source="LOCAL" name="MySQL - bargain_hunter@bargainhunter.dyndns.org" uuid="36f0a411-ebbb-4850-b449-73c71a82cc1d">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

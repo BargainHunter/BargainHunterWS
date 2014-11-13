@@ -8,6 +8,7 @@ import java.util.List;
  * Created by Tommy on 11/9/2014.
  */
 @Entity
+//@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@count")
 public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +20,8 @@ public class Store {
     private double latitude;
     private double longitude;
     private String zip;
-    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "store",fetch = FetchType.EAGER)
+//    @JsonManagedReference
     private List<Offer> offers;
 
     {
