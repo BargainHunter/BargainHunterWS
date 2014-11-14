@@ -31,7 +31,7 @@ public class OfferRepositoryTests {
         Calendar expDate = Calendar.getInstance();
         expDate.set(2014, Calendar.NOVEMBER, 14);
 
-        Store myStore = new Store("Greece","Thessaloniki","Aristotelous",56,"54452",32.5674,28.5653);
+        Store myStore = new Store("Greece", "Thessaloniki", "Aristotelous", 56, "54452", 32.5674, 28.5653);
         Offer offer = new Offer("Kreas", "-20% mosxarisio", 8, startDate.getTime(), expDate.getTime());
         offer.setStore(myStore);
 
