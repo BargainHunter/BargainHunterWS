@@ -19,6 +19,7 @@
     <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="dataSource" ref="dataSource"/>
         <property name="persistenceUnitName" value="test"/>
+        <property name="packagesToScan" value="com.bargainhunter.bargainhunterws.models"/>
     </bean>
 
     <!--Transaction Manager-->
