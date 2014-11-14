@@ -3,6 +3,9 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <type id="Spring" />
+  </component>
   <component name="IdProvider" IDEtalkID="6C7E74BF6A59C86C294CFE8A3C60B27F" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -15,4 +18,3 @@
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
-

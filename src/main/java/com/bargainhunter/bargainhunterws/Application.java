@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 @ComponentScan
 @EnableAutoConfiguration
-@ContextConfiguration(locations = "classpath:META-INF/application-context.xml")
+@ContextConfiguration(locations = {"classpath:META-INF/application-context.xml"})
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
