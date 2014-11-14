@@ -1,14 +1,16 @@
 package com.bargainhunter.bargainhunterws.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashSet;
 
 /**
  * Created by Tommy on 11/9/2014.
  */
 @Entity
-//@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@count")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, scope = Store.class)
 public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,11 +23,11 @@ public class Store {
     private double longitude;
     private String zip;
     @OneToMany(mappedBy = "store",fetch = FetchType.EAGER)
-//    @JsonManagedReference
-    private List<Offer> offers;
+    @JsonManagedReference
+    private Collection<Offer> offers;
 
     {
-        offers = new ArrayList<>();
+        offers = new HashSet<>();
     }
 
     protected Store() {}
@@ -72,11 +74,11 @@ public class Store {
         return zip;
     }
 
-    public List<Offer> getOffers() {
+    public Collection<Offer> getOffers() {
         return offers;
     }
 
-    public void setOffers(List<Offer> offers) {
+    public void setOffers(Collection<Offer> offers) {
         this.offers = offers;
     }
 

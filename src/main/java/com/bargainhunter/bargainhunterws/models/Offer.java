@@ -11,7 +11,7 @@ import java.util.Date;
  * Created by Johnny on 11/11/14.
  */
 @Entity
-//@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@count")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, scope = Offer.class)
 public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class Offer {
     private Date startDate;
     private Date expDate;
     @ManyToOne
-//    @JsonBackReference
+    @JsonBackReference
     @JoinColumn(name = "store_id")
     private Store store;
 
