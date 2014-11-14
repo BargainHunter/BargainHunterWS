@@ -1,6 +1,5 @@
 package com.bargainhunter.bargainhunterws.repository;
 
-import com.bargainhunter.bargainhunterws.Application;
 import com.bargainhunter.bargainhunterws.models.Offer;
 import com.bargainhunter.bargainhunterws.models.Store;
 import org.junit.Assert;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationContextLoader;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.transaction.Transactional;
 import java.util.Calendar;
@@ -19,12 +17,11 @@ import java.util.Calendar;
  * Created by Johnny on 11/9/2014.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = TestConfig.class,
+@ContextConfiguration(locations = "classpath:/META-INF/test-context.xml",
         loader = SpringApplicationContextLoader.class)
-@WebAppConfiguration
 public class OfferRepositoryTests {
     @Autowired
-//    OfferRepository offerRepository;
+    OfferRepository offerRepository;
 
     @Test
     @Transactional

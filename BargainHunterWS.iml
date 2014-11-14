@@ -5,6 +5,7 @@
       <configuration process_explicitly_annotated="false">
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/META-INF/application-context.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/webapp/config/AppConfig.java</file>
         </fileset>
         <fileset id="fileset2" name="Spring Test Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/META-INF/test-context.xml</file>
@@ -18,6 +19,8 @@
         <datasource-mapping>
           <factory-entry name="bargainhunter" />
           <factory-entry name="bargainhunter-test" value="dataSource" />
+          <factory-entry name="my-pu" />
+          <factory-entry name="test" value="dataSource" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>
