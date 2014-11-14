@@ -8,6 +8,5 @@ import org.springframework.stereotype.Repository;
  * Created by Johnny on 11/9/2014.
  */
 @Repository
-public interface OfferRepository extends JpaRepository<Offer, Long>{
-
+public interface IOfferRepository extends JpaRepository<Offer, Long> {
 }

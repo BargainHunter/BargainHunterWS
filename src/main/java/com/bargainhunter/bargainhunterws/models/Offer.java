@@ -1,8 +1,6 @@
 package com.bargainhunter.bargainhunterws.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,7 +9,7 @@ import java.util.Date;
  * Created by Johnny on 11/11/14.
  */
 @Entity
-//@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, scope = Offer.class)
+// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, scope = Offer.class)
 public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +19,9 @@ public class Offer {
     private double price;
     private Date startDate;
     private Date expDate;
-    @ManyToOne
-    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
+    @JsonBackReference
     private Store store;
 
     protected Offer() {}

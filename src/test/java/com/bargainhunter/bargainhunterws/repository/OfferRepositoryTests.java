@@ -21,7 +21,7 @@ import java.util.Calendar;
         loader = SpringApplicationContextLoader.class)
 public class OfferRepositoryTests {
     @Autowired
-    OfferRepository offerRepository;
+    IOfferRepository offerRepository;
 
     @Test
     @Transactional
@@ -49,5 +49,4 @@ public class OfferRepositoryTests {
     public void testRepositoryIsNotNull() throws Exception {
         Assert.assertNotNull("The store repository should be not-null.", this.offerRepository);
     }
-
 }

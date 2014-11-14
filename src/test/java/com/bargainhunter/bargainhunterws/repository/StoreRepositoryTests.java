@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
         loader = SpringApplicationContextLoader.class)
 public class StoreRepositoryTests {
     @Autowired
-    StoreRepository storeRepository;
+    IStoreRepository storeRepository;
 
     @Test
     public void testRepositoryIsNotNull() throws Exception {
