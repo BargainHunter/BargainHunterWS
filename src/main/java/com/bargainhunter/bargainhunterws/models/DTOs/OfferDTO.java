@@ -1,4 +1,4 @@
-package com.bargainhunter.bargainhunterws.models.dtos;
+package com.bargainhunter.bargainhunterws.models.DTOs;
 
 /**
  * Created by Achilleas Naoumidis on 11/15/14.

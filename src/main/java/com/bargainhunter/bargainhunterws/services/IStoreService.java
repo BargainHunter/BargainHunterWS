@@ -1,6 +1,6 @@
 package com.bargainhunter.bargainhunterws.services;
 
-import com.bargainhunter.bargainhunterws.models.entities.Store;
+import com.bargainhunter.bargainhunterws.models.DTOs.StoreDTO;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,8 +12,8 @@ import java.util.Collection;
  */
 public interface IStoreService {
     @RequestMapping(value = "/stores", method = RequestMethod.GET)
-    Collection<Store> getAllStores();
+    Collection<StoreDTO> getAllStores();
 
     @RequestMapping(value = "/stores/{storeId}", method = RequestMethod.GET)
-    Store getOneById(@PathVariable long storeId);
+    StoreDTO getOneById(@PathVariable long storeId);
 }

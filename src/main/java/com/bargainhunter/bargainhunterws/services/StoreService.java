@@ -1,7 +1,7 @@
 package com.bargainhunter.bargainhunterws.services;
 
-import com.bargainhunter.bargainhunterws.models.entities.Store;
-import com.bargainhunter.bargainhunterws.repositories.IStoreRepository;
+import com.bargainhunter.bargainhunterws.controllers.IStoreController;
+import com.bargainhunter.bargainhunterws.models.DTOs.StoreDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,17 +16,17 @@ import java.util.Collection;
 @RestController
 public class StoreService implements IStoreService {
     @Autowired
-    IStoreRepository storeRepository;
+    IStoreController storeController;
 
     @Override
     @RequestMapping(value = "/stores", method = RequestMethod.GET)
-    public Collection<Store> getAllStores() {
-        return storeRepository.findAll();
+    public Collection<StoreDTO> getAllStores() {
+        return storeController.getAllStoresDTOs();
     }
 
     @Override
     @RequestMapping(value = "/stores/{storeId}", method = RequestMethod.GET)
-    public Store getOneById(@PathVariable long storeId) {
-        return storeRepository.findOne(storeId);
+    public StoreDTO getOneById(@PathVariable long storeId) {
+        return storeController.getStoreDTOById(storeId);
     }
 }
