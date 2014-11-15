@@ -11,10 +11,11 @@ public class StoreDTO {
     private String addressNo;
     private double latitude;
     private double longitude;
+    private Long companyId;
 
     public StoreDTO() {}
 
-    public StoreDTO(Long storeId, String storeName, String city, String address, String addressNo, double latitude, double longitude) {
+    public StoreDTO(Long storeId, String storeName, String city, String address, String addressNo, double latitude, double longitude, Long companyId) {
         this.storeId = storeId;
         this.storeName = storeName;
         this.city = city;
@@ -22,6 +23,7 @@ public class StoreDTO {
         this.addressNo = addressNo;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.companyId = companyId;
     }
 
     public Long getStoreId() {
@@ -78,5 +80,13 @@ public class StoreDTO {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public Long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 }

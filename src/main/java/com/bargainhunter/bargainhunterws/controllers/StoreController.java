@@ -49,7 +49,8 @@ public class StoreController implements IStoreController {
                 store.getAddress(),
                 store.getAddressNo(),
                 store.getLatitude(),
-                store.getLongitude());
+                store.getLongitude(),
+                store.getCompany().getCompanyId());
         return storeDTO;
     }
 }
