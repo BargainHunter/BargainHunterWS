@@ -1,8 +1,8 @@
 package com.bargainhunter.bargainhunterws.services;
 
-import com.bargainhunter.bargainhunterws.models.Offer;
-import com.bargainhunter.bargainhunterws.repository.IOfferRepository;
-import com.bargainhunter.bargainhunterws.repository.IStoreRepository;
+import com.bargainhunter.bargainhunterws.models.entities.Offer;
+import com.bargainhunter.bargainhunterws.repositories.IOfferRepository;
+import com.bargainhunter.bargainhunterws.repositories.IStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

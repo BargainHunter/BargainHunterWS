@@ -1,6 +1,6 @@
 package com.bargainhunter.bargainhunterws.services;
 
-import com.bargainhunter.bargainhunterws.models.Store;
+import com.bargainhunter.bargainhunterws.models.entities.Store;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

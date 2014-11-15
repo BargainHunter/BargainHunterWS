@@ -1,4 +1,4 @@
-package com.bargainhunter.bargainhunterws.models;
+package com.bargainhunter.bargainhunterws.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 

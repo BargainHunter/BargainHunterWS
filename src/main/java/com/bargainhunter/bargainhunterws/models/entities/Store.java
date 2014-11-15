@@ -1,4 +1,4 @@
-package com.bargainhunter.bargainhunterws.models;
+package com.bargainhunter.bargainhunterws.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -18,7 +18,7 @@ public class Store {
     private String country;
     private String city;
     private String address;
-    private int addressNo;
+    private String addressNo;
     private double latitude;
     private double longitude;
     private String zip;
@@ -32,7 +32,7 @@ public class Store {
 
     protected Store() {}
 
-    public Store(String country, String city,  String address, int addressNo, String zip, double latitude, double longitude) {
+    public Store(String country, String city,  String address, String addressNo, String zip, double latitude, double longitude) {
         this.addressNo = addressNo;
         this.address = address;
         this.latitude = latitude;
@@ -54,7 +54,7 @@ public class Store {
         return address;
     }
 
-    public int getAddressNo() {
+    public String getAddressNo() {
         return addressNo;
     }
 
@@ -89,7 +89,7 @@ public class Store {
 
         Store store = (Store) o;
 
-        if (addressNo != store.addressNo) return false;
+        if (!addressNo.equals(store.addressNo)) return false;
         if (Double.compare(store.latitude, latitude) != 0) return false;
         if (Double.compare(store.longitude, longitude) != 0) return false;
         if (!address.equals(store.address)) return false;
@@ -109,7 +109,7 @@ public class Store {
         result = 31 * result + country.hashCode();
         result = 31 * result + city.hashCode();
         result = 31 * result + address.hashCode();
-        result = 31 * result + addressNo;
+        result = 31 * result + addressNo.hashCode();
         temp = Double.doubleToLongBits(latitude);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(longitude);

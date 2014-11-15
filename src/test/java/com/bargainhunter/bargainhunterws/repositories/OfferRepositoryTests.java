@@ -1,7 +1,7 @@
-package com.bargainhunter.bargainhunterws.repository;
+package com.bargainhunter.bargainhunterws.repositories;
 
-import com.bargainhunter.bargainhunterws.models.Offer;
-import com.bargainhunter.bargainhunterws.models.Store;
+import com.bargainhunter.bargainhunterws.models.entities.Offer;
+import com.bargainhunter.bargainhunterws.models.entities.Store;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,7 +31,7 @@ public class OfferRepositoryTests {
         Calendar expDate = Calendar.getInstance();
         expDate.set(2014, Calendar.NOVEMBER, 14);
 
-        Store myStore = new Store("Greece", "Thessaloniki", "Aristotelous", 56, "54452", 32.5674, 28.5653);
+        Store myStore = new Store("Greece", "Thessaloniki", "Aristotelous", "56", "54452", 32.5674, 28.5653);
         Offer offer = new Offer("Kreas", "-20% mosxarisio", 8, startDate.getTime(), expDate.getTime());
         offer.setStore(myStore);
 
@@ -47,6 +47,6 @@ public class OfferRepositoryTests {
 
     @Test
     public void testRepositoryIsNotNull() throws Exception {
-        Assert.assertNotNull("The store repository should be not-null.", this.offerRepository);
+        Assert.assertNotNull("The store repositories should be not-null.", this.offerRepository);
     }
 }

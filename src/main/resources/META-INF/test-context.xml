@@ -19,7 +19,7 @@
     <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="dataSource" ref="dataSource"/>
         <property name="persistenceUnitName" value="test"/>
-        <property name="packagesToScan" value="com.bargainhunter.bargainhunterws.models"/>
+        <property name="packagesToScan" value="com.bargainhunter.bargainhunterws.models.entities"/>
     </bean>
 
     <!--Transaction Manager-->
@@ -30,5 +30,5 @@
 
     <!--Spring Data Configuration-->
 
-    <jpa:repositories base-package="com.bargainhunter.bargainhunterws.repository"/>
+    <jpa:repositories base-package="com.bargainhunter.bargainhunterws.repositories"/>
 </beans>
