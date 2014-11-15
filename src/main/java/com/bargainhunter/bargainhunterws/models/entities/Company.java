@@ -23,8 +23,12 @@ public class Company {
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Collection<Store> stores;
 
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Collection<Offer> offers;
+
     {
         stores = new HashSet<>();
+        offers = new HashSet<>();
     }
 
     public Company() {}
@@ -68,6 +72,14 @@ public class Company {
 
     public Collection<Store> getStores() {
         return stores;
+    }
+
+    public Collection<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(Collection<Offer> offers) {
+        this.offers = offers;
     }
 
     public void setStores(Collection<Store> stores) {

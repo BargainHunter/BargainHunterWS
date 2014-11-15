@@ -12,11 +12,11 @@ import java.util.Collection;
  */
 public interface IOfferService {
     @RequestMapping(value = "/offers", method = RequestMethod.GET)
-    Collection<OfferDTO> getAll();
+    Collection<OfferDTO> getAllOffers();
 
     @RequestMapping(value = "/offers/{offerId}", method = RequestMethod.GET)
-    OfferDTO getOneById(@PathVariable long offerId);
+    OfferDTO getOneOfferById(@PathVariable long offerId);
 
     @RequestMapping(value = "/stores/{storeId}/offers", method = RequestMethod.GET)
-    Collection<OfferDTO> getAllFromStore(@PathVariable long storeId);
+    Collection<OfferDTO> getAllOffersFromStoreById(@PathVariable long storeId);
 }

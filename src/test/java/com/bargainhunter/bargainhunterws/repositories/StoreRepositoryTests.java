@@ -1,5 +1,6 @@
 package com.bargainhunter.bargainhunterws.repositories;
 
+import com.bargainhunter.bargainhunterws.models.entities.Company;
 import com.bargainhunter.bargainhunterws.models.entities.Store;
 import org.junit.Assert;
 import org.junit.Test;
@@ -21,6 +22,9 @@ public class StoreRepositoryTests {
     @Autowired
     IStoreRepository storeRepository;
 
+    @Autowired
+    ICompanyRepository companyRepository;
+
     @Test
     public void testRepositoryIsNotNull() throws Exception {
         Assert.assertNotNull("The store repositories should be not-null.", this.storeRepository);
@@ -29,7 +33,9 @@ public class StoreRepositoryTests {
     @Test
     @Transactional
     public void insertStoreToRepositoryTest() throws Exception {
-        Store store = new Store("Greece", "Serres", "Edessis", "18", "62100", 41.546556, 35.345345);
+        Company company = new Company("Diamantis Masoutis AE", "Greece", "Athens", "Venizelou", "35", "12345");
+        companyRepository.save(company);
+        Store store = new Store("Masoutis", "Greece", "Serres", "Edessis", "18", "62100", 41.546556, 35.345345, company);
         storeRepository.save(store);
 
         Store dbStore = storeRepository.findOne(store.getStoreId());
@@ -41,13 +47,19 @@ public class StoreRepositoryTests {
         Assert.assertEquals("62100", dbStore.getZip());
         Assert.assertEquals(41.546556, dbStore.getLatitude(), 1e-15);
         Assert.assertEquals(35.345345, dbStore.getLongitude(), 1e-15);
+
+        companyRepository.delete(company);
+        storeRepository.delete(store);
     }
 
     @Test
     @Transactional
     public void insertStoresWithSameValuesTest() throws Exception {
-        Store firstStore = new Store("Greece", "Serres", "Edessis", "18", "62100", 41.546556, 35.345345);
-        Store secondStore = new Store("Greece", "Serres", "Edessis", "18", "62100", 41.546556, 35.345345);
+        Company company = new Company("Masoutis", "Greece", "Athens", "Venizelou", "35", "12345");
+        companyRepository.save(company);
+
+        Store firstStore = new Store("Masoutis", "Greece", "Serres", "Edessis", "18", "62100", 41.546556, 35.345345, company);
+        Store secondStore = new Store("Masoutis", "Greece", "Serres", "Edessis", "18", "62100", 41.546556, 35.345345, company);
 
         storeRepository.save(firstStore);
         storeRepository.save(secondStore);
@@ -71,5 +83,9 @@ public class StoreRepositoryTests {
         Assert.assertEquals(35.345345, dbFirstStore.getLongitude(), 1e-15);
         Assert.assertEquals(35.345345, dbSecondStore.getLongitude(), 1e-15);
         Assert.assertNotEquals(dbFirstStore.getStoreId(), dbSecondStore.getStoreId());
+
+        companyRepository.delete(company);
+        storeRepository.delete(firstStore);
+        storeRepository.delete(secondStore);
     }
 }

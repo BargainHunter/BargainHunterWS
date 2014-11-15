@@ -9,11 +9,11 @@ import java.util.Collection;
  * Created by Achilleas Naoumidis on 11/14/14.
  */
 public interface IOfferController {
+    OfferDTO getOfferDTOById(long offerId);
+
     Collection<OfferDTO> getAllOffersDTOs();
 
     Collection<OfferDTO> getAllOffersDTOsFromStoreById(long storeId);
-
-    OfferDTO getOfferDTOById(long offerId);
 
     Collection<OfferDTO> createDTOs(Collection<Offer> offers);
 

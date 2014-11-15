@@ -22,6 +22,12 @@ public class OfferController implements IOfferController {
     IStoreRepository storeRepository;
 
     @Override
+    public OfferDTO getOfferDTOById(long offerId) {
+        Offer offer = offerRepository.findOne(offerId);
+        return createDTO(offer);
+    }
+
+    @Override
     public Collection<OfferDTO> getAllOffersDTOs() {
         Collection<Offer> offers = offerRepository.findAll();
         return createDTOs(offers);
@@ -29,14 +35,8 @@ public class OfferController implements IOfferController {
 
     @Override
     public Collection<OfferDTO> getAllOffersDTOsFromStoreById(long storeId) {
-        Collection<Offer> offers = storeRepository.findOne(storeId).getOffers();
+        Collection<Offer> offers = storeRepository.findOne(storeId).getCompany().getOffers();
         return createDTOs(offers);
-    }
-
-    @Override
-    public OfferDTO getOfferDTOById(long offerId) {
-        Offer offer = offerRepository.findOne(offerId);
-        return createDTO(offer);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class OfferController implements IOfferController {
                 offer.getTitle(),
                 offer.getDescription(),
                 offer.getPrice(),
-                offer.getStore().getStoreId()
+                offer.getCompany().getCompanyId()
         );
         return offerDTO;
     }

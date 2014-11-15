@@ -8,16 +8,16 @@ public class OfferDTO {
     private String title;
     private String description;
     private double price;
-    private Long storeId;
+    private Long companyId;
 
     public OfferDTO() {}
 
-    public OfferDTO(Long offerId, String title, String description, double price, Long storeId) {
+    public OfferDTO(Long offerId, String title, String description, double price, Long companyId) {
         this.offerId = offerId;
         this.title = title;
         this.description = description;
         this.price = price;
-        this.storeId = storeId;
+        this.companyId = companyId;
     }
 
     public Long getOfferId() {
@@ -52,11 +52,11 @@ public class OfferDTO {
         this.price = price;
     }
 
-    public Long getStoreId() {
-        return storeId;
+    public Long getCompanyId() {
+        return companyId;
     }
 
-    public void setStoreId(Long storeId) {
-        this.storeId = storeId;
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 }

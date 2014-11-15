@@ -13,6 +13,7 @@ public class Store {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long storeId;
 
+    private String storeName;
     private String country;
     private String city;
     private String address;
@@ -21,27 +22,26 @@ public class Store {
     private double longitude;
     private String zip;
 
-    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Collection<Offer> offers;
-
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
     private Company company;
 
-    {
-        offers = new HashSet<>();
-    }
-
     protected Store() {}
 
-    public Store(String country, String city,  String address, String addressNo, String zip, double latitude, double longitude) {
+    public Store(String storeName, String country, String city, String address, String addressNo, String zip, double latitude, double longitude, Company company) {
         this.addressNo = addressNo;
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
         this.city = city;
         this.country = country;
+        this.storeName = storeName;
         this.zip = zip;
+        this.company = company;
+    }
+
+    public String getStoreName() {
+        return storeName;
     }
 
     public String getCity() {
@@ -76,55 +76,7 @@ public class Store {
         return zip;
     }
 
-    public Collection<Offer> getOffers() {
-        return offers;
-    }
-
-    public void setOffers(Collection<Offer> offers) {
-        this.offers = offers;
-    }
-
     public Company getCompany() {
         return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Store)) return false;
-
-        Store store = (Store) o;
-
-        if (!addressNo.equals(store.addressNo)) return false;
-        if (Double.compare(store.latitude, latitude) != 0) return false;
-        if (Double.compare(store.longitude, longitude) != 0) return false;
-        if (!address.equals(store.address)) return false;
-        if (!city.equals(store.city)) return false;
-        if (!country.equals(store.country)) return false;
-        if (!storeId.equals(store.storeId)) return false;
-        if (!zip.equals(store.zip)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = storeId.hashCode();
-        result = 31 * result + country.hashCode();
-        result = 31 * result + city.hashCode();
-        result = 31 * result + address.hashCode();
-        result = 31 * result + addressNo.hashCode();
-        temp = Double.doubleToLongBits(latitude);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(longitude);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + zip.hashCode();
-        return result;
     }
 }

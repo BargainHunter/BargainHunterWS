@@ -24,19 +24,19 @@ public class OfferService implements IOfferService {
 
     @Override
     @RequestMapping(value = "/offers", method = RequestMethod.GET)
-    public Collection<OfferDTO> getAll() {
+    public Collection<OfferDTO> getAllOffers() {
         return offerController.getAllOffersDTOs();
     }
 
     @Override
     @RequestMapping(value = "/offers/{offerId}", method = RequestMethod.GET)
-    public OfferDTO getOneById(@PathVariable long offerId) {
+    public OfferDTO getOneOfferById(@PathVariable long offerId) {
         return offerController.getOfferDTOById(offerId);
     }
 
     @Override
     @RequestMapping(value = "/stores/{storeId}/offers", method = RequestMethod.GET)
-    public Collection<OfferDTO> getAllFromStore(@PathVariable long storeId) {
+    public Collection<OfferDTO> getAllOffersFromStoreById(@PathVariable long storeId) {
         return offerController.getAllOffersDTOsFromStoreById(storeId);
     }
 }
