@@ -12,12 +12,14 @@ public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long companyId;
+
     private String companyName;
     private String country;
     private String city;
     private String address;
     private String addressNo;
     private String zip;
+
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Collection<Store> stores;
 

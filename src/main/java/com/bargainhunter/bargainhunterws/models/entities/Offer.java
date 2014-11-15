@@ -11,11 +11,13 @@ public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long offerId;
+
     private String title;
     private String description;
     private double price;
     private Date startDate;
     private Date expDate;
+
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
     private Store store;
