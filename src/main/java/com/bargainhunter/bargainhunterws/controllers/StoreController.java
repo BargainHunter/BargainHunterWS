@@ -44,7 +44,7 @@ public class StoreController implements IStoreController {
     public StoreDTO createDTO(Store store) {
         StoreDTO storeDTO = new StoreDTO(
                 store.getStoreId(),
-                "CompanyName", // store.getCompany().getName();
+                store.getCompany().getCompanyName(),
                 store.getCity(),
                 store.getAddress(),
                 store.getAddressNo(),

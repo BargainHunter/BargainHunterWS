@@ -19,8 +19,13 @@ public class Store {
     private double latitude;
     private double longitude;
     private String zip;
+
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Collection<Offer> offers;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id")
+    private Company company;
 
     {
         offers = new HashSet<>();
@@ -76,6 +81,14 @@ public class Store {
 
     public void setOffers(Collection<Offer> offers) {
         this.offers = offers;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     @Override
