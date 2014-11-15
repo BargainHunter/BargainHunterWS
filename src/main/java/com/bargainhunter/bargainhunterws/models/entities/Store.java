@@ -19,7 +19,7 @@ public class Store {
     private double latitude;
     private double longitude;
     private String zip;
-    @OneToMany(mappedBy = "store", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Collection<Offer> offers;
 
     {

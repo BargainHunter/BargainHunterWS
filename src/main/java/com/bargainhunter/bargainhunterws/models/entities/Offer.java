@@ -16,7 +16,7 @@ public class Offer {
     private double price;
     private Date startDate;
     private Date expDate;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
     private Store store;
 
