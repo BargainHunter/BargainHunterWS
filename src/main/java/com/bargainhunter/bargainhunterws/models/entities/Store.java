@@ -1,7 +1,5 @@
 package com.bargainhunter.bargainhunterws.models.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
@@ -10,7 +8,6 @@ import java.util.HashSet;
  * Created by Tommy on 11/9/2014.
  */
 @Entity
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, scope = Store.class)
 public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +20,6 @@ public class Store {
     private double longitude;
     private String zip;
     @OneToMany(mappedBy = "store", fetch = FetchType.LAZY)
-    @JsonManagedReference
     private Collection<Offer> offers;
 
     {
