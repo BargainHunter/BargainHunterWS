@@ -17,9 +17,6 @@ public class StoreController implements IStoreController {
     @Autowired
     IStoreRepository storeRepository;
 
-//    @Autowired
-//    ICompanyRepository companyRepository;
-
     @Override
     public Collection<StoreDTO> getAllStoresDTOs() {
         Collection<Store> stores = storeRepository.findAll();
@@ -47,7 +44,7 @@ public class StoreController implements IStoreController {
     public StoreDTO createDTO(Store store) {
         StoreDTO storeDTO = new StoreDTO(
                 store.getStoreId(),
-                "StoreName",
+                "CompanyName", // store.getCompany().getName();
                 store.getCity(),
                 store.getAddress(),
                 store.getAddressNo(),
