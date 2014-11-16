@@ -3,7 +3,7 @@
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
       <configuration process_explicitly_annotated="false">
-      <fileset id="fileset" name="Spring Application Context" removed="false">
+        <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/META-INF/appContext.xml</file>
         </fileset>
         <fileset id="fileset2" name="Spring Development Context" removed="false">
@@ -19,9 +19,9 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="app" value="dataSource" />
-          <factory-entry name="dev" value="dataSource" />
-          <factory-entry name="test" value="dataSource" />
+          <factory-entry name="app" value="36f0a411-ebbb-4850-b449-73c71a82cc1d" />
+          <factory-entry name="dev" />
+          <factory-entry name="test" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>
