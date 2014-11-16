@@ -1,21 +1,33 @@
 package com.bargainhunter.bargainhunterws.models.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Johnny on 11/11/14.
  */
 @Entity
-public class Offer {
+@Table(name = "OFFER")
+public class Offer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "offer_id")
     private Long offerId;
 
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "price")
     private double price;
+
+    @Column(name = "start_date")
     private Date startDate;
+
+    @Column(name = "exp_date")
     private Date expDate;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)

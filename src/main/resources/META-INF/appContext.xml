@@ -9,17 +9,24 @@
            http://www.springframework.org/schema/jdbc
            http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
            http://www.springframework.org/schema/data/jpa
-           http://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+           http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--Database-->
 
-    <jdbc:embedded-database id="dataSource" type="H2"/>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://bargainhunter.dyndns.org:3306/bargain_hunter"/>
+        <property name="username" value="bargainhunter"/>
+        <property name="password" value="bargainhunter"/>
+    </bean>
 
     <!--Entity Manager-->
 
     <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="dataSource" ref="dataSource"/>
-        <property name="persistenceUnitName" value="test"/>
+        <property name="persistenceUnitName" value="app"/>
         <property name="packagesToScan" value="com.bargainhunter.bargainhunterws.models.entities"/>
     </bean>
 

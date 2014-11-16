@@ -27,6 +27,7 @@
       <column name="start_date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="company_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="store_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <primary-key name="PRIMARY" columns="offer_id"/>
       <foreign-key name="FK_5p8w19vtmctpxqjrh881xsgxi" columns="company_id" ref-table="company" ref-schema="" ref-catalog="bargain_hunter" ref-columns="company_id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="FK_5p8w19vtmctpxqjrh881xsgxi" unique="false" columns="company_id"/>

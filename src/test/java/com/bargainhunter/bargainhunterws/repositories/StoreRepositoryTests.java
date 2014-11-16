@@ -16,7 +16,7 @@ import javax.transaction.Transactional;
  * Created by Tommy on 11/9/2014.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:META-INF/test-context.xml",
+@ContextConfiguration(locations = "classpath:META-INF/testContext.xml",
         loader = SpringApplicationContextLoader.class)
 public class StoreRepositoryTests {
     @Autowired

@@ -1,6 +1,7 @@
 package com.bargainhunter.bargainhunterws.models.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -8,18 +9,35 @@ import java.util.HashSet;
  * Created by Tommy on 11/9/2014.
  */
 @Entity
-public class Store {
+@Table(name = "STORE")
+public class Store implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "store_id")
     private Long storeId;
 
+    @Column(name = "store_name")
     private String storeName;
+
+    @Column(name = "country")
     private String country;
+
+    @Column(name = "city")
     private String city;
+
+    @Column(name = "address")
     private String address;
+
+    @Column(name = "address_no")
     private String addressNo;
+
+    @Column(name = "latitude")
     private double latitude;
+
+    @Column(name = "longitude")
     private double longitude;
+
+    @Column(name = "zip")
     private String zip;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
