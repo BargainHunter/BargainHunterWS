@@ -4,6 +4,7 @@
     <entry_points version="2.0" />
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
     <type id="Spring" />
   </component>
   <component name="IdProvider" IDEtalkID="6C7E74BF6A59C86C294CFE8A3C60B27F" />
