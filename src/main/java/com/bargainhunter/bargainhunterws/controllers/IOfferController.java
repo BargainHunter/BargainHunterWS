@@ -18,4 +18,6 @@ public interface IOfferController {
     Collection<OfferDTO> createDTOs(Collection<Offer> offers);
 
     OfferDTO createDTO(Offer offer);
+
+    Collection<OfferDTO> getAllOffersDTOsInRadius(double latitude, double longitude, double radius);
 }

@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -89,4 +86,41 @@ public class OfferService implements IOfferService {
 
         return new ResponseEntity<>(offerDTOs, headers, status);
     }
+
+    @Override
+    @RequestMapping(value = "/offer", method = RequestMethod.GET)
+    public ResponseEntity<Collection<OfferDTO>> getAllOffersInRadius(@RequestParam(value = "latitude") double latitude,
+                                                                     @RequestParam(value = "longitude") double longitude,
+                                                                     @RequestParam(value = "radius") double radius) {
+        HttpHeaders headers = new HttpHeaders();
+        HttpStatus status = HttpStatus.OK;
+
+        Collection<OfferDTO> offerDTOs = null;
+
+        headers.add("Content-Type", "application/json;charset=UTF-8");
+
+        try {
+            offerDTOs = offerController.getAllOffersDTOsInRadius(latitude, longitude, radius);
+        } catch (NullPointerException e) {
+            status = HttpStatus.NOT_FOUND;
+        } catch (Exception e) {
+            System.out.println(Arrays.toString(e.getStackTrace()));
+            status = HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+
+        return new ResponseEntity<>(offerDTOs, headers, status);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
