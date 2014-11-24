@@ -3,10 +3,10 @@ package com.bargainhunter.bargainhunterws.controllers;
 /**
  * Created by Tommy on 11/22/2014.
  */
-public class DistanceCalc {
+public class DistanceController {
     
     /**
-     * Calculates the distance between two points (given the
+     * Calculates the calcDistance between two points (given the
      * latitude/longitude of those points)
      * @param lat1
      * @param lon1
@@ -14,7 +14,7 @@ public class DistanceCalc {
      * @param lon2
      * @return
      */
-    public double distance(double lat1, double lon1, double lat2, double lon2) {
+    public double calcDistance(double lat1, double lon1, double lat2, double lon2) {
         double theta = lon1 - lon2;
         double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
         dist = Math.acos(dist);

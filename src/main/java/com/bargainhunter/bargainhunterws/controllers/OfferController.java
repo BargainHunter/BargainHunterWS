@@ -41,25 +41,28 @@ public class OfferController implements IOfferController {
 
     @Override
     public Collection<OfferDTO> getAllOffersDTOsInRadius(double latitude, double longitude, double radius) {
-
-
-        Collection<Store> storesInRadius = new HashSet<>();
-        DistanceCalc distanceCalc = new DistanceCalc();
         Collection<Store> stores = storeRepository.findAll();
+        Collection<Store> storesInRadius = new HashSet<>();
+        Collection<Offer> offers = new HashSet<>();
+
+        DistanceController distanceController = new DistanceController();
+
         for (Store store : stores) {
-            if ((distanceCalc.distance(store.getLatitude(),
-                                  store.getLongitude(),
-                                  latitude,
-                                  longitude)) < radius) {
+            if (distanceController.calcDistance(
+                    store.getLatitude(),
+                    store.getLongitude(),
+                    latitude,
+                    longitude) < radius) {
                 storesInRadius.add(store);
             }
         }
-        Collection<Offer> offers = new HashSet<>();
+
         for (Store store : storesInRadius) {
             for (Offer of : store.getCompany().getOffers()) {
                     offers.add(of);
             }
         }
+
         return createDTOs(offers);
     }
 
