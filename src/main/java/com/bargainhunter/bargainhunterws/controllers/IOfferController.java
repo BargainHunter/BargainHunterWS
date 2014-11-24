@@ -20,6 +20,4 @@ public interface IOfferController {
     Collection<OfferDTO> createDTOs(Collection<Offer> offers);
 
     OfferDTO createDTO(Offer offer);
-
-
 }
