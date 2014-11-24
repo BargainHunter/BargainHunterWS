@@ -28,8 +28,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bargainhunterws" target="1.6" />
-      <module name="BargainHunterWS" target="1.7" />
+      <module name="BargainHunterWS" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
-
