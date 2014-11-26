@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="BargainHunterWS:war exploded">
-    <output-path>$PROJECT_DIR$/target/bargainhunterws-0.0.2</output-path>
+    <output-path>$PROJECT_DIR$/target/bargainhunterws-0.0.3</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -72,7 +72,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="C:\Users\Tommy\IdeaProjects\BargainHunterWS\target/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="BargainHunterWS/web/Web" />
     </root>
