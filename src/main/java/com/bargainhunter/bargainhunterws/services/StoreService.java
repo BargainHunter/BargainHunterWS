@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
+import javax.persistence.EntityNotFoundException;
 import java.util.Collection;
 
 /**
@@ -26,20 +26,12 @@ public class StoreService implements IStoreService {
     @RequestMapping(value = "/stores", method = RequestMethod.GET)
     public ResponseEntity<Collection<StoreDTO>> getAllStores() {
         HttpHeaders headers = new HttpHeaders();
-        HttpStatus status = HttpStatus.OK;
-
-        Collection<StoreDTO> storeDTOs = null;
 
         headers.add("Content-Type", "application/json;charset=UTF-8");
 
-        try {
-            storeDTOs = storeController.getAllStoresDTOs();
-        } catch (Exception e) {
-            System.out.println(Arrays.toString(e.getStackTrace()));
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        }
+        Collection<StoreDTO> storeDTOs = storeController.getAllStoresDTOs();
 
-        return new ResponseEntity<>(storeDTOs, headers, status);
+        return new ResponseEntity<>(storeDTOs, headers, HttpStatus.OK);
     }
 
     @Override
@@ -54,11 +46,8 @@ public class StoreService implements IStoreService {
 
         try {
             storeDTO = storeController.getStoreDTOById(storeId);
-        } catch (NullPointerException e) {
+        } catch (EntityNotFoundException e) {
             status = HttpStatus.NOT_FOUND;
-        } catch (Exception e) {
-            System.out.println(Arrays.toString(e.getStackTrace()));
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
         }
 
         return new ResponseEntity<>(storeDTO, headers, status);

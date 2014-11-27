@@ -6,8 +6,8 @@ import com.bargainhunter.bargainhunterws.repositories.IStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 
 /**
  * Created by Achilleas Naoumidis on 11/15/14.
@@ -25,13 +25,13 @@ public class StoreController implements IStoreController {
 
     @Override
     public StoreDTO getStoreDTOById(long storeId) {
-        Store store = storeRepository.findOne(storeId);
+        Store store = storeRepository.getOne(storeId);
         return createDTO(store);
     }
 
     @Override
     public Collection<StoreDTO> createDTOs(Collection<Store> stores) {
-        Collection<StoreDTO> storeDTOs = new HashSet<>();
+        Collection<StoreDTO> storeDTOs = new ArrayList<>();
 
         for (Store store : stores) {
             storeDTOs.add(createDTO(store));
@@ -51,6 +51,7 @@ public class StoreController implements IStoreController {
                 store.getLatitude(),
                 store.getLongitude(),
                 store.getCompany().getCompanyId());
+
         return storeDTO;
     }
 }

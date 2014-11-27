@@ -43,7 +43,7 @@ public class OfferRepositoryTests {
         Offer offer = new Offer("Kreas", "-20% mosxarisio", 8, startDate.getTime(), expDate.getTime(), company);
         offerRepository.save(offer);
 
-        Offer dbOffer = offerRepository.findOne(offer.getOfferId());
+        Offer dbOffer = offerRepository.getOne(offer.getOfferId());
         Assert.assertNotNull(dbOffer);
         Assert.assertNotNull(dbOffer.getCompany());
 

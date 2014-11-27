@@ -8,7 +8,10 @@ import com.bargainhunter.bargainhunterws.repositories.IStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Achilleas Naoumidis on 11/15/14.
@@ -23,19 +26,14 @@ public class OfferController implements IOfferController {
 
     @Override
     public OfferDTO getOfferDTOById(long offerId) {
-        Offer offer = offerRepository.findOne(offerId);
+        Offer offer = offerRepository.getOne(offerId);
+
         return createDTO(offer);
     }
 
     @Override
     public Collection<OfferDTO> getAllOffersDTOs() {
         Collection<Offer> offers = offerRepository.findAll();
-        return createDTOs(offers);
-    }
-
-    @Override
-    public Collection<OfferDTO> getAllOffersDTOsFromStoreById(long storeId) {
-        Collection<Offer> offers = storeRepository.findOne(storeId).getCompany().getOffers();
         return createDTOs(offers);
     }
 
@@ -67,8 +65,15 @@ public class OfferController implements IOfferController {
     }
 
     @Override
+    public Collection<OfferDTO> getAllOffersDTOsFromStoreById(long storeId) {
+        Set<Offer> offers = storeRepository.getOne(storeId).getCompany().getOffers();
+
+        return createDTOs(offers);
+    }
+
+    @Override
     public Collection<OfferDTO> createDTOs(Collection<Offer> offers) {
-        Collection<OfferDTO> offerDTOs = new HashSet<>();
+        Collection<OfferDTO> offerDTOs = new ArrayList<>();
 
         for (Offer offer : offers) {
             offerDTOs.add(createDTO(offer));
@@ -86,6 +91,7 @@ public class OfferController implements IOfferController {
                 offer.getPrice(),
                 offer.getCompany().getCompanyId()
         );
+
         return offerDTO;
     }
 }
