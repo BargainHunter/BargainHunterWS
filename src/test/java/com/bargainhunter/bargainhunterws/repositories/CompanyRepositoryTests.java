@@ -32,7 +32,7 @@ public class CompanyRepositoryTests {
         Company company = new Company("Masoutis", "Greece", "Athens", "Venizelou", "35", "12345");
         companyRepository.save(company);
 
-        Company dbCompany = companyRepository.findOne(company.getCompanyId());
+        Company dbCompany = companyRepository.getOne(company.getCompanyId());
 
         Assert.assertNotNull(dbCompany);
         Assert.assertEquals("Greece", dbCompany.getCountry());

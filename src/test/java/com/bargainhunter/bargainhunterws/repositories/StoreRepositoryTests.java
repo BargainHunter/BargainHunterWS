@@ -38,7 +38,7 @@ public class StoreRepositoryTests {
         Store store = new Store("Masoutis", "Greece", "Serres", "Edessis", "18", "62100", 41.546556, 35.345345, company);
         storeRepository.save(store);
 
-        Store dbStore = storeRepository.findOne(store.getStoreId());
+        Store dbStore = storeRepository.getOne(store.getStoreId());
 
         Assert.assertNotNull(dbStore);
         Assert.assertEquals("Greece", dbStore.getCountry());
@@ -64,8 +64,8 @@ public class StoreRepositoryTests {
         storeRepository.save(firstStore);
         storeRepository.save(secondStore);
 
-        Store dbFirstStore = storeRepository.findOne(firstStore.getStoreId());
-        Store dbSecondStore = storeRepository.findOne(secondStore.getStoreId());
+        Store dbFirstStore = storeRepository.getOne(firstStore.getStoreId());
+        Store dbSecondStore = storeRepository.getOne(secondStore.getStoreId());
 
         Assert.assertNotNull(dbFirstStore);
         Assert.assertNotNull(dbSecondStore);

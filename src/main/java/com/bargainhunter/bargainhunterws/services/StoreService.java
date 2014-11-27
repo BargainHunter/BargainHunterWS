@@ -6,12 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
+import javax.persistence.EntityNotFoundException;
 import java.util.Collection;
 
 /**
@@ -24,22 +21,17 @@ public class StoreService implements IStoreService {
 
     @Override
     @RequestMapping(value = "/stores", method = RequestMethod.GET)
-    public ResponseEntity<Collection<StoreDTO>> getAllStores() {
+    public ResponseEntity<Collection<StoreDTO>> getAllStoresInRadius(
+            @RequestParam double latitude,
+            @RequestParam double longitude,
+            @RequestParam double radius) {
         HttpHeaders headers = new HttpHeaders();
-        HttpStatus status = HttpStatus.OK;
-
-        Collection<StoreDTO> storeDTOs = null;
 
         headers.add("Content-Type", "application/json;charset=UTF-8");
 
-        try {
-            storeDTOs = storeController.getAllStoresDTOs();
-        } catch (Exception e) {
-            System.out.println(Arrays.toString(e.getStackTrace()));
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        }
+        Collection<StoreDTO> storeDTOs = storeController.getAllStoresDTOsInRadius(latitude, longitude, radius);
 
-        return new ResponseEntity<>(storeDTOs, headers, status);
+        return new ResponseEntity<>(storeDTOs, headers, HttpStatus.OK);
     }
 
     @Override
@@ -54,11 +46,8 @@ public class StoreService implements IStoreService {
 
         try {
             storeDTO = storeController.getStoreDTOById(storeId);
-        } catch (NullPointerException e) {
+        } catch (EntityNotFoundException e) {
             status = HttpStatus.NOT_FOUND;
-        } catch (Exception e) {
-            System.out.println(Arrays.toString(e.getStackTrace()));
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
         }
 
         return new ResponseEntity<>(storeDTO, headers, status);

@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Achilleas Naoumidis on 11/15/14.
@@ -35,10 +36,10 @@ public class Company implements Serializable {
     private String zip;
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Collection<Store> stores;
+    private Set<Store> stores;
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Collection<Offer> offers;
+    private Set<Offer> offers;
 
     {
         stores = new HashSet<>();
@@ -84,19 +85,19 @@ public class Company implements Serializable {
         return zip;
     }
 
-    public Collection<Store> getStores() {
+    public Set<Store> getStores() {
         return stores;
     }
 
-    public Collection<Offer> getOffers() {
+    public Set<Offer> getOffers() {
         return offers;
     }
 
-    public void setOffers(Collection<Offer> offers) {
+    public void setOffers(Set<Offer> offers) {
         this.offers = offers;
     }
 
-    public void setStores(Collection<Store> stores) {
+    public void setStores(Set<Store> stores) {
         this.stores = stores;
     }
 }

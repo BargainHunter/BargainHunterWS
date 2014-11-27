@@ -5,7 +5,7 @@
 
     <groupId>com.bargainhunter</groupId>
     <artifactId>bargainhunterws</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <packaging>war</packaging>
 
     <parent>
@@ -48,7 +48,7 @@
 
     <properties>
         <start-class>com.bargainhunter.bargainhunterws.Application</start-class>
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
     </properties>
 
     <build>

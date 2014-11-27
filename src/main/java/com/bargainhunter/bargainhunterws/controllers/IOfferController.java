@@ -13,6 +13,8 @@ public interface IOfferController {
 
     Collection<OfferDTO> getAllOffersDTOs();
 
+    Collection<OfferDTO> getAllOffersDTOsInRadius(double latitude, double longitude, double radius);
+
     Collection<OfferDTO> getAllOffersDTOsFromStoreById(long storeId);
 
     Collection<OfferDTO> createDTOs(Collection<Offer> offers);

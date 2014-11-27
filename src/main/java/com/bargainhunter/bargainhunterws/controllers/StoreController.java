@@ -6,6 +6,7 @@ import com.bargainhunter.bargainhunterws.repositories.IStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -24,14 +25,34 @@ public class StoreController implements IStoreController {
     }
 
     @Override
+    public Collection<StoreDTO> getAllStoresDTOsInRadius(double latitude, double longitude, double radius) {
+        Collection<Store> stores = storeRepository.findAll();
+        Collection<Store> storesInRadius = new HashSet<>();
+
+        DistanceController distanceController = new DistanceController();
+
+        for (Store store : stores) {
+            if (distanceController.calcDistance(
+                    store.getLatitude(),
+                    store.getLongitude(),
+                    latitude,
+                    longitude) < radius) {
+                storesInRadius.add(store);
+            }
+        }
+
+        return createDTOs(storesInRadius);
+    }
+
+    @Override
     public StoreDTO getStoreDTOById(long storeId) {
-        Store store = storeRepository.findOne(storeId);
+        Store store = storeRepository.getOne(storeId);
         return createDTO(store);
     }
 
     @Override
     public Collection<StoreDTO> createDTOs(Collection<Store> stores) {
-        Collection<StoreDTO> storeDTOs = new HashSet<>();
+        Collection<StoreDTO> storeDTOs = new ArrayList<>();
 
         for (Store store : stores) {
             storeDTOs.add(createDTO(store));
@@ -51,6 +72,7 @@ public class StoreController implements IStoreController {
                 store.getLatitude(),
                 store.getLongitude(),
                 store.getCompany().getCompanyId());
+
         return storeDTO;
     }
 }

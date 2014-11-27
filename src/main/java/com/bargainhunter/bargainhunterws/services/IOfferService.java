@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Collection;
 
@@ -13,7 +14,10 @@ import java.util.Collection;
  */
 public interface IOfferService {
     @RequestMapping(value = "/offers", method = RequestMethod.GET)
-    ResponseEntity<Collection<OfferDTO>> getAllOffers();
+    ResponseEntity<Collection<OfferDTO>> getAllOffersInRadius(
+            @RequestParam double latitude,
+            @RequestParam double longitude,
+            @RequestParam double radius);
 
     @RequestMapping(value = "/offers/{offerId}", method = RequestMethod.GET)
     ResponseEntity<OfferDTO> getOneOfferById(@PathVariable long offerId);
