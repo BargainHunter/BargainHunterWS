@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 /**
  * Created by Achilleas Naoumidis on 11/15/14.
@@ -21,6 +22,26 @@ public class StoreController implements IStoreController {
     public Collection<StoreDTO> getAllStoresDTOs() {
         Collection<Store> stores = storeRepository.findAll();
         return createDTOs(stores);
+    }
+
+    @Override
+    public Collection<StoreDTO> getAllStoresDTOsInRadius(double latitude, double longitude, double radius) {
+        Collection<Store> stores = storeRepository.findAll();
+        Collection<Store> storesInRadius = new HashSet<>();
+
+        DistanceController distanceController = new DistanceController();
+
+        for (Store store : stores) {
+            if (distanceController.calcDistance(
+                    store.getLatitude(),
+                    store.getLongitude(),
+                    latitude,
+                    longitude) < radius) {
+                storesInRadius.add(store);
+            }
+        }
+
+        return createDTOs(storesInRadius);
     }
 
     @Override

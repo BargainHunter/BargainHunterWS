@@ -2,7 +2,6 @@ package com.bargainhunter.bargainhunterws.services;
 
 import com.bargainhunter.bargainhunterws.controllers.IOfferController;
 import com.bargainhunter.bargainhunterws.models.DTOs.OfferDTO;
-import com.bargainhunter.bargainhunterws.repositories.IStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,9 +18,6 @@ import java.util.Collection;
 public class OfferService implements IOfferService {
     @Autowired
     IOfferController offerController;
-
-    @Autowired
-    IStoreRepository storeRepository;
 
     @Override
     @RequestMapping(value = "/offers", method = RequestMethod.GET)

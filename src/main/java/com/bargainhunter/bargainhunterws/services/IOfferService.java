@@ -14,9 +14,10 @@ import java.util.Collection;
  */
 public interface IOfferService {
     @RequestMapping(value = "/offers", method = RequestMethod.GET)
-    ResponseEntity<Collection<OfferDTO>> getAllOffersInRadius(@RequestParam double latitude,
-                                                              @RequestParam double longitude,
-                                                              @RequestParam double radius);
+    ResponseEntity<Collection<OfferDTO>> getAllOffersInRadius(
+            @RequestParam double latitude,
+            @RequestParam double longitude,
+            @RequestParam double radius);
 
     @RequestMapping(value = "/offers/{offerId}", method = RequestMethod.GET)
     ResponseEntity<OfferDTO> getOneOfferById(@PathVariable long offerId);
