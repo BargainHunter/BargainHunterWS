@@ -1,8 +1,5 @@
 package com.bargainhunter.bargainhunterws.models.DTOs;
 
-/**
- * Created by Achilleas Naoumidis on 11/15/14.
- */
 public class StoreDTO {
     private Long storeId;
     private String storeName;

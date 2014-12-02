@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.EntityNotFoundException;
 import java.util.Collection;
 
-/**
- * Created by Achilleas Naoumidis on 11/13/14.
- */
 @RestController
 public class OfferService implements IOfferService {
     @Autowired

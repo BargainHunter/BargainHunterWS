@@ -10,9 +10,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
-/**
- * Created by Achilleas Naoumidis on 11/15/14.
- */
 @Controller
 public class StoreController implements IStoreController {
     @Autowired

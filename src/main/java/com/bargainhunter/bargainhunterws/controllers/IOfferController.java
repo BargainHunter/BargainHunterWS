@@ -5,9 +5,6 @@ import com.bargainhunter.bargainhunterws.models.entities.Offer;
 
 import java.util.Collection;
 
-/**
- * Created by Achilleas Naoumidis on 11/14/14.
- */
 public interface IOfferController {
     OfferDTO getOfferDTOById(long offerId);
 

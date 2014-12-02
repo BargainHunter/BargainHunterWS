@@ -5,9 +5,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
 
-/**
- * Created by Tommy on 11/9/2014.
- */
 @Entity
 @Table(name = "STORE")
 public class Store implements Serializable {

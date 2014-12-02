@@ -1,23 +1,22 @@
 package com.bargainhunter.bargainhunterws.models.DTOs;
 
-/**
- * Created by Achilleas Naoumidis on 11/15/14.
- */
 public class OfferDTO {
     private Long offerId;
     private String title;
     private String description;
     private double price;
     private Long companyId;
+    private String subcategoryDescription;
 
     public OfferDTO() {}
 
-    public OfferDTO(Long offerId, String title, String description, double price, Long companyId) {
+    public OfferDTO(Long offerId, String title, String description, double price, Long companyId, String subcategoryDescription) {
         this.offerId = offerId;
         this.title = title;
         this.description = description;
         this.price = price;
         this.companyId = companyId;
+        this.subcategoryDescription = subcategoryDescription;
     }
 
     public Long getOfferId() {
@@ -58,5 +57,13 @@ public class OfferDTO {
 
     public void setCompanyId(Long companyId) {
         this.companyId = companyId;
+    }
+
+    public String getSubcategoryDescription() {
+        return subcategoryDescription;
+    }
+
+    public void setSubcategoryDescription(String subcategoryDescription) {
+        this.subcategoryDescription = subcategoryDescription;
     }
 }

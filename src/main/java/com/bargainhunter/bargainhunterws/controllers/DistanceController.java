@@ -1,8 +1,5 @@
 package com.bargainhunter.bargainhunterws.controllers;
 
-/**
- * Created by Tommy on 11/22/2014.
- */
 public class DistanceController {
     
     /**

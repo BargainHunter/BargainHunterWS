@@ -2,6 +2,7 @@ package com.bargainhunter.bargainhunterws.repositories;
 
 import com.bargainhunter.bargainhunterws.models.entities.Company;
 import com.bargainhunter.bargainhunterws.models.entities.Offer;
+import com.bargainhunter.bargainhunterws.models.entities.Subcategory;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +30,9 @@ public class OfferRepositoryTests {
     @Autowired
     ICompanyRepository companyRepository;
 
+    @Autowired
+    ISubcategoryRepository subcategoryRepository;
+
     @Test
     @Transactional
     public void insertTest() {
@@ -40,7 +44,10 @@ public class OfferRepositoryTests {
         Calendar expDate = Calendar.getInstance();
         expDate.set(2014, Calendar.NOVEMBER, 14);
 
-        Offer offer = new Offer("Kreas", "-20% mosxarisio", 8, startDate.getTime(), expDate.getTime(), company);
+        Subcategory subcategory = new Subcategory("Kreopwleio");
+        subcategoryRepository.save(subcategory);
+
+        Offer offer = new Offer("Kreas", "-20% mosxarisio", 8, startDate.getTime(), expDate.getTime(), company, subcategory);
         offerRepository.save(offer);
 
         Offer dbOffer = offerRepository.getOne(offer.getOfferId());

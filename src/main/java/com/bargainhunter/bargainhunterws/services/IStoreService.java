@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Collection;
 
-/**
- * Created by Achilleas Naoumidis on 11/14/14.
- */
 public interface IStoreService {
     public ResponseEntity<Collection<StoreDTO>> getAllStoresInRadius(
             @RequestParam double latitude,

@@ -13,9 +13,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by Achilleas Naoumidis on 11/15/14.
- */
 @Controller
 public class OfferController implements IOfferController {
     @Autowired
@@ -89,7 +86,8 @@ public class OfferController implements IOfferController {
                 offer.getTitle(),
                 offer.getDescription(),
                 offer.getPrice(),
-                offer.getCompany().getCompanyId()
+                offer.getCompany().getCompanyId(),
+                offer.getSubcategory().getDescription()
         );
 
         return offerDTO;

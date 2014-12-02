@@ -4,9 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by Johnny on 11/11/14.
- */
 @Entity
 @Table(name = "OFFER")
 public class Offer implements Serializable {
@@ -34,15 +31,20 @@ public class Offer implements Serializable {
     @JoinColumn(name = "company_id")
     private Company company;
 
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "subcategory_id")
+    private Subcategory subcategory;
+
     protected Offer() {}
 
-    public Offer(String title, String description, double price, Date startDate, Date expDate, Company company) {
+    public Offer(String title, String description, double price, Date startDate, Date expDate, Company company, Subcategory subcategory) {
         this.title = title;
         this.description = description;
         this.price = price;
         this.startDate = startDate;
         this.expDate = expDate;
         this.company = company;
+        this.subcategory = subcategory;
     }
 
     public String getTitle() {
@@ -71,5 +73,9 @@ public class Offer implements Serializable {
 
     public Company getCompany() {
         return company;
+    }
+
+    public Subcategory getSubcategory() {
+        return subcategory;
     }
 }

@@ -1,8 +1,5 @@
 package com.bargainhunter.bargainhunterws.models;
 
-/**
- * Created by Achilleas Naoumidis on 11/26/14.
- */
 public class About {
     private String name;
     private String version;
