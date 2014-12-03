@@ -26,7 +26,7 @@ public class StoreService implements IStoreService {
 
         headers.add("Content-Type", "application/json;charset=UTF-8");
 
-        Collection<StoreDTO> storeDTOs = storeController.getAllStoresDTOsInRadius(latitude, longitude, radius);
+        Collection<StoreDTO> storeDTOs = storeController.getAllStoreDTOsInRadius(latitude, longitude, radius);
 
         return new ResponseEntity<>(storeDTOs, headers, HttpStatus.OK);
     }

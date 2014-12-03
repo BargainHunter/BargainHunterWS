@@ -3,6 +3,7 @@ package com.bargainhunter.bargainhunterws.models.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "OFFER")
@@ -31,20 +32,34 @@ public class Offer implements Serializable {
     @JoinColumn(name = "company_id")
     private Company company;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "subcategory_id")
-    private Subcategory subcategory;
+    @ManyToMany
+    @JoinTable(name="OFFER_SUBCATEGORY",
+            joinColumns=
+            @JoinColumn(name="offer_id", referencedColumnName="offer_id"),
+            inverseJoinColumns=
+            @JoinColumn(name="subcategory_id", referencedColumnName="subcategory_id")
+    )
+    public Set<Subcategory> subcategories;
 
     protected Offer() {}
 
-    public Offer(String title, String description, double price, Date startDate, Date expDate, Company company, Subcategory subcategory) {
+    public Offer(String title, String description, double price, Date startDate, Date expDate, Company company) {
         this.title = title;
         this.description = description;
         this.price = price;
         this.startDate = startDate;
         this.expDate = expDate;
         this.company = company;
-        this.subcategory = subcategory;
+    }
+
+    public Offer(String title, String description, double price, Date startDate, Date expDate, Company company, Set<Subcategory> subcategories) {
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.startDate = startDate;
+        this.expDate = expDate;
+        this.company = company;
+        this.subcategories = subcategories;
     }
 
     public String getTitle() {
@@ -75,7 +90,7 @@ public class Offer implements Serializable {
         return company;
     }
 
-    public Subcategory getSubcategory() {
-        return subcategory;
+    public Set<Subcategory> getSubcategories() {
+        return subcategories;
     }
 }

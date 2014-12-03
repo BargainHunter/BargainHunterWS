@@ -22,7 +22,7 @@ public class StoreController implements IStoreController {
     }
 
     @Override
-    public Collection<StoreDTO> getAllStoresDTOsInRadius(double latitude, double longitude, double radius) {
+    public Collection<StoreDTO> getAllStoreDTOsInRadius(double latitude, double longitude, double radius) {
         Collection<Store> stores = storeRepository.findAll();
         Collection<Store> storesInRadius = new HashSet<>();
 

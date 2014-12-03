@@ -16,7 +16,11 @@ public class Subcategory implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "subcategory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @ManyToMany(mappedBy="subcategories")
     private Set<Offer> offers;
 
     {
@@ -25,8 +29,10 @@ public class Subcategory implements Serializable {
 
     public Subcategory() {}
 
-    public Subcategory(String description) {
+    public Subcategory(String description, Category category, Set<Offer> offers) {
         this.description = description;
+        this.category = category;
+        this.offers = offers;
     }
 
     public Long getSubcategoryId() {
@@ -35,6 +41,10 @@ public class Subcategory implements Serializable {
 
     public String getDescription() {
         return description;
+    }
+
+    public Category getCategory() {
+        return category;
     }
 
     public Set<Offer> getOffers() {

@@ -1,22 +1,25 @@
 package com.bargainhunter.bargainhunterws.models.DTOs;
 
+import java.util.Collection;
+import java.util.Set;
+
 public class OfferDTO {
     private Long offerId;
     private String title;
     private String description;
     private double price;
     private Long companyId;
-    private String subcategoryDescription;
+    private Collection<SubcategoryDTO> subcategories;
 
     public OfferDTO() {}
 
-    public OfferDTO(Long offerId, String title, String description, double price, Long companyId, String subcategoryDescription) {
+    public OfferDTO(Long offerId, String title, String description, double price, Long companyId, Collection<SubcategoryDTO> subcategories) {
         this.offerId = offerId;
         this.title = title;
         this.description = description;
         this.price = price;
         this.companyId = companyId;
-        this.subcategoryDescription = subcategoryDescription;
+        this.subcategories = subcategories;
     }
 
     public Long getOfferId() {
@@ -59,11 +62,11 @@ public class OfferDTO {
         this.companyId = companyId;
     }
 
-    public String getSubcategoryDescription() {
-        return subcategoryDescription;
+    public Collection<SubcategoryDTO> getSubcategories() {
+        return subcategories;
     }
 
-    public void setSubcategoryDescription(String subcategoryDescription) {
-        this.subcategoryDescription = subcategoryDescription;
+    public void setSubcategories(Set<SubcategoryDTO> subcategories) {
+        this.subcategories = subcategories;
     }
 }

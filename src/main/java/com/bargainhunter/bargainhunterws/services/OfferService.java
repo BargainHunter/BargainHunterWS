@@ -26,7 +26,7 @@ public class OfferService implements IOfferService {
 
         headers.add("Content-Type", "application/json;charset=UTF-8");
 
-        Collection<OfferDTO> offerDTOs = offerController.getAllOffersDTOsInRadius(latitude, longitude, radius);
+        Collection<OfferDTO> offerDTOs = offerController.getAllOfferDTOsInRadius(latitude, longitude, radius);
 
         return new ResponseEntity<>(offerDTOs, headers, HttpStatus.OK);
     }
@@ -61,7 +61,7 @@ public class OfferService implements IOfferService {
         headers.add("Content-Type", "application/json;charset=UTF-8");
 
         try {
-            offerDTOs = offerController.getAllOffersDTOsFromStoreById(storeId);
+            offerDTOs = offerController.getAllOfferDTOsFromStoreById(storeId);
         } catch (EntityNotFoundException e) {
             status = HttpStatus.NOT_FOUND;
         }

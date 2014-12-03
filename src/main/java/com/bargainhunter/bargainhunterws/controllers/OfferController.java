@@ -1,6 +1,7 @@
 package com.bargainhunter.bargainhunterws.controllers;
 
 import com.bargainhunter.bargainhunterws.models.DTOs.OfferDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.SubcategoryDTO;
 import com.bargainhunter.bargainhunterws.models.entities.Offer;
 import com.bargainhunter.bargainhunterws.models.entities.Store;
 import com.bargainhunter.bargainhunterws.repositories.IOfferRepository;
@@ -21,6 +22,9 @@ public class OfferController implements IOfferController {
     @Autowired
     IStoreRepository storeRepository;
 
+    @Autowired
+    ISubcategoryController subcategoryController;
+
     @Override
     public OfferDTO getOfferDTOById(long offerId) {
         Offer offer = offerRepository.getOne(offerId);
@@ -35,7 +39,7 @@ public class OfferController implements IOfferController {
     }
 
     @Override
-    public Collection<OfferDTO> getAllOffersDTOsInRadius(double latitude, double longitude, double radius) {
+    public Collection<OfferDTO> getAllOfferDTOsInRadius(double latitude, double longitude, double radius) {
         Collection<Store> stores = storeRepository.findAll();
         Collection<Store> storesInRadius = new HashSet<>();
         Collection<Offer> offers = new HashSet<>();
@@ -62,7 +66,7 @@ public class OfferController implements IOfferController {
     }
 
     @Override
-    public Collection<OfferDTO> getAllOffersDTOsFromStoreById(long storeId) {
+    public Collection<OfferDTO> getAllOfferDTOsFromStoreById(long storeId) {
         Set<Offer> offers = storeRepository.getOne(storeId).getCompany().getOffers();
 
         return createDTOs(offers);
@@ -81,13 +85,15 @@ public class OfferController implements IOfferController {
 
     @Override
     public OfferDTO createDTO(Offer offer) {
+        Collection<SubcategoryDTO> subcategoryDTOs = subcategoryController.createDTOs(offer.getSubcategories());
+
         OfferDTO offerDTO = new OfferDTO(
                 offer.getOfferId(),
                 offer.getTitle(),
                 offer.getDescription(),
                 offer.getPrice(),
                 offer.getCompany().getCompanyId(),
-                offer.getSubcategory().getDescription()
+                subcategoryDTOs
         );
 
         return offerDTO;
