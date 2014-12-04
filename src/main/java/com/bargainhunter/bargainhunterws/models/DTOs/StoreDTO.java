@@ -6,13 +6,13 @@ public class StoreDTO {
     private String city;
     private String address;
     private String addressNo;
-    private double latitude;
-    private double longitude;
-    private Long companyId;
+    private Double latitude;
+    private Double longitude;
+    private Long branchId;
 
     public StoreDTO() {}
 
-    public StoreDTO(Long storeId, String storeName, String city, String address, String addressNo, double latitude, double longitude, Long companyId) {
+    public StoreDTO(Long storeId, String storeName, String city, String address, String addressNo, Double latitude, Double longitude, Long branchId) {
         this.storeId = storeId;
         this.storeName = storeName;
         this.city = city;
@@ -20,7 +20,7 @@ public class StoreDTO {
         this.addressNo = addressNo;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.companyId = companyId;
+        this.branchId = branchId;
     }
 
     public Long getStoreId() {
@@ -63,27 +63,27 @@ public class StoreDTO {
         this.addressNo = addressNo;
     }
 
-    public double getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
-    public Long getCompanyId() {
-        return companyId;
+    public Long getBranchId() {
+        return branchId;
     }
 
-    public void setCompanyId(Long companyId) {
-        this.companyId = companyId;
+    public void setBranchId(Long branchId) {
+        this.branchId = branchId;
     }
 }

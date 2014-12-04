@@ -26,7 +26,7 @@ public class OfferController implements IOfferController {
     ISubcategoryController subcategoryController;
 
     @Override
-    public OfferDTO getOfferDTOById(long offerId) {
+    public OfferDTO getOfferDTOById(Long offerId) {
         Offer offer = offerRepository.getOne(offerId);
 
         return createDTO(offer);
@@ -39,7 +39,7 @@ public class OfferController implements IOfferController {
     }
 
     @Override
-    public Collection<OfferDTO> getAllOfferDTOsInRadius(double latitude, double longitude, double radius) {
+    public Collection<OfferDTO> getAllOfferDTOsInRadius(Double latitude, Double longitude, Double radius) {
         Collection<Store> stores = storeRepository.findAll();
         Collection<Store> storesInRadius = new HashSet<>();
         Collection<Offer> offers = new HashSet<>();
@@ -57,7 +57,7 @@ public class OfferController implements IOfferController {
         }
 
         for (Store store : storesInRadius) {
-            for (Offer of : store.getCompany().getOffers()) {
+            for (Offer of : store.getBranch().getOffers()) {
                     offers.add(of);
             }
         }
@@ -66,8 +66,8 @@ public class OfferController implements IOfferController {
     }
 
     @Override
-    public Collection<OfferDTO> getAllOfferDTOsFromStoreById(long storeId) {
-        Set<Offer> offers = storeRepository.getOne(storeId).getCompany().getOffers();
+    public Collection<OfferDTO> getAllOfferDTOsFromStoreById(Long storeId) {
+        Set<Offer> offers = storeRepository.getOne(storeId).getBranch().getOffers();
 
         return createDTOs(offers);
     }
@@ -92,7 +92,8 @@ public class OfferController implements IOfferController {
                 offer.getTitle(),
                 offer.getDescription(),
                 offer.getPrice(),
-                offer.getCompany().getCompanyId(),
+                offer.getOldPrice(),
+                offer.getBranch().getBranchId(),
                 subcategoryDTOs
         );
 

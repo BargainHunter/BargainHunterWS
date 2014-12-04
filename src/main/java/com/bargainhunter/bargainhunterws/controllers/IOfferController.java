@@ -6,13 +6,13 @@ import com.bargainhunter.bargainhunterws.models.entities.Offer;
 import java.util.Collection;
 
 public interface IOfferController {
-    OfferDTO getOfferDTOById(long offerId);
+    OfferDTO getOfferDTOById(Long offerId);
 
     Collection<OfferDTO> getAllOffersDTOs();
 
-    Collection<OfferDTO> getAllOfferDTOsInRadius(double latitude, double longitude, double radius);
+    Collection<OfferDTO> getAllOfferDTOsInRadius(Double latitude, Double longitude, Double radius);
 
-    Collection<OfferDTO> getAllOfferDTOsFromStoreById(long storeId);
+    Collection<OfferDTO> getAllOfferDTOsFromStoreById(Long storeId);
 
     Collection<OfferDTO> createDTOs(Collection<Offer> offers);
 

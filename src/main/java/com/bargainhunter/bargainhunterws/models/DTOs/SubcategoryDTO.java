@@ -1,7 +1,5 @@
 package com.bargainhunter.bargainhunterws.models.DTOs;
 
-import com.bargainhunter.bargainhunterws.models.entities.Category;
-
 public class SubcategoryDTO {
     private Long subcategoryId;
     private String description;

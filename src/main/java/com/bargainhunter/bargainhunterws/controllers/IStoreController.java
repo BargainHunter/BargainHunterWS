@@ -8,9 +8,9 @@ import java.util.Collection;
 public interface IStoreController {
     Collection<StoreDTO> getAllStoresDTOs();
 
-    Collection<StoreDTO> getAllStoreDTOsInRadius(double latitude, double longitude, double radius);
+    Collection<StoreDTO> getAllStoreDTOsInRadius(Double latitude, Double longitude, Double radius);
 
-    StoreDTO getStoreDTOById(long storeId);
+    StoreDTO getStoreDTOById(Long storeId);
 
     Collection<StoreDTO> createDTOs(Collection<Store> stores);
 

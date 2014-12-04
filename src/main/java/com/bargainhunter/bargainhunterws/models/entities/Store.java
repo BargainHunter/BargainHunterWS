@@ -13,9 +13,6 @@ public class Store implements Serializable {
     @Column(name = "store_id")
     private Long storeId;
 
-    @Column(name = "store_name")
-    private String storeName;
-
     @Column(name = "country")
     private String country;
 
@@ -29,34 +26,29 @@ public class Store implements Serializable {
     private String addressNo;
 
     @Column(name = "latitude")
-    private double latitude;
+    private Double latitude;
 
     @Column(name = "longitude")
-    private double longitude;
+    private Double longitude;
 
     @Column(name = "zip")
     private String zip;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id")
-    private Company company;
+    @JoinColumn(name = "branch_id")
+    private Branch branch;
 
     protected Store() {}
 
-    public Store(String storeName, String country, String city, String address, String addressNo, String zip, double latitude, double longitude, Company company) {
+    public Store(String country, String city, String address, String addressNo, String zip, Double latitude, Double longitude, Branch branch) {
         this.addressNo = addressNo;
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
         this.city = city;
         this.country = country;
-        this.storeName = storeName;
         this.zip = zip;
-        this.company = company;
-    }
-
-    public String getStoreName() {
-        return storeName;
+        this.branch = branch;
     }
 
     public String getCity() {
@@ -75,11 +67,11 @@ public class Store implements Serializable {
         return addressNo;
     }
 
-    public double getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public double getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
@@ -91,7 +83,7 @@ public class Store implements Serializable {
         return zip;
     }
 
-    public Company getCompany() {
-        return company;
+    public Branch getBranch() {
+        return branch;
     }
 }

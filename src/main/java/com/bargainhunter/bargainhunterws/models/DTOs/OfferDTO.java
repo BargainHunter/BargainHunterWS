@@ -1,24 +1,25 @@
 package com.bargainhunter.bargainhunterws.models.DTOs;
 
 import java.util.Collection;
-import java.util.Set;
 
 public class OfferDTO {
     private Long offerId;
     private String title;
     private String description;
-    private double price;
-    private Long companyId;
+    private Double price;
+    private Double oldPrice;
+    private Long branchId;
     private Collection<SubcategoryDTO> subcategories;
 
     public OfferDTO() {}
 
-    public OfferDTO(Long offerId, String title, String description, double price, Long companyId, Collection<SubcategoryDTO> subcategories) {
+    public OfferDTO(Long offerId, String title, String description, Double price, Double oldPrice, Long branchId, Collection<SubcategoryDTO> subcategories) {
         this.offerId = offerId;
         this.title = title;
         this.description = description;
         this.price = price;
-        this.companyId = companyId;
+        this.oldPrice = oldPrice;
+        this.branchId = branchId;
         this.subcategories = subcategories;
     }
 
@@ -46,27 +47,35 @@ public class OfferDTO {
         this.description = description;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public Long getCompanyId() {
-        return companyId;
+    public Double getOldPrice() {
+        return oldPrice;
     }
 
-    public void setCompanyId(Long companyId) {
-        this.companyId = companyId;
+    public void setOldPrice(Double oldPrice) {
+        this.oldPrice = oldPrice;
+    }
+
+    public Long getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(Long branchId) {
+        this.branchId = branchId;
     }
 
     public Collection<SubcategoryDTO> getSubcategories() {
         return subcategories;
     }
 
-    public void setSubcategories(Set<SubcategoryDTO> subcategories) {
+    public void setSubcategories(Collection<SubcategoryDTO> subcategories) {
         this.subcategories = subcategories;
     }
 }

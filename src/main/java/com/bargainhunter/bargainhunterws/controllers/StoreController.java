@@ -22,7 +22,7 @@ public class StoreController implements IStoreController {
     }
 
     @Override
-    public Collection<StoreDTO> getAllStoreDTOsInRadius(double latitude, double longitude, double radius) {
+    public Collection<StoreDTO> getAllStoreDTOsInRadius(Double latitude, Double longitude, Double radius) {
         Collection<Store> stores = storeRepository.findAll();
         Collection<Store> storesInRadius = new HashSet<>();
 
@@ -42,7 +42,7 @@ public class StoreController implements IStoreController {
     }
 
     @Override
-    public StoreDTO getStoreDTOById(long storeId) {
+    public StoreDTO getStoreDTOById(Long storeId) {
         Store store = storeRepository.getOne(storeId);
         return createDTO(store);
     }
@@ -62,13 +62,14 @@ public class StoreController implements IStoreController {
     public StoreDTO createDTO(Store store) {
         StoreDTO storeDTO = new StoreDTO(
                 store.getStoreId(),
-                store.getStoreName(),
+                store.getBranch().getBranchName(),
                 store.getCity(),
                 store.getAddress(),
                 store.getAddressNo(),
                 store.getLatitude(),
                 store.getLongitude(),
-                store.getCompany().getCompanyId());
+                store.getBranch().getBranchId()
+        );
 
         return storeDTO;
     }

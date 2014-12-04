@@ -20,7 +20,10 @@ public class Offer implements Serializable {
     private String description;
 
     @Column(name = "price")
-    private double price;
+    private Double price;
+
+    @Column(name = "old_price")
+    private Double oldPrice;
 
     @Column(name = "start_date")
     private Date startDate;
@@ -29,8 +32,8 @@ public class Offer implements Serializable {
     private Date expDate;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id")
-    private Company company;
+    @JoinColumn(name = "branch_id")
+    private Branch branch;
 
     @ManyToMany
     @JoinTable(name="OFFER_SUBCATEGORY",
@@ -43,39 +46,35 @@ public class Offer implements Serializable {
 
     protected Offer() {}
 
-    public Offer(String title, String description, double price, Date startDate, Date expDate, Company company) {
+    public Offer(String title, String description, Double price, Double oldPrice, Date startDate, Date expDate, Branch branch, Set<Subcategory> subcategories) {
         this.title = title;
         this.description = description;
         this.price = price;
+        this.oldPrice = oldPrice;
         this.startDate = startDate;
         this.expDate = expDate;
-        this.company = company;
-    }
-
-    public Offer(String title, String description, double price, Date startDate, Date expDate, Company company, Set<Subcategory> subcategories) {
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.startDate = startDate;
-        this.expDate = expDate;
-        this.company = company;
+        this.branch = branch;
         this.subcategories = subcategories;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public Long getOfferId() {
         return offerId;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     public String getDescription() {
         return description;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
+    }
+
+    public Double getOldPrice() {
+        return oldPrice;
     }
 
     public Date getStartDate() {
@@ -86,11 +85,15 @@ public class Offer implements Serializable {
         return expDate;
     }
 
-    public Company getCompany() {
-        return company;
+    public Branch getBranch() {
+        return branch;
     }
 
     public Set<Subcategory> getSubcategories() {
         return subcategories;
+    }
+
+    public void setSubcategories(Set<Subcategory> subcategories) {
+        this.subcategories = subcategories;
     }
 }

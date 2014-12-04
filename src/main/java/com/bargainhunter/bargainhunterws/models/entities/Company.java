@@ -33,25 +33,22 @@ public class Company implements Serializable {
     private String zip;
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Store> stores;
-
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Offer> offers;
+    private Set<Branch> branches;
 
     {
-        stores = new HashSet<>();
-        offers = new HashSet<>();
+        branches = new HashSet<>();
     }
 
     public Company() {}
 
-    public Company(String companyName, String country, String city, String address, String addressNo, String zip) {
+    public Company(String companyName, String country, String city, String address, String addressNo, String zip, Set<Branch> branches) {
         this.companyName = companyName;
         this.country = country;
         this.city = city;
         this.address = address;
         this.addressNo = addressNo;
         this.zip = zip;
+        this.branches = branches;
     }
 
     public Long getCompanyId() {
@@ -82,19 +79,11 @@ public class Company implements Serializable {
         return zip;
     }
 
-    public Set<Store> getStores() {
-        return stores;
+    public Set<Branch> getBranches() {
+        return branches;
     }
 
-    public Set<Offer> getOffers() {
-        return offers;
-    }
-
-    public void setOffers(Set<Offer> offers) {
-        this.offers = offers;
-    }
-
-    public void setStores(Set<Store> stores) {
-        this.stores = stores;
+    public void setBranches(Set<Branch> branches) {
+        this.branches = branches;
     }
 }
