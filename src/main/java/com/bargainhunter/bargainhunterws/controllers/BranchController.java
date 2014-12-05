@@ -14,7 +14,6 @@ public class BranchController implements IBranchController {
     @Autowired
     IBranchRepository branchRepository;
 
-
     @Override
     public Collection<BranchDTO> getAllBranchDTOs() {
         Collection<Branch> branches = branchRepository.findAll();
