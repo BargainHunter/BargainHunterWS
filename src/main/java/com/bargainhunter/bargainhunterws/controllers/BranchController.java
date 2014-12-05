@@ -29,8 +29,7 @@ public class BranchController implements IBranchController {
     public BranchDTO createDTO(Branch branch) {
         BranchDTO branchDTO = new BranchDTO(
                 branch.getBranchId(),
-                branch.getBranchName(),
-                branch.getCompany().getCompanyId()
+                branch.getBranchName()
         );
 
         return branchDTO;
