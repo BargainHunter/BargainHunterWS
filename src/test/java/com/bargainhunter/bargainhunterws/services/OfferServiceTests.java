@@ -3,13 +3,12 @@ package com.bargainhunter.bargainhunterws.services;
 import com.bargainhunter.bargainhunterws.controllers.OfferController;
 import com.bargainhunter.bargainhunterws.models.DTOs.OfferDTO;
 import com.bargainhunter.bargainhunterws.models.DTOs.SubcategoryDTO;
-import com.bargainhunter.bargainhunterws.models.entities.Subcategory;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
 import org.springframework.boot.test.SpringApplicationContextLoader;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -20,21 +19,23 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.Collection;
 import java.util.HashSet;
 
-import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:META-INF/testContext.xml",
         loader = SpringApplicationContextLoader.class)
 @WebAppConfiguration
 public class OfferServiceTests {
+    @Mock
+    private OfferController offerController;
+
     @InjectMocks
     private OfferService offerService;
 
     private MockMvc mockMvc;
-
-    @Spy
-    private OfferController offerController;
 
     @Before
     public void setup() {
@@ -46,7 +47,7 @@ public class OfferServiceTests {
     }
 
     @Test
-    public void testGetAllCategoriesWithTwoObjects() throws Exception {
+    public void testGetAllOfferDTOsFromStoreByIdTwoObjects() throws Exception {
         Collection<OfferDTO> offers = new HashSet<>();
         Collection<SubcategoryDTO> subcategories = new HashSet<>();
 
@@ -77,11 +78,10 @@ public class OfferServiceTests {
 
         doReturn(offers).when(offerController).getAllOfferDTOsFromStoreById(1L);
 
-        mockMvc.perform(get("/categories"))
+        mockMvc.perform(get("/stores/1/offers"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json;charset=UTF-8"))
-                .andExpect(content().string("[{\"categoryId\":1,\"description\":\"Food\"},{\"categoryId\":2,\"description\":\"Drinks\"}]"));
+                .andExpect(content().contentType("application/json;charset=UTF-8"));
 
-        verify(categoryController, times(1)).getAllCategoryDTOs();
+        verify(offerController, times(1)).getAllOfferDTOsFromStoreById(1L);
     }
 }

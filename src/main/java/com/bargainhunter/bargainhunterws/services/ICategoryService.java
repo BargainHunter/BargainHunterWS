@@ -9,5 +9,5 @@ import java.util.Collection;
 
 public interface ICategoryService {
     @RequestMapping(value = "/categories", method = RequestMethod.GET)
-    ResponseEntity<Collection<CategoryDTO>> getAllCategories();
+    ResponseEntity<Collection<CategoryDTO>> getAllCategoryDTOs();
 }
