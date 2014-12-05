@@ -1,7 +1,7 @@
 package com.bargainhunter.bargainhunterws.services;
 
-import com.bargainhunter.bargainhunterws.controllers.ICategoryController;
-import com.bargainhunter.bargainhunterws.models.DTOs.CategoryDTO;
+import com.bargainhunter.bargainhunterws.controllers.IBranchController;
+import com.bargainhunter.bargainhunterws.models.DTOs.BranchDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 
 @RestController
-public class CategoryService implements ICategoryService {
+public class BranchService implements IBranchService {
     @Autowired
-    ICategoryController categoryController;
+    IBranchController branchController;
 
     @Override
-    @RequestMapping(value = "/categories", method = RequestMethod.GET)
-    public ResponseEntity<Collection<CategoryDTO>> getAllCategories() {
+    @RequestMapping(value = "/branches", method = RequestMethod.GET)
+    public ResponseEntity<Collection<BranchDTO>> getAllBranches() {
         HttpHeaders headers = new HttpHeaders();
 
         headers.add("Content-Type", "application/json;charset=UTF-8");
 
-        Collection<CategoryDTO> categoryDTOs = categoryController.getAllCategoryDTOs();
+        Collection<BranchDTO> categoryDTOs = branchController.getAllBranchDTOs();
 
         return new ResponseEntity<>(categoryDTOs, headers, HttpStatus.OK);
     }

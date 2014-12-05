@@ -14,6 +14,14 @@ public class BranchController implements IBranchController {
     @Autowired
     IBranchRepository branchRepository;
 
+
+    @Override
+    public Collection<BranchDTO> getAllBranchDTOs() {
+        Collection<Branch> branches = branchRepository.findAll();
+
+        return createDTOs(branches);
+    }
+
     @Override
     public Collection<BranchDTO> createDTOs(Collection<Branch> branches) {
         Collection<BranchDTO> branchDTOs = new ArrayList<>();
