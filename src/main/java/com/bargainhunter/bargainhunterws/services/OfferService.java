@@ -3,7 +3,6 @@ package com.bargainhunter.bargainhunterws.services;
 import com.bargainhunter.bargainhunterws.controllers.IOfferController;
 import com.bargainhunter.bargainhunterws.models.DTOs.OfferDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,27 +18,20 @@ public class OfferService implements IOfferService {
     @Override
     @RequestMapping(value = "/offers", method = RequestMethod.GET)
     public ResponseEntity<Collection<OfferDTO>> getAllOffersInRadius(
-            @RequestParam double latitude,
-            @RequestParam double longitude,
-            @RequestParam double radius) {
-        HttpHeaders headers = new HttpHeaders();
-
-        headers.add("Content-Type", "application/json;charset=UTF-8");
-
+            @RequestParam Double latitude,
+            @RequestParam Double longitude,
+            @RequestParam Double radius) {
         Collection<OfferDTO> offerDTOs = offerController.getAllOfferDTOsInRadius(latitude, longitude, radius);
 
-        return new ResponseEntity<>(offerDTOs, headers, HttpStatus.OK);
+        return new ResponseEntity<>(offerDTOs, null, HttpStatus.OK);
     }
 
     @Override
     @RequestMapping(value = "/offers/{offerId}", method = RequestMethod.GET)
-    public ResponseEntity<OfferDTO> getOneOfferById(@PathVariable long offerId) {
-        HttpHeaders headers = new HttpHeaders();
+    public ResponseEntity<OfferDTO> getOneOfferById(@PathVariable Long offerId) {
         HttpStatus status = HttpStatus.OK;
 
         OfferDTO offerDTO = null;
-
-        headers.add("Content-Type", "application/json;charset=UTF-8");
 
         try {
             offerDTO = offerController.getOfferDTOById(offerId);
@@ -47,18 +39,15 @@ public class OfferService implements IOfferService {
             status = HttpStatus.NOT_FOUND;
         }
 
-        return new ResponseEntity<>(offerDTO, headers, status);
+        return new ResponseEntity<>(offerDTO, null, status);
     }
 
     @Override
     @RequestMapping(value = "/stores/{storeId}/offers", method = RequestMethod.GET)
-    public ResponseEntity<Collection<OfferDTO>> getAllOffersFromStoreById(@PathVariable long storeId) {
-        HttpHeaders headers = new HttpHeaders();
+    public ResponseEntity<Collection<OfferDTO>> getAllOffersFromStoreById(@PathVariable Long storeId) {
         HttpStatus status = HttpStatus.OK;
 
         Collection<OfferDTO> offerDTOs = null;
-
-        headers.add("Content-Type", "application/json;charset=UTF-8");
 
         try {
             offerDTOs = offerController.getAllOfferDTOsFromStoreById(storeId);
@@ -66,6 +55,6 @@ public class OfferService implements IOfferService {
             status = HttpStatus.NOT_FOUND;
         }
 
-        return new ResponseEntity<>(offerDTOs, headers, status);
+        return new ResponseEntity<>(offerDTOs, null, status);
     }
 }
