@@ -44,7 +44,7 @@ public class CategoryServiceTests {
     }
 
     @Test
-    public void testGetAllCategoryDTOsWithTwoObjects() throws Exception {
+    public void testGetAllCategoryDTOsWithTwoEntriesSuccessfully() throws Exception {
         Collection<CategoryDTO> categories = new HashSet<>();
 
         CategoryDTO first = new CategoryDTO(1L, "Food");
@@ -60,6 +60,19 @@ public class CategoryServiceTests {
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andExpect(jsonPath(".categoryId").exists())
                 .andExpect(jsonPath(".description").exists());
+
+        verify(categoryController, times(1)).getAllCategoryDTOs();
+    }
+
+    @Test
+    public void testGetAllCategoryDTOsWithoutEntriesSuccessfully() throws Exception {
+        Collection<CategoryDTO> categories = new HashSet<>();
+
+        doReturn(categories).when(categoryController).getAllCategoryDTOs();
+
+        mockMvc.perform(get("/categories").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json;charset=UTF-8"));
 
         verify(categoryController, times(1)).getAllCategoryDTOs();
     }
