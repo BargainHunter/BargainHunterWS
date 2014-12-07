@@ -7,6 +7,7 @@ import com.bargainhunter.bargainhunterws.repositories.ISubcategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
@@ -27,7 +28,7 @@ public class SubcategoryController implements ISubcategoryController {
     }
 
     @Override
-    public Collection<SubcategoryDTO> getAllSubcategoryDTOsFromCategoryById(Long categoryId) {
+    public Collection<SubcategoryDTO> getAllSubcategoryDTOsFromCategoryById(Long categoryId) throws EntityNotFoundException {
         Set<Subcategory> subcategories = categoryRepository.getOne(categoryId).getSubcategories();
 
         return createDTOs(subcategories);

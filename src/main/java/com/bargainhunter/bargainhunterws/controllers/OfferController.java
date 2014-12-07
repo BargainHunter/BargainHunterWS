@@ -9,6 +9,7 @@ import com.bargainhunter.bargainhunterws.repositories.IStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -26,16 +27,10 @@ public class OfferController implements IOfferController {
     ISubcategoryController subcategoryController;
 
     @Override
-    public OfferDTO getOfferDTOById(Long offerId) {
+    public OfferDTO getOfferDTOById(Long offerId) throws EntityNotFoundException {
         Offer offer = offerRepository.getOne(offerId);
 
         return createDTO(offer);
-    }
-
-    @Override
-    public Collection<OfferDTO> getAllOffersDTOs() {
-        Collection<Offer> offers = offerRepository.findAll();
-        return createDTOs(offers);
     }
 
     @Override
@@ -66,7 +61,7 @@ public class OfferController implements IOfferController {
     }
 
     @Override
-    public Collection<OfferDTO> getAllOfferDTOsFromStoreById(Long storeId) {
+    public Collection<OfferDTO> getAllOfferDTOsFromStoreById(Long storeId) throws EntityNotFoundException {
         Set<Offer> offers = storeRepository.getOne(storeId).getBranch().getOffers();
 
         return createDTOs(offers);

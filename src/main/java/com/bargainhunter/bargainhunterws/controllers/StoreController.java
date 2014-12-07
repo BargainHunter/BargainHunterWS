@@ -6,6 +6,7 @@ import com.bargainhunter.bargainhunterws.repositories.IStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -16,9 +17,10 @@ public class StoreController implements IStoreController {
     IStoreRepository storeRepository;
 
     @Override
-    public Collection<StoreDTO> getAllStoresDTOs() {
-        Collection<Store> stores = storeRepository.findAll();
-        return createDTOs(stores);
+    public StoreDTO getStoreDTOById(Long storeId) throws EntityNotFoundException {
+        Store store = storeRepository.getOne(storeId);
+
+        return createDTO(store);
     }
 
     @Override
@@ -39,12 +41,6 @@ public class StoreController implements IStoreController {
         }
 
         return createDTOs(storesInRadius);
-    }
-
-    @Override
-    public StoreDTO getStoreDTOById(Long storeId) {
-        Store store = storeRepository.getOne(storeId);
-        return createDTO(store);
     }
 
     @Override
