@@ -1,6 +1,6 @@
 package com.bargainhunter.bargainhunterws.services;
 
-import com.bargainhunter.bargainhunterws.controllers.StoreController;
+import com.bargainhunter.bargainhunterws.controllers.IStoreController;
 import com.bargainhunter.bargainhunterws.models.DTOs.StoreDTO;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 public class StoreServiceTests {
     @Mock
-    private StoreController storeController;
+    private IStoreController storeController;
 
     @InjectMocks
     private StoreService storeService;
@@ -46,35 +46,16 @@ public class StoreServiceTests {
     }
 
     @Test
-    public void testGetOneStoreByIdSuccessfully() throws Exception {
-        StoreDTO storeDTO = new StoreDTO(
-                1L,
-                "Masoutis",
-                "Serres",
-                "Miaouli",
-                "4",
-                41.089438,
-                23.544533,
-                1L
-        );
+    public void testGetAllStoresInRadiusWithNoEntries() throws Exception {
+        Collection<StoreDTO> storeDTOs = new ArrayList<>();
 
-        doReturn(storeDTO).when(storeController).getStoreDTOById(1L);
+        doReturn(storeDTOs).when(storeController).getAllStoreDTOsInRadius(0D, 0D, 0D);
 
-        mockMvc.perform(get("/stores/1").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/stores?latitude=0&longitude=0&radius=0").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"));
 
-        verify(storeController, times(1)).getStoreDTOById(1L);
-    }
-
-    @Test
-    public void testGetOneStoreByIdUnsuccessfully() throws Exception {
-        doThrow(EntityNotFoundException.class).when(storeController).getStoreDTOById(1L);
-
-        mockMvc.perform(get("/stores/1").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound());
-
-        verify(storeController, times(1)).getStoreDTOById(1L);
+        verify(storeController, times(1)).getAllStoreDTOsInRadius(0D, 0D, 0D);
     }
 
     @Test
@@ -116,15 +97,34 @@ public class StoreServiceTests {
     }
 
     @Test
-    public void testGetAllStoresInRadiusWithNoEntries() throws Exception {
-        Collection<StoreDTO> storeDTOs = new ArrayList<>();
+    public void testGetOneStoreByIdSuccessfully() throws Exception {
+        StoreDTO storeDTO = new StoreDTO(
+                1L,
+                "Masoutis",
+                "Serres",
+                "Miaouli",
+                "4",
+                41.089438,
+                23.544533,
+                1L
+        );
 
-        doReturn(storeDTOs).when(storeController).getAllStoreDTOsInRadius(0D, 0D, 0D);
+        doReturn(storeDTO).when(storeController).getStoreDTOById(1L);
 
-        mockMvc.perform(get("/stores?latitude=0&longitude=0&radius=0").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/stores/1").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"));
 
-        verify(storeController, times(1)).getAllStoreDTOsInRadius(0D, 0D, 0D);
+        verify(storeController, times(1)).getStoreDTOById(1L);
+    }
+
+    @Test
+    public void testGetOneStoreByIdUnsuccessfully() throws Exception {
+        doThrow(EntityNotFoundException.class).when(storeController).getStoreDTOById(1L);
+
+        mockMvc.perform(get("/stores/1").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+
+        verify(storeController, times(1)).getStoreDTOById(1L);
     }
 }
