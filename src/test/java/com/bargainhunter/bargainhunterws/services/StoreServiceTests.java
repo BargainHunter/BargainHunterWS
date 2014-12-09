@@ -1,7 +1,7 @@
 package com.bargainhunter.bargainhunterws.services;
 
 import com.bargainhunter.bargainhunterws.controllers.IStoreController;
-import com.bargainhunter.bargainhunterws.models.DTOs.StoreDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.entityDTOs.StoreDTO;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,20 +46,20 @@ public class StoreServiceTests {
     }
 
     @Test
-    public void testGetAllStoresInRadiusWithNoEntries() throws Exception {
+    public void testGetAllStoresWithNoEntries() throws Exception {
         Collection<StoreDTO> storeDTOs = new ArrayList<>();
 
-        doReturn(storeDTOs).when(storeController).getAllStoreDTOsInRadius(0D, 0D, 0D);
+        doReturn(storeDTOs).when(storeController).getAllStoreDTOs();
 
-        mockMvc.perform(get("/stores?latitude=0&longitude=0&radius=0").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/stores").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"));
 
-        verify(storeController, times(1)).getAllStoreDTOsInRadius(0D, 0D, 0D);
+        verify(storeController, times(1)).getAllStoreDTOs();
     }
 
     @Test
-    public void testGetAllStoresInRadiusWithTwoEntries() throws Exception {
+    public void testGetAllStoresWithTwoEntries() throws Exception {
         Collection<StoreDTO> storeDTOs = new ArrayList<>();
 
         StoreDTO firstStoreDTO = new StoreDTO(
@@ -87,13 +87,13 @@ public class StoreServiceTests {
         storeDTOs.add(firstStoreDTO);
         storeDTOs.add(secondStoreDTO);
 
-        doReturn(storeDTOs).when(storeController).getAllStoreDTOsInRadius(0D, 0D, 0D);
+        doReturn(storeDTOs).when(storeController).getAllStoreDTOs();
 
-        mockMvc.perform(get("/stores?latitude=0&longitude=0&radius=0").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/stores").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"));
 
-        verify(storeController, times(1)).getAllStoreDTOsInRadius(0D, 0D, 0D);
+        verify(storeController, times(1)).getAllStoreDTOs();
     }
 
     @Test

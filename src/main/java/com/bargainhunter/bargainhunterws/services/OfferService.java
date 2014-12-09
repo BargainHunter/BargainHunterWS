@@ -1,11 +1,14 @@
 package com.bargainhunter.bargainhunterws.services;
 
 import com.bargainhunter.bargainhunterws.controllers.IOfferController;
-import com.bargainhunter.bargainhunterws.models.DTOs.OfferDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.entityDTOs.OfferDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Collection;
@@ -14,17 +17,6 @@ import java.util.Collection;
 public class OfferService implements IOfferService {
     @Autowired
     IOfferController offerController;
-
-    @Override
-    @RequestMapping(value = "/offers", method = RequestMethod.GET)
-    public ResponseEntity<Collection<OfferDTO>> getAllOffersInRadius(
-            @RequestParam Double latitude,
-            @RequestParam Double longitude,
-            @RequestParam Double radius) {
-        Collection<OfferDTO> offerDTOs = offerController.getAllOfferDTOsInRadius(latitude, longitude, radius);
-
-        return new ResponseEntity<>(offerDTOs, null, HttpStatus.OK);
-    }
 
     @Override
     @RequestMapping(value = "/offers/{offerId}", method = RequestMethod.GET)
@@ -40,6 +32,14 @@ public class OfferService implements IOfferService {
         }
 
         return new ResponseEntity<>(offerDTO, null, status);
+    }
+
+    @Override
+    @RequestMapping(value = "/offers", method = RequestMethod.GET)
+    public ResponseEntity<Collection<OfferDTO>> getAllOffers() {
+        Collection<OfferDTO> offerDTOs = offerController.getAllOfferDTOs();
+
+        return new ResponseEntity<>(offerDTOs, null, HttpStatus.OK);
     }
 
     @Override

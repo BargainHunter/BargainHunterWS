@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "SUBCATEGORY")
-public class Subcategory implements Serializable {
+public class Subcategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "subcategory_id")

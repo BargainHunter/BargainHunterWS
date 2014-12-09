@@ -1,6 +1,8 @@
-package com.bargainhunter.bargainhunterws.models.DTOs;
+package com.bargainhunter.bargainhunterws.models.DTOs.entityDTOs;
 
-public class CategoryDTO {
+import java.io.Serializable;
+
+public class CategoryDTO implements Serializable {
     private Long categoryId;
     private String description;
 

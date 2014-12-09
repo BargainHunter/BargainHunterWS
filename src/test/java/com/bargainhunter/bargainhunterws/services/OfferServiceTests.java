@@ -1,8 +1,8 @@
 package com.bargainhunter.bargainhunterws.services;
 
 import com.bargainhunter.bargainhunterws.controllers.OfferController;
-import com.bargainhunter.bargainhunterws.models.DTOs.OfferDTO;
-import com.bargainhunter.bargainhunterws.models.DTOs.SubcategoryDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.entityDTOs.OfferDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.entityDTOs.SubcategoryDTO;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -103,7 +103,7 @@ public class OfferServiceTests {
     }
 
     @Test
-    public void testGetAllOffersInRadiusSuccessfullyWithEntries() throws Exception {
+    public void testGetAllOffersSuccessfullyWithEntries() throws Exception {
         Collection<OfferDTO> offers = new HashSet<>();
         Collection<SubcategoryDTO> subcategories = new HashSet<>();
 
@@ -132,9 +132,9 @@ public class OfferServiceTests {
                 sweetAndSnackSubcategory);
         offers.add(secondOffer);
 
-        doReturn(offers).when(offerController).getAllOfferDTOsInRadius(0D, 0D, 0D);
+        doReturn(offers).when(offerController).getAllOfferDTOs();
 
-        mockMvc.perform(get("/offers?latitude=0&longitude=0&radius=0").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/offers").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andExpect(jsonPath(".offerId").exists())
@@ -147,20 +147,20 @@ public class OfferServiceTests {
                 .andExpect(jsonPath(".subcategories.description").exists())
                 .andExpect(jsonPath(".subcategories.categoryId").exists());
 
-        verify(offerController, times(1)).getAllOfferDTOsInRadius(0D, 0D, 0D);
+        verify(offerController, times(1)).getAllOfferDTOs();
     }
 
     @Test
-    public void testGetAllOffersInRadiusSuccessfullyWithoutEntries() throws Exception {
+    public void testGetAllOffersSuccessfullyWithoutEntries() throws Exception {
         Collection<OfferDTO> offers = new HashSet<>();
 
-        doReturn(offers).when(offerController).getAllOfferDTOsInRadius(0D, 0D, 0D);
+        doReturn(offers).when(offerController).getAllOfferDTOs();
 
-        mockMvc.perform(get("/offers?latitude=0&longitude=0&radius=0").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/offers").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"));
 
-        verify(offerController, times(1)).getAllOfferDTOsInRadius(0D, 0D, 0D);
+        verify(offerController, times(1)).getAllOfferDTOs();
     }
 
     @Test

@@ -1,13 +1,14 @@
 package com.bargainhunter.bargainhunterws.controllers;
 
-import com.bargainhunter.bargainhunterws.models.DTOs.BranchDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.entityDTOs.BranchDTO;
 import com.bargainhunter.bargainhunterws.models.entities.Branch;
 import com.bargainhunter.bargainhunterws.repositories.IBranchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 public class BranchController implements IBranchController {
@@ -18,27 +19,23 @@ public class BranchController implements IBranchController {
     public Collection<BranchDTO> getAllBranchDTOs() {
         Collection<Branch> branches = branchRepository.findAll();
 
-        return createDTOs(branches);
+        return createBranchDTOs(branches);
     }
 
-    @Override
-    public Collection<BranchDTO> createDTOs(Collection<Branch> branches) {
-        Collection<BranchDTO> branchDTOs = new ArrayList<>();
+    public Collection<BranchDTO> createBranchDTOs(Collection<Branch> branches) {
+        Set<BranchDTO> branchDTOs = new HashSet<>();
 
         for (Branch branch : branches) {
-            branchDTOs.add(createDTO(branch));
+            branchDTOs.add(createBranchDTO(branch));
         }
 
         return branchDTOs;
     }
 
-    @Override
-    public BranchDTO createDTO(Branch branch) {
-        BranchDTO branchDTO = new BranchDTO(
+    public BranchDTO createBranchDTO(Branch branch) {
+        return new BranchDTO(
                 branch.getBranchId(),
                 branch.getBranchName()
         );
-
-        return branchDTO;
     }
 }

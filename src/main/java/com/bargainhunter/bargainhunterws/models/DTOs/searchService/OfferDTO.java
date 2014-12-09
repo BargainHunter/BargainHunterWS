@@ -1,25 +1,29 @@
-package com.bargainhunter.bargainhunterws.models.DTOs;
+package com.bargainhunter.bargainhunterws.models.DTOs.searchService;
 
-import java.util.Collection;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-public class OfferDTO {
+public class OfferDTO implements Serializable {
     private Long offerId;
     private String title;
     private String description;
     private Double price;
     private Double oldPrice;
-    private Long branchId;
-    private Collection<SubcategoryDTO> subcategories;
+    private Set<Long> subcategories;
+
+    {
+        subcategories = new HashSet<>();
+    }
 
     public OfferDTO() {}
 
-    public OfferDTO(Long offerId, String title, String description, Double price, Double oldPrice, Long branchId, Collection<SubcategoryDTO> subcategories) {
+    public OfferDTO(Long offerId, String title, String description, Double price, Double oldPrice, Set<Long> subcategories) {
         this.offerId = offerId;
         this.title = title;
         this.description = description;
         this.price = price;
         this.oldPrice = oldPrice;
-        this.branchId = branchId;
         this.subcategories = subcategories;
     }
 
@@ -63,19 +67,11 @@ public class OfferDTO {
         this.oldPrice = oldPrice;
     }
 
-    public Long getBranchId() {
-        return branchId;
-    }
-
-    public void setBranchId(Long branchId) {
-        this.branchId = branchId;
-    }
-
-    public Collection<SubcategoryDTO> getSubcategories() {
+    public Set<Long> getSubcategories() {
         return subcategories;
     }
 
-    public void setSubcategories(Collection<SubcategoryDTO> subcategories) {
+    public void setSubcategories(Set<Long> subcategories) {
         this.subcategories = subcategories;
     }
 }

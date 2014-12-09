@@ -1,16 +1,15 @@
 package com.bargainhunter.bargainhunterws.controllers;
 
-import com.bargainhunter.bargainhunterws.models.DTOs.OfferDTO;
-import com.bargainhunter.bargainhunterws.models.DTOs.SubcategoryDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.entityDTOs.OfferDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.entityDTOs.SubcategoryDTO;
 import com.bargainhunter.bargainhunterws.models.entities.Offer;
-import com.bargainhunter.bargainhunterws.models.entities.Store;
+import com.bargainhunter.bargainhunterws.models.entities.Subcategory;
 import com.bargainhunter.bargainhunterws.repositories.IOfferRepository;
 import com.bargainhunter.bargainhunterws.repositories.IStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,59 +29,37 @@ public class OfferController implements IOfferController {
     public OfferDTO getOfferDTOById(Long offerId) throws EntityNotFoundException {
         Offer offer = offerRepository.getOne(offerId);
 
-        return createDTO(offer);
+        return createOfferDTO(offer);
     }
 
     @Override
-    public Collection<OfferDTO> getAllOfferDTOsInRadius(Double latitude, Double longitude, Double radius) {
-        Collection<Store> stores = storeRepository.findAll();
-        Collection<Store> storesInRadius = new HashSet<>();
-        Collection<Offer> offers = new HashSet<>();
+    public Collection<OfferDTO> getAllOfferDTOs() {
+        Collection<Offer> offers = offerRepository.findAll();
 
-        DistanceController distanceController = new DistanceController();
-
-        for (Store store : stores) {
-            if (distanceController.calcDistance(
-                    store.getLatitude(),
-                    store.getLongitude(),
-                    latitude,
-                    longitude) < radius) {
-                storesInRadius.add(store);
-            }
-        }
-
-        for (Store store : storesInRadius) {
-            for (Offer of : store.getBranch().getOffers()) {
-                    offers.add(of);
-            }
-        }
-
-        return createDTOs(offers);
+        return createOfferDTOs(offers);
     }
 
     @Override
     public Collection<OfferDTO> getAllOfferDTOsFromStoreById(Long storeId) throws EntityNotFoundException {
         Set<Offer> offers = storeRepository.getOne(storeId).getBranch().getOffers();
 
-        return createDTOs(offers);
+        return createOfferDTOs(offers);
     }
 
-    @Override
-    public Collection<OfferDTO> createDTOs(Collection<Offer> offers) {
-        Collection<OfferDTO> offerDTOs = new ArrayList<>();
+    private Collection<OfferDTO> createOfferDTOs(Collection<Offer> offers) {
+        Set<OfferDTO> offerDTOs = new HashSet<>();
 
         for (Offer offer : offers) {
-            offerDTOs.add(createDTO(offer));
+            offerDTOs.add(createOfferDTO(offer));
         }
 
         return offerDTOs;
     }
 
-    @Override
-    public OfferDTO createDTO(Offer offer) {
-        Collection<SubcategoryDTO> subcategoryDTOs = subcategoryController.createDTOs(offer.getSubcategories());
+    private OfferDTO createOfferDTO(Offer offer) {
+        Collection<SubcategoryDTO> subcategoryDTOs = createSubcategoryDTOs(offer.getSubcategories());
 
-        OfferDTO offerDTO = new OfferDTO(
+        return new OfferDTO(
                 offer.getOfferId(),
                 offer.getTitle(),
                 offer.getDescription(),
@@ -91,7 +68,23 @@ public class OfferController implements IOfferController {
                 offer.getBranch().getBranchId(),
                 subcategoryDTOs
         );
+    }
 
-        return offerDTO;
+    private Collection<SubcategoryDTO> createSubcategoryDTOs(Collection<Subcategory> subcategories) {
+        Set<SubcategoryDTO> subcategoryDTOs = new HashSet<>();
+
+        for (Subcategory subcategory : subcategories) {
+            subcategoryDTOs.add(createSubcategoryDTO(subcategory));
+        }
+
+        return subcategoryDTOs;
+    }
+
+    private SubcategoryDTO createSubcategoryDTO(Subcategory subcategory) {
+        return new SubcategoryDTO(
+                subcategory.getSubcategoryId(),
+                subcategory.getDescription(),
+                subcategory.getCategory().getCategoryId()
+        );
     }
 }

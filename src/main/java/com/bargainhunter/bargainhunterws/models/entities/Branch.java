@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "BRANCH")
-public class Branch implements Serializable {
+public class Branch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "branch_id")

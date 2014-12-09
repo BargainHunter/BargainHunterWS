@@ -1,6 +1,8 @@
-package com.bargainhunter.bargainhunterws.models.DTOs;
+package com.bargainhunter.bargainhunterws.models.DTOs.searchService;
 
-public class StoreDTO {
+import java.io.Serializable;
+
+public class StoreDTO implements Serializable {
     private Long storeId;
     private String storeName;
     private String city;
@@ -8,11 +10,10 @@ public class StoreDTO {
     private String addressNo;
     private Double latitude;
     private Double longitude;
-    private Long branchId;
 
     public StoreDTO() {}
 
-    public StoreDTO(Long storeId, String storeName, String city, String address, String addressNo, Double latitude, Double longitude, Long branchId) {
+    public StoreDTO(Long storeId, String storeName, String city, String address, String addressNo, Double latitude, Double longitude) {
         this.storeId = storeId;
         this.storeName = storeName;
         this.city = city;
@@ -20,7 +21,6 @@ public class StoreDTO {
         this.addressNo = addressNo;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.branchId = branchId;
     }
 
     public Long getStoreId() {
@@ -77,13 +77,5 @@ public class StoreDTO {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
-    }
-
-    public Long getBranchId() {
-        return branchId;
-    }
-
-    public void setBranchId(Long branchId) {
-        this.branchId = branchId;
     }
 }

@@ -1,6 +1,6 @@
 package com.bargainhunter.bargainhunterws.services;
 
-import com.bargainhunter.bargainhunterws.models.DTOs.SubcategoryDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.entityDTOs.SubcategoryDTO;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Collection;

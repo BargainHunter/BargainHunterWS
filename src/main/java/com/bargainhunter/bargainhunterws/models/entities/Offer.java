@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "OFFER")
-public class Offer implements Serializable {
+public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "offer_id")

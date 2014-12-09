@@ -1,7 +1,7 @@
 package com.bargainhunter.bargainhunterws.services;
 
-import com.bargainhunter.bargainhunterws.controllers.ICategoryController;
-import com.bargainhunter.bargainhunterws.models.DTOs.entityDTOs.CategoryDTO;
+import com.bargainhunter.bargainhunterws.controllers.ICategoriesController;
+import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.CategoryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 
 @RestController
-public class CategoryService implements ICategoryService {
+public class CategoriesService implements ICategoriesService {
     @Autowired
-    ICategoryController categoryController;
+    ICategoriesController categoriesController;
 
     @Override
-    @RequestMapping(value = "/categories", method = RequestMethod.GET)
+    @RequestMapping(value = "/categories_all", method = RequestMethod.GET)
     public ResponseEntity<Collection<CategoryDTO>> getAllCategoryDTOs() {
-        Collection<CategoryDTO> categoryDTOs = categoryController.getAllCategoryDTOs();
+        Collection<CategoryDTO> categoryDTOs = categoriesController.getAllCategoryDTOs();
 
         return new ResponseEntity<>(categoryDTOs, null, HttpStatus.OK);
     }

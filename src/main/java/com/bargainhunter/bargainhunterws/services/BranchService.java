@@ -1,7 +1,7 @@
 package com.bargainhunter.bargainhunterws.services;
 
 import com.bargainhunter.bargainhunterws.controllers.IBranchController;
-import com.bargainhunter.bargainhunterws.models.DTOs.BranchDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.entityDTOs.BranchDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

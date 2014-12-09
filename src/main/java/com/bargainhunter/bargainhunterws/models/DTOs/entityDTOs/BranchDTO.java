@@ -1,6 +1,8 @@
-package com.bargainhunter.bargainhunterws.models.DTOs;
+package com.bargainhunter.bargainhunterws.models.DTOs.entityDTOs;
 
-public class BranchDTO {
+import java.io.Serializable;
+
+public class BranchDTO implements Serializable {
     private Long branchId;
     private String branchName;
 

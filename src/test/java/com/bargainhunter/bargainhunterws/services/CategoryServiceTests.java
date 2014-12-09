@@ -1,7 +1,7 @@
 package com.bargainhunter.bargainhunterws.services;
 
 import com.bargainhunter.bargainhunterws.controllers.CategoryController;
-import com.bargainhunter.bargainhunterws.models.DTOs.CategoryDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.entityDTOs.CategoryDTO;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

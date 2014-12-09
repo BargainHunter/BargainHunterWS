@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="BargainHunterWS:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="bargainhunterws-0.0.3.war">
+    <root id="archive" name="bargainhunterws-0.0.4.war">
       <element id="artifact" artifact-name="BargainHunterWS:war exploded" />
     </root>
   </artifact>

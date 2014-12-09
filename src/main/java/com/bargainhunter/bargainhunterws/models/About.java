@@ -1,6 +1,8 @@
 package com.bargainhunter.bargainhunterws.models;
 
-public class About {
+import java.io.Serializable;
+
+public class About implements Serializable {
     private String name;
     private String version;
 
