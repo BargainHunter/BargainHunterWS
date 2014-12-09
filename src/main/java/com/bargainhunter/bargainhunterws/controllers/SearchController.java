@@ -60,8 +60,8 @@ public class SearchController implements ISearchController {
 
             branchDTO.setBranchId(branch.getBranchId());
 
-            for (Store store : branch.getStores()) {
-                if (stores.contains(store)) {
+            for (Store store : stores) {
+                if (branch.equals(store.getBranch())) {
                     branchDTO.getStores().add(createStoreDTO(store));
                 }
             }
