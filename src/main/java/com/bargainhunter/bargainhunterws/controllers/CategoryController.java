@@ -1,5 +1,6 @@
 package com.bargainhunter.bargainhunterws.controllers;
 
+import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.CategoriesDTO;
 import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.CategoryDTO;
 import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.SubcategoryDTO;
 import com.bargainhunter.bargainhunterws.models.entities.Category;
@@ -13,23 +14,23 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Controller
-public class CategoriesController implements ICategoriesController {
+public class CategoryController implements ICategoryController {
     @Autowired
     ICategoryRepository categoryRepository;
 
     @Override
-    public Collection<CategoryDTO> getAllCategoryDTOs() {
+    public CategoriesDTO getAllCategoryDTOs() {
         return createCategoryDTOs(categoryRepository.findAll());
     }
 
-    private Collection<CategoryDTO> createCategoryDTOs(Collection<Category> categories) {
-        Set<CategoryDTO> categoryDTOs = new HashSet<>();
+    private CategoriesDTO createCategoryDTOs(Collection<Category> categories) {
+        CategoriesDTO categoriesDTO = new CategoriesDTO();
 
         for (Category category : categories) {
-            categoryDTOs.add(createCategoryDTO(category));
+            categoriesDTO.getCategories().add(createCategoryDTO(category));
         }
 
-        return categoryDTOs;
+        return categoriesDTO;
     }
 
     private CategoryDTO createCategoryDTO(Category category) {

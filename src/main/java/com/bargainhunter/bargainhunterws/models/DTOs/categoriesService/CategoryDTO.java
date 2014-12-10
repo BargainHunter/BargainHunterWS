@@ -1,8 +1,8 @@
 package com.bargainhunter.bargainhunterws.models.DTOs.categoriesService;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 public class CategoryDTO implements Serializable {
     private Long categoryId;
@@ -10,11 +10,8 @@ public class CategoryDTO implements Serializable {
 
     private Collection<SubcategoryDTO> subcategories;
 
-    {
-        subcategories = new ArrayList<>();
-    }
-
     public CategoryDTO() {
+        subcategories = new HashSet<>();
     }
 
     public CategoryDTO(Long categoryId, String description, Collection<SubcategoryDTO> subcategories) {
