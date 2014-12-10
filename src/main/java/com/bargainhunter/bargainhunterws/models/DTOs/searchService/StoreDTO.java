@@ -11,7 +11,8 @@ public class StoreDTO implements Serializable {
     private Double latitude;
     private Double longitude;
 
-    public StoreDTO() {}
+    public StoreDTO() {
+    }
 
     public StoreDTO(Long storeId, String storeName, String city, String address, String addressNo, Double latitude, Double longitude) {
         this.storeId = storeId;

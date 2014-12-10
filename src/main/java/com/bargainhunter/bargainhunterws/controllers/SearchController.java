@@ -1,9 +1,6 @@
 package com.bargainhunter.bargainhunterws.controllers;
 
-import com.bargainhunter.bargainhunterws.models.DTOs.searchService.SearchInRadiusDTO;
-import com.bargainhunter.bargainhunterws.models.DTOs.searchService.BranchDTO;
-import com.bargainhunter.bargainhunterws.models.DTOs.searchService.OfferDTO;
-import com.bargainhunter.bargainhunterws.models.DTOs.searchService.StoreDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.searchService.*;
 import com.bargainhunter.bargainhunterws.models.entities.Branch;
 import com.bargainhunter.bargainhunterws.models.entities.Offer;
 import com.bargainhunter.bargainhunterws.models.entities.Store;
@@ -91,19 +88,23 @@ public class SearchController implements ISearchController {
     }
 
     private OfferDTO createOfferDTO(Offer offer) {
-        Set<Long> subcategoryIds = new HashSet<>();
-
-        for (Subcategory subcategory : offer.getSubcategories()) {
-            subcategoryIds.add(subcategory.getSubcategoryId());
-        }
-
         return new OfferDTO(
                 offer.getOfferId(),
                 offer.getTitle(),
                 offer.getDescription(),
                 offer.getPrice(),
                 offer.getOldPrice(),
-                subcategoryIds
+                createOfferSubcategoryDTO(offer.getSubcategories())
         );
+    }
+
+    private Collection<OfferSubcategoryDTO> createOfferSubcategoryDTO(Collection<Subcategory> subcategories) {
+        Set<OfferSubcategoryDTO> offerSubcategoryDTOs = new HashSet<>();
+
+        for (Subcategory subcategory : subcategories) {
+            offerSubcategoryDTOs.add(new OfferSubcategoryDTO(subcategory.getSubcategoryId()));
+        }
+
+        return offerSubcategoryDTOs;
     }
 }

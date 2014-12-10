@@ -10,12 +10,10 @@ public class BranchDTO implements Serializable {
     private Collection<StoreDTO> stores;
     private Collection<OfferDTO> offers;
 
-    {
+    public BranchDTO() {
         stores = new HashSet<>();
         offers = new HashSet<>();
     }
-
-    public BranchDTO() {}
 
     public BranchDTO(Long branchId, Collection<StoreDTO> stores, Collection<OfferDTO> offers) {
         this.branchId = branchId;

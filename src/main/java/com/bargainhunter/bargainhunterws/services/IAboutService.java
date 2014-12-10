@@ -1,7 +1,7 @@
 package com.bargainhunter.bargainhunterws.services;
 
-import com.bargainhunter.bargainhunterws.models.About;
+import com.bargainhunter.bargainhunterws.models.DTOs.AboutDTO;
 
 public interface IAboutService {
-    About about();
+    AboutDTO about();
 }

@@ -1,8 +1,8 @@
 package com.bargainhunter.bargainhunterws.models.DTOs.searchService;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class OfferDTO implements Serializable {
     private Long offerId;
@@ -10,15 +10,13 @@ public class OfferDTO implements Serializable {
     private String description;
     private Double price;
     private Double oldPrice;
-    private Set<Long> subcategories;
+    private Collection<OfferSubcategoryDTO> subcategories;
 
-    {
-        subcategories = new HashSet<>();
+    public OfferDTO() {
+        subcategories = new ArrayList<>();
     }
 
-    public OfferDTO() {}
-
-    public OfferDTO(Long offerId, String title, String description, Double price, Double oldPrice, Set<Long> subcategories) {
+    public OfferDTO(Long offerId, String title, String description, Double price, Double oldPrice, Collection<OfferSubcategoryDTO> subcategories) {
         this.offerId = offerId;
         this.title = title;
         this.description = description;
@@ -67,11 +65,11 @@ public class OfferDTO implements Serializable {
         this.oldPrice = oldPrice;
     }
 
-    public Set<Long> getSubcategories() {
+    public Collection<OfferSubcategoryDTO> getSubcategories() {
         return subcategories;
     }
 
-    public void setSubcategories(Set<Long> subcategories) {
+    public void setSubcategories(Collection<OfferSubcategoryDTO> subcategories) {
         this.subcategories = subcategories;
     }
 }

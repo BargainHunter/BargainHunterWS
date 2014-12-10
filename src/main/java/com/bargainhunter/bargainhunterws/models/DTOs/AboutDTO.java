@@ -1,17 +1,17 @@
-package com.bargainhunter.bargainhunterws.models;
+package com.bargainhunter.bargainhunterws.models.DTOs;
 
 import java.io.Serializable;
 
-public class About implements Serializable {
+public class AboutDTO implements Serializable {
     private String name;
     private String version;
 
-    public About(String version) {
+    public AboutDTO(String version) {
         this.name = "Bargain Hunter WS";
         this.version = version;
     }
 
-    public About(String name, String version) {
+    public AboutDTO(String name, String version) {
         this.name = name;
         this.version = version;
     }

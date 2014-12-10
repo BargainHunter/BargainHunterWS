@@ -1,18 +1,21 @@
 package com.bargainhunter.bargainhunterws.models.DTOs.searchService;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SearchInRadiusDTO implements Serializable {
     private Double latitude;
     private Double longitude;
     private Double radius;
 
-    private Collection<BranchDTO> branches;
+    private Set<BranchDTO> branches;
 
-    public SearchInRadiusDTO() {}
+    public SearchInRadiusDTO() {
+        branches = new HashSet<>();
+    }
 
-    public SearchInRadiusDTO(Double latitude, Double longitude, Double radius, Collection<BranchDTO> branches) {
+    public SearchInRadiusDTO(Double latitude, Double longitude, Double radius, Set<BranchDTO> branches) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.radius = radius;
@@ -43,11 +46,11 @@ public class SearchInRadiusDTO implements Serializable {
         this.radius = radius;
     }
 
-    public Collection<BranchDTO> getBranches() {
+    public Set<BranchDTO> getBranches() {
         return branches;
     }
 
-    public void setBranches(Collection<BranchDTO> branches) {
+    public void setBranches(Set<BranchDTO> branches) {
         this.branches = branches;
     }
 }
