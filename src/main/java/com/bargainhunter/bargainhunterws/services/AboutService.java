@@ -10,6 +10,6 @@ public class AboutService implements IAboutService {
     @Override
     @RequestMapping(value = "/about", method = RequestMethod.GET)
     public AboutDTO about() {
-        return new AboutDTO("0.0.3");
+        return new AboutDTO("0.0.4");
     }
 }
