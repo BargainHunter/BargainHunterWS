@@ -26,9 +26,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:META-INF/testContext.xml",
+@ContextConfiguration(
+        locations = "classpath:META-INF/testContext.xml",
         loader = SpringApplicationContextLoader.class)
-@WebAppConfiguration
 public class SearchServiceTests {
     @Mock
     private ISearchController searchController;
