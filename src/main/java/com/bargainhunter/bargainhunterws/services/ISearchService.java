@@ -1,8 +1,8 @@
 package com.bargainhunter.bargainhunterws.services;
 
 import com.bargainhunter.bargainhunterws.models.DTOs.searchService.SearchInRadiusDTO;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpEntity;
 
 public interface ISearchService {
-    ResponseEntity<SearchInRadiusDTO> getAllBranchesWithStoresAndOffersInRadius(Double latitude, Double longitude, Double radius);
+    HttpEntity<SearchInRadiusDTO> getAllBranchesWithStoresAndOffersInRadius(Double latitude, Double longitude, Double radius);
 }
