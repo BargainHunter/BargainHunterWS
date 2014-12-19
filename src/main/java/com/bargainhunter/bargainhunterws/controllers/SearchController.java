@@ -1,10 +1,11 @@
 package com.bargainhunter.bargainhunterws.controllers;
 
-import com.bargainhunter.bargainhunterws.models.DTOs.searchService.*;
+import com.bargainhunter.bargainhunterws.mappers.IMapper;
+import com.bargainhunter.bargainhunterws.models.DTOs.searchService.BranchDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.searchService.SearchInRadiusDTO;
 import com.bargainhunter.bargainhunterws.models.entities.Branch;
 import com.bargainhunter.bargainhunterws.models.entities.Offer;
 import com.bargainhunter.bargainhunterws.models.entities.Store;
-import com.bargainhunter.bargainhunterws.models.entities.Subcategory;
 import com.bargainhunter.bargainhunterws.repositories.IStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,10 @@ import java.util.Set;
 @Controller
 public class SearchController implements ISearchController {
     @Autowired
-    IStoreRepository storeRepository;
+    private IStoreRepository storeRepository;
+
+    @Autowired
+    private IMapper<Branch, BranchDTO> branchDTOMapper;
 
     @Override
     public SearchInRadiusDTO getAllBranchesWithStoresAndOffersInRadiusDTO(Double latitude, Double longitude, Double radius) {
@@ -42,7 +46,6 @@ public class SearchController implements ISearchController {
         SearchInRadiusDTO searchInRadiusDTO = new SearchInRadiusDTO();
 
         Set<Branch> branches = new HashSet<>();
-        Set<BranchDTO> branchDTOs = new HashSet<>();
 
         searchInRadiusDTO.setLatitude(latitude);
         searchInRadiusDTO.setLongitude(longitude);
@@ -53,58 +56,19 @@ public class SearchController implements ISearchController {
         }
 
         for (Branch branch : branches) {
-            BranchDTO branchDTO = new BranchDTO();
-
-            branchDTO.setBranchId(branch.getBranchId());
-
             for (Store store : stores) {
                 if (branch.equals(store.getBranch())) {
-                    branchDTO.getStores().add(createStoreDTO(store));
+                    branch.getStores().add(store);
                 }
             }
 
             for (Offer offer : branch.getOffers()) {
-                branchDTO.getOffers().add(createOfferDTO(offer));
+                branch.getOffers().add(offer);
             }
 
-            branchDTOs.add(branchDTO);
+            searchInRadiusDTO.getBranches().add(branchDTOMapper.map(branch, new BranchDTO()));
         }
-
-        searchInRadiusDTO.setBranches(branchDTOs);
 
         return searchInRadiusDTO;
-    }
-
-    private StoreDTO createStoreDTO(Store store) {
-        return new StoreDTO(
-                store.getStoreId(),
-                store.getBranch().getBranchName(),
-                store.getCity(),
-                store.getAddress(),
-                store.getAddressNo(),
-                store.getLatitude(),
-                store.getLongitude()
-        );
-    }
-
-    private OfferDTO createOfferDTO(Offer offer) {
-        return new OfferDTO(
-                offer.getOfferId(),
-                offer.getTitle(),
-                offer.getDescription(),
-                offer.getPrice(),
-                offer.getOldPrice(),
-                createOfferSubcategoryDTO(offer.getSubcategories())
-        );
-    }
-
-    private Collection<OfferSubcategoryDTO> createOfferSubcategoryDTO(Collection<Subcategory> subcategories) {
-        Set<OfferSubcategoryDTO> offerSubcategoryDTOs = new HashSet<>();
-
-        for (Subcategory subcategory : subcategories) {
-            offerSubcategoryDTOs.add(new OfferSubcategoryDTO(subcategory.getSubcategoryId()));
-        }
-
-        return offerSubcategoryDTOs;
     }
 }
