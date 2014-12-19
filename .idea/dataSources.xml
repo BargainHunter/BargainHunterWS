@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="166329344">
-    <data-source source="LOCAL" name="MySQL - bargain_hunter@bargainhunter.dyndns.org" uuid="36f0a411-ebbb-4850-b449-73c71a82cc1d">
-      <driver-ref>mysql</driver-ref>
+  <component name="DataSourceManagerImpl" format="xml" hash="2283479626">
+    <data-source source="LOCAL" name="PostgreSQL - bargain_hunter@bargainhunter.dyndns.org" uuid="e8591328-d719-424f-963d-d51591b16013">
+      <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://bargainhunter.dyndns.org:3306/bargain_hunter</jdbc-url>
-      <driver-properties>
-        <property name="zeroDateTimeBehavior" value="convertToNull" />
-        <property name="tinyInt1isBit" value="false" />
-        <property name="characterEncoding" value="utf8" />
-        <property name="characterSetResults" value="utf8" />
-        <property name="yearIsDateType" value="false" />
-      </driver-properties>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://bargainhunter.dyndns.org:5432/bargain_hunter</jdbc-url>
       <libraries />
     </data-source>
   </component>

@@ -26,8 +26,8 @@ public class AboutService implements IAboutService {
             // Do nothing...
         } finally {
             aboutDTO.setName(properties.getProperty("project.name", "BargainHunterWS"));
-            aboutDTO.setVersion(properties.getProperty("project.version"));
-            aboutDTO.setApiVersion(properties.getProperty("api.version"));
+            aboutDTO.setVersion(properties.getProperty("project.version", ""));
+            aboutDTO.setApiVersion(properties.getProperty("api.version", ""));
         }
 
         return aboutDTO;
