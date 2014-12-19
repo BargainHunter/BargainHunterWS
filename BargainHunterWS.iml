@@ -52,6 +52,9 @@
       <excludeFolder url="file://$MODULE_DIR$/${project.build.directory}/classes" />
       <excludeFolder url="file://$MODULE_DIR$/${project.build.directory}/test-classes" />
       <excludeFolder url="file://$MODULE_DIR$/target/bargainhunterws" />
+      <excludeFolder url="file://$MODULE_DIR$/target/bargainhunterws-0.0.5.${env.BUILD_NUMBER}" />
+      <excludeFolder url="file://$MODULE_DIR$/target/bargainhunterws-0.0.5.${env.BUILD_NUMBER}}" />
+      <excludeFolder url="file://$MODULE_DIR$/target/bargainhunterws-0.0.5.null" />
       <excludeFolder url="file://$MODULE_DIR$/target/classes" />
       <excludeFolder url="file://$MODULE_DIR$/target/maven-archiver" />
       <excludeFolder url="file://$MODULE_DIR$/target/maven-status" />

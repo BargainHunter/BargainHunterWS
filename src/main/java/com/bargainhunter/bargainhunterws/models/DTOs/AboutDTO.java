@@ -5,15 +5,15 @@ import java.io.Serializable;
 public class AboutDTO implements Serializable {
     private String name;
     private String version;
+    private String apiVersion;
 
-    public AboutDTO(String version) {
-        this.name = "Bargain Hunter WS";
-        this.version = version;
+    public AboutDTO() {
     }
 
-    public AboutDTO(String name, String version) {
+    public AboutDTO(String name, String version, String apiVersion) {
         this.name = name;
         this.version = version;
+        this.apiVersion = apiVersion;
     }
 
     public String getName() {
@@ -30,5 +30,13 @@ public class AboutDTO implements Serializable {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public String getApiVersion() {
+        return apiVersion;
+    }
+
+    public void setApiVersion(String apiVersion) {
+        this.apiVersion = apiVersion;
     }
 }

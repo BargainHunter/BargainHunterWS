@@ -6,9 +6,10 @@ import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.CategoryD
 import com.bargainhunter.bargainhunterws.models.entities.Category;
 import com.bargainhunter.bargainhunterws.repositories.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
-@Controller
+@Component
 public class CategoryController implements ICategoryController {
     @Autowired
     private ICategoryRepository categoryRepository;

@@ -8,13 +8,14 @@ import com.bargainhunter.bargainhunterws.models.entities.Offer;
 import com.bargainhunter.bargainhunterws.models.entities.Store;
 import com.bargainhunter.bargainhunterws.repositories.IStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-@Controller
+@Component
 public class SearchController implements ISearchController {
     @Autowired
     private IStoreRepository storeRepository;
