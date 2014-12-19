@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="BargainHunterWS:war exploded">
-    <output-path>$PROJECT_DIR$/target/bargainhunterws-0.0.5.${env.BUILD_NUMBER}</output-path>
+    <output-path>$PROJECT_DIR$/target/bargainhunterws-0.0.5.0</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">

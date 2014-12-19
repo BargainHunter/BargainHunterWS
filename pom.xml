@@ -6,7 +6,7 @@
 
     <groupId>com.bargainhunter</groupId>
     <artifactId>bargainhunterws</artifactId>
-    <version>0.0.5.${env.BUILD_NUMBER}</version>
+    <version>0.0.5.${build.number}</version>
     <packaging>war</packaging>
 
     <parent>
@@ -19,6 +19,31 @@
         <start-class>com.bargainhunter.bargainhunterws.WebApplicationInitializer</start-class>
         <java.version>1.8</java.version>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>StaticBuildNumber</id>
+            <activation>
+                <property>
+                    <name>!env.BUILD_NUMBER</name>
+                </property>
+            </activation>
+            <properties>
+                <build.number>0</build.number>
+            </properties>
+        </profile>
+        <profile>
+            <id>DynamicBuildNumber</id>
+            <activation>
+                <property>
+                    <name>env.BUILD_NUMBER</name>
+                </property>
+            </activation>
+            <properties>
+                <build.number>${env.BUILD_NUMBER}</build.number>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>

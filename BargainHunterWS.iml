@@ -51,6 +51,7 @@
       <sourceFolder url="file://$MODULE_DIR$/target/generated-sources" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/target/bargainhunterws" />
       <excludeFolder url="file://$MODULE_DIR$/target/bargainhunterws-0.0.5.${env.BUILD_NUMBER}" />
+      <excludeFolder url="file://$MODULE_DIR$/target/bargainhunterws-0.0.5.0" />
       <excludeFolder url="file://$MODULE_DIR$/target/bargainhunterws-0.0.5.null" />
       <excludeFolder url="file://$MODULE_DIR$/target/classes" />
       <excludeFolder url="file://$MODULE_DIR$/target/maven-archiver" />
