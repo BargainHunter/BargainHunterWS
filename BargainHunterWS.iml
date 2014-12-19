@@ -49,6 +49,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/repository" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/target/generated-sources" isTestSource="false" generated="true" />
+      <excludeFolder url="file://$MODULE_DIR$/${project.build.directory}/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/${project.build.directory}/test-classes" />
       <excludeFolder url="file://$MODULE_DIR$/target/bargainhunterws" />
       <excludeFolder url="file://$MODULE_DIR$/target/classes" />
       <excludeFolder url="file://$MODULE_DIR$/target/maven-archiver" />
