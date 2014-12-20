@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2283479626">
+  <component name="DataSourceManagerImpl" format="xml" hash="527736592">
     <data-source source="LOCAL" name="PostgreSQL - bargain_hunter@bargainhunter.dyndns.org" uuid="e8591328-d719-424f-963d-d51591b16013">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>

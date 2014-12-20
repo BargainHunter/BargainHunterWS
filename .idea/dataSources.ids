@@ -1450,6 +1450,144 @@
       <column name="viewowner" sqlType="name" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="definition" sqlType="text" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
     </table>
+    <table name="branch" schema="public" catalog="bargain_hunter" type="TABLE">
+      <column name="branch_id" sqlType="bigserial" precision="19" scale="0" nullable="false" jdbcType="-5" def="bmV4dHZhbCgnYnJhbmNoX2JyYW5jaF9pZF9zZXEnOjpyZWdjbGFzcyk=" autoIncrement="true"/>
+      <column name="branch_name" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="company_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="branch_pkey" columns="branch_id"/>
+      <foreign-key name="fk_90esxadkiulbe2s9adrvgfmrc" columns="company_id" ref-table="company" ref-schema="public" ref-catalog="" ref-columns="company_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_raaugmddgje377rvnqxg2nhxk" table="offer" schema="public" catalog="bargain_hunter" columns="branch_id"/>
+      <exported-key name="fk_n4u5p12fwi4mpavp0okuk4n1t" table="store" schema="public" catalog="bargain_hunter" columns="branch_id"/>
+    </table>
+    <table name="branch_branch_id_seq" schema="public" catalog="bargain_hunter" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="category" schema="public" catalog="bargain_hunter" type="TABLE">
+      <column name="category_id" sqlType="bigserial" precision="19" scale="0" nullable="false" jdbcType="-5" def="bmV4dHZhbCgnY2F0ZWdvcnlfY2F0ZWdvcnlfaWRfc2VxJzo6cmVnY2xhc3Mp" autoIncrement="true"/>
+      <column name="description" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="category_pkey" columns="category_id"/>
+      <exported-key name="fk_hwgvp5dbv3b0bra09odc1mmpe" table="subcategory" schema="public" catalog="bargain_hunter" columns="category_id"/>
+    </table>
+    <table name="category_category_id_seq" schema="public" catalog="bargain_hunter" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="company" schema="public" catalog="bargain_hunter" type="TABLE">
+      <column name="company_id" sqlType="bigserial" precision="19" scale="0" nullable="false" jdbcType="-5" def="bmV4dHZhbCgnY29tcGFueV9jb21wYW55X2lkX3NlcSc6OnJlZ2NsYXNzKQ==" autoIncrement="true"/>
+      <column name="address" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="address_no" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="city" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="company_name" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="country" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="zip" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="company_pkey" columns="company_id"/>
+      <exported-key name="fk_90esxadkiulbe2s9adrvgfmrc" table="branch" schema="public" catalog="bargain_hunter" columns="company_id"/>
+    </table>
+    <table name="company_company_id_seq" schema="public" catalog="bargain_hunter" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="offer" schema="public" catalog="bargain_hunter" type="TABLE">
+      <column name="offer_id" sqlType="bigserial" precision="19" scale="0" nullable="false" jdbcType="-5" def="bmV4dHZhbCgnb2ZmZXJfb2ZmZXJfaWRfc2VxJzo6cmVnY2xhc3Mp" autoIncrement="true"/>
+      <column name="description" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="exp_date" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
+      <column name="old_price" sqlType="float8" precision="17" scale="17" nullable="true" jdbcType="8"/>
+      <column name="price" sqlType="float8" precision="17" scale="17" nullable="true" jdbcType="8"/>
+      <column name="start_date" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
+      <column name="title" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="branch_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="offer_pkey" columns="offer_id"/>
+      <foreign-key name="fk_raaugmddgje377rvnqxg2nhxk" columns="branch_id" ref-table="branch" ref-schema="public" ref-catalog="" ref-columns="branch_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_hrmnn7uev6otku89va4g1w6ym" table="offer_subcategory" schema="public" catalog="bargain_hunter" columns="offer_id"/>
+    </table>
+    <table name="offer_offer_id_seq" schema="public" catalog="bargain_hunter" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="offer_subcategory" schema="public" catalog="bargain_hunter" type="TABLE">
+      <column name="offer_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="subcategory_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="offer_subcategory_pkey" columns="offer_id,subcategory_id"/>
+      <foreign-key name="fk_hrmnn7uev6otku89va4g1w6ym" columns="offer_id" ref-table="offer" ref-schema="public" ref-catalog="" ref-columns="offer_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_hx03rsg3ejp6o8v1un9kk90jy" columns="subcategory_id" ref-table="subcategory" ref-schema="public" ref-catalog="" ref-columns="subcategory_id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="store" schema="public" catalog="bargain_hunter" type="TABLE">
+      <column name="store_id" sqlType="bigserial" precision="19" scale="0" nullable="false" jdbcType="-5" def="bmV4dHZhbCgnc3RvcmVfc3RvcmVfaWRfc2VxJzo6cmVnY2xhc3Mp" autoIncrement="true"/>
+      <column name="address" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="address_no" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="city" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="coordinates" sqlType="point" precision="2147483647" scale="0" nullable="true" jdbcType="1111"/>
+      <column name="country" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="zip" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="branch_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="store_pkey" columns="store_id"/>
+      <foreign-key name="fk_n4u5p12fwi4mpavp0okuk4n1t" columns="branch_id" ref-table="branch" ref-schema="public" ref-catalog="" ref-columns="branch_id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="store_store_id_seq" schema="public" catalog="bargain_hunter" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="subcategory" schema="public" catalog="bargain_hunter" type="TABLE">
+      <column name="subcategory_id" sqlType="bigserial" precision="19" scale="0" nullable="false" jdbcType="-5" def="bmV4dHZhbCgnc3ViY2F0ZWdvcnlfc3ViY2F0ZWdvcnlfaWRfc2VxJzo6cmVnY2xhc3Mp" autoIncrement="true"/>
+      <column name="description" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="category_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="subcategory_pkey" columns="subcategory_id"/>
+      <foreign-key name="fk_hwgvp5dbv3b0bra09odc1mmpe" columns="category_id" ref-table="category" ref-schema="public" ref-catalog="" ref-columns="category_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_hx03rsg3ejp6o8v1un9kk90jy" table="offer_subcategory" schema="public" catalog="bargain_hunter" columns="subcategory_id"/>
+    </table>
+    <table name="subcategory_subcategory_id_seq" schema="public" catalog="bargain_hunter" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
     <procedure name="RI_FKey_cascade_del" schema="pg_catalog" catalog="bargain_hunter" type="2" remarks="cmVmZXJlbnRpYWwgaW50ZWdyaXR5IE9OIERFTEVURSBDQVNDQURF">
       <prototype>
         <parameter name="returnValue" sqlType="trigger" precision="0" scale="0" nullable="true" jdbcType="1111" type="5" index="0"/>

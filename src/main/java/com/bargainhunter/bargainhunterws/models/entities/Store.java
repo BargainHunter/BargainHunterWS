@@ -1,9 +1,9 @@
 package com.bargainhunter.bargainhunterws.models.entities;
 
+import org.hibernate.annotations.Type;
+import org.springframework.data.geo.Point;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.HashSet;
 
 @Entity
 @Table(name = "STORE")
@@ -25,11 +25,9 @@ public class Store {
     @Column(name = "address_no")
     private String addressNo;
 
-    @Column(name = "latitude")
-    private Double latitude;
-
-    @Column(name = "longitude")
-    private Double longitude;
+    @Column(name = "coordinates", columnDefinition = "Point")
+    @Type(type = "com.bargainhunter.bargainhunterws.models.hibernate.PointUserType")
+    private Point coordinates;
 
     @Column(name = "zip")
     private String zip;
@@ -38,13 +36,13 @@ public class Store {
     @JoinColumn(name = "branch_id")
     private Branch branch;
 
-    protected Store() {}
+    protected Store() {
+    }
 
-    public Store(String country, String city, String address, String addressNo, String zip, Double latitude, Double longitude, Branch branch) {
+    public Store(String country, String city, String address, String addressNo, String zip, Point coordinates, Branch branch) {
         this.addressNo = addressNo;
         this.address = address;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.coordinates = coordinates;
         this.city = city;
         this.country = country;
         this.zip = zip;
@@ -67,12 +65,12 @@ public class Store {
         return addressNo;
     }
 
-    public Double getLatitude() {
-        return latitude;
+    public Point getCoordinates() {
+        return coordinates;
     }
 
-    public Double getLongitude() {
-        return longitude;
+    public void setCoordinates(Point coordinates) {
+        this.coordinates = coordinates;
     }
 
     public String getCountry() {

@@ -9,7 +9,6 @@ import com.bargainhunter.bargainhunterws.models.entities.Store;
 import com.bargainhunter.bargainhunterws.repositories.IStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -32,8 +31,8 @@ public class SearchController implements ISearchController {
 
         for (Store store : stores) {
             if (distanceController.calcDistance(
-                    store.getLatitude(),
-                    store.getLongitude(),
+                    store.getCoordinates().getX(),
+                    store.getCoordinates().getY(),
                     latitude,
                     longitude) < radius) {
                 storesInRadius.add(store);
