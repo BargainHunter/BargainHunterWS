@@ -1,7 +1,6 @@
 package com.bargainhunter.bargainhunterws.models.entities;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,24 +26,31 @@ public class Subcategory {
         offers = new HashSet<>();
     }
 
-    public Subcategory() {}
-
-    public Subcategory(String description, Category category, Set<Offer> offers) {
-        this.description = description;
-        this.category = category;
-        this.offers = offers;
+    public Subcategory() {
     }
 
     public Long getSubcategoryId() {
         return subcategoryId;
     }
 
+    public void setSubcategoryId(Long subcategoryId) {
+        this.subcategoryId = subcategoryId;
+    }
+
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Category getCategory() {
         return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public Set<Offer> getOffers() {

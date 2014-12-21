@@ -1,8 +1,5 @@
 package com.bargainhunter.bargainhunterws.models.entities;
 
-import org.hibernate.annotations.Type;
-import org.springframework.data.geo.Point;
-
 import javax.persistence.*;
 
 @Entity
@@ -25,9 +22,11 @@ public class Store {
     @Column(name = "address_no")
     private String addressNo;
 
-    @Column(name = "coordinates", columnDefinition = "Point")
-    @Type(type = "com.bargainhunter.bargainhunterws.models.hibernate.PointUserType")
-    private Point coordinates;
+    @Column(name = "latitude")
+    private Double latitude;
+
+    @Column(name = "longitude")
+    private Double longitude;
 
     @Column(name = "zip")
     private String zip;
@@ -36,52 +35,78 @@ public class Store {
     @JoinColumn(name = "branch_id")
     private Branch branch;
 
-    protected Store() {
-    }
-
-    public Store(String country, String city, String address, String addressNo, String zip, Point coordinates, Branch branch) {
-        this.addressNo = addressNo;
-        this.address = address;
-        this.coordinates = coordinates;
-        this.city = city;
-        this.country = country;
-        this.zip = zip;
-        this.branch = branch;
-    }
-
-    public String getCity() {
-        return city;
+    public Store() {
     }
 
     public Long getStoreId() {
         return storeId;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public String getAddressNo() {
-        return addressNo;
-    }
-
-    public Point getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(Point coordinates) {
-        this.coordinates = coordinates;
+    public void setStoreId(Long storeId) {
+        this.storeId = storeId;
     }
 
     public String getCountry() {
         return country;
     }
 
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAddressNo() {
+        return addressNo;
+    }
+
+    public void setAddressNo(String addressNo) {
+        this.addressNo = addressNo;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
     public String getZip() {
         return zip;
     }
 
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
     public Branch getBranch() {
         return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
     }
 }

@@ -1,8 +1,6 @@
 package com.bargainhunter.bargainhunterws.models.entities;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -39,44 +37,63 @@ public class Company {
         branches = new HashSet<>();
     }
 
-    public Company() {}
-
-    public Company(String companyName, String country, String city, String address, String addressNo, String zip, Set<Branch> branches) {
-        this.companyName = companyName;
-        this.country = country;
-        this.city = city;
-        this.address = address;
-        this.addressNo = addressNo;
-        this.zip = zip;
-        this.branches = branches;
+    public Company() {
     }
 
     public Long getCompanyId() {
         return companyId;
     }
 
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
+    }
+
     public String getCompanyName() {
         return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     public String getCountry() {
         return country;
     }
 
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public String getCity() {
         return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getAddress() {
         return address;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getAddressNo() {
         return addressNo;
     }
 
+    public void setAddressNo(String addressNo) {
+        this.addressNo = addressNo;
+    }
+
     public String getZip() {
         return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 
     public Set<Branch> getBranches() {

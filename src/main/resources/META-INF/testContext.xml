@@ -25,6 +25,12 @@
         <property name="packagesToScan" value="com.bargainhunter.bargainhunterws.models.entities"/>
     </bean>
 
+    <!--Database Initialization-->
+
+    <jdbc:initialize-database data-source="dataSource">
+        <jdbc:script location="/data.sql" encoding="UTF-8" />
+    </jdbc:initialize-database>
+
     <!--Transaction Manager-->
 
     <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
@@ -38,6 +44,6 @@
     <!--ComponentScan-->
 
     <context:annotation-config/>
-    <context:component-scan base-package="com.bargainhunter.bargainhunterws.controllers"/>
+    <context:component-scan base-package="com.bargainhunter.bargainhunterws.services"/>
     <context:component-scan base-package="com.bargainhunter.bargainhunterws.mappers"/>
 </beans>

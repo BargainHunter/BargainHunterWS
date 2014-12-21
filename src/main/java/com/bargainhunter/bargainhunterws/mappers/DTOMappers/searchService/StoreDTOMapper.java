@@ -14,8 +14,8 @@ public class StoreDTOMapper implements IMapper<Store, StoreDTO> {
         target.setCity(source.getCity());
         target.setAddress(source.getAddress());
         target.setAddressNo(source.getAddressNo());
-        target.setLatitude(source.getCoordinates().getX());
-        target.setLongitude(source.getCoordinates().getY());
+        target.setLatitude(source.getLatitude());
+        target.setLongitude(source.getLongitude());
 
         return target;
     }

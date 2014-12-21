@@ -1,7 +1,6 @@
 package com.bargainhunter.bargainhunterws.models.entities;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,35 +33,40 @@ public class Branch {
     public Branch() {
     }
 
-    public Branch(String branchName, Company company, Set<Store> stores, Set<Offer> offers) {
-        this.branchName = branchName;
-        this.company = company;
-        this.stores = stores;
-        this.offers = offers;
-    }
-
     public Long getBranchId() {
         return branchId;
+    }
+
+    public void setBranchId(Long branchId) {
+        this.branchId = branchId;
     }
 
     public String getBranchName() {
         return branchName;
     }
 
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
+    }
+
     public Company getCompany() {
         return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public Set<Store> getStores() {
         return stores;
     }
 
-    public Set<Offer> getOffers() {
-        return offers;
-    }
-
     public void setStores(Set<Store> stores) {
         this.stores = stores;
+    }
+
+    public Set<Offer> getOffers() {
+        return offers;
     }
 
     public void setOffers(Set<Offer> offers) {

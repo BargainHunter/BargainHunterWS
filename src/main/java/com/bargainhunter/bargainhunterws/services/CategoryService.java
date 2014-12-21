@@ -1,25 +1,29 @@
 package com.bargainhunter.bargainhunterws.services;
 
-import com.bargainhunter.bargainhunterws.controllers.ICategoryController;
+import com.bargainhunter.bargainhunterws.mappers.IMapper;
 import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.CategoriesDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.CategoryDTO;
+import com.bargainhunter.bargainhunterws.models.entities.Category;
+import com.bargainhunter.bargainhunterws.repositories.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
-@RestController
+@Service
 public class CategoryService implements ICategoryService {
     @Autowired
-    ICategoryController categoriesController;
+    private ICategoryRepository categoryRepository;
+
+    @Autowired
+    private IMapper<Category, CategoryDTO> categoryDTOMapper;
 
     @Override
-    @RequestMapping(value = "/categories", method = RequestMethod.GET)
-    public HttpEntity<CategoriesDTO> getAllCategoryDTOs() {
-        CategoriesDTO categoriesDTOs = categoriesController.getAllCategoryDTOs();
+    public CategoriesDTO getAllCategoryDTOs() {
+        CategoriesDTO categoriesDTO = new CategoriesDTO();
 
-        return new ResponseEntity<>(categoriesDTOs, null, HttpStatus.OK);
+        for (Category category : categoryRepository.findAll()) {
+            categoriesDTO.getCategories().add(categoryDTOMapper.map(category, new CategoryDTO()));
+        }
+
+        return categoriesDTO;
     }
 }

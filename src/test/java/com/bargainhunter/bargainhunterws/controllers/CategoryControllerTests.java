@@ -1,9 +1,9 @@
-package com.bargainhunter.bargainhunterws.services;
+package com.bargainhunter.bargainhunterws.controllers;
 
-import com.bargainhunter.bargainhunterws.controllers.ICategoryController;
 import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.CategoriesDTO;
 import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.CategoryDTO;
 import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.SubcategoryDTO;
+import com.bargainhunter.bargainhunterws.services.ICategoryService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,21 +27,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
-        locations = "classpath:META-INF/appContext.xml",
+        locations = "classpath:META-INF/testContext.xml",
         loader = SpringApplicationContextLoader.class)
-public class CategoryServiceTests {
+public class CategoryControllerTests {
     @Mock
-    private ICategoryController categoryController;
+    private ICategoryService categoryService;
 
     @InjectMocks
-    private CategoryService categoryService;
+    private CategoryController categoryController;
 
     private MockMvc mockMvc;
 
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(categoryService).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(categoryController).build();
     }
 
     @Test
@@ -92,7 +92,7 @@ public class CategoryServiceTests {
 
         categoriesDTO.setCategories(categoryDTOs);
 
-        doReturn(categoriesDTO).when(categoryController).getAllCategoryDTOs();
+        doReturn(categoriesDTO).when(categoryService).getAllCategoryDTOs();
 
         mockMvc.perform(get("/categories").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -108,6 +108,6 @@ public class CategoryServiceTests {
                 .andExpect(jsonPath("$.categories[*].subcategories[*].description").exists())
         ;
 
-        verify(categoryController, times(1)).getAllCategoryDTOs();
+        verify(categoryService, times(1)).getAllCategoryDTOs();
     }
 }

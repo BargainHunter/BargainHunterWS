@@ -1,7 +1,7 @@
-package com.bargainhunter.bargainhunterws.services;
+package com.bargainhunter.bargainhunterws.controllers;
 
-import com.bargainhunter.bargainhunterws.controllers.ISearchController;
 import com.bargainhunter.bargainhunterws.models.DTOs.searchService.*;
+import com.bargainhunter.bargainhunterws.services.ISearchService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,21 +26,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
-        locations = "classpath:META-INF/appContext.xml",
+        locations = "classpath:META-INF/testContext.xml",
         loader = SpringApplicationContextLoader.class)
-public class SearchServiceTests {
+public class SearchControllerTests {
     @Mock
-    private ISearchController searchController;
+    private ISearchService searchService;
 
     @InjectMocks
-    private SearchService searchService;
+    private SearchController searchController;
 
     private MockMvc mockMvc;
 
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(searchService).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(searchController).build();
     }
 
     @Test
@@ -52,7 +52,7 @@ public class SearchServiceTests {
         searchInRadiusDTO.setRadius(0D);
         searchInRadiusDTO.setBranches(new HashSet<>());
 
-        doReturn(searchInRadiusDTO).when(searchController).getAllBranchesWithStoresAndOffersInRadiusDTO(0D, 0D, 0D);
+        doReturn(searchInRadiusDTO).when(searchService).getAllBranchesWithStoresAndOffersInRadiusDTO(0D, 0D, 0D);
 
         mockMvc.perform(get("/search_in_radius?latitude=0&longitude=0&radius=0").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -67,7 +67,7 @@ public class SearchServiceTests {
                 .andExpect(jsonPath("$.branches", hasSize(0)))
         ;
 
-        verify(searchController, times(1)).getAllBranchesWithStoresAndOffersInRadiusDTO(0D, 0D, 0D);
+        verify(searchService, times(1)).getAllBranchesWithStoresAndOffersInRadiusDTO(0D, 0D, 0D);
     }
 
     @Test
@@ -119,7 +119,7 @@ public class SearchServiceTests {
 
         searchInRadiusDTO.setBranches(branchDTOs);
 
-        doReturn(searchInRadiusDTO).when(searchController).getAllBranchesWithStoresAndOffersInRadiusDTO(0D, 0D, 0D);
+        doReturn(searchInRadiusDTO).when(searchService).getAllBranchesWithStoresAndOffersInRadiusDTO(0D, 0D, 0D);
 
         mockMvc.perform(get("/search_in_radius?latitude=0&longitude=0&radius=0").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -140,6 +140,6 @@ public class SearchServiceTests {
                 .andExpect(jsonPath("$.branches[*].offers[*].subcategories", hasSize(1)))
         ;
 
-        verify(searchController, times(1)).getAllBranchesWithStoresAndOffersInRadiusDTO(0D, 0D, 0D);
+        verify(searchService, times(1)).getAllBranchesWithStoresAndOffersInRadiusDTO(0D, 0D, 0D);
     }
 }

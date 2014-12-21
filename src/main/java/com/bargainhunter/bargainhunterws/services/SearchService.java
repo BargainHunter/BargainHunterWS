@@ -1,29 +1,60 @@
 package com.bargainhunter.bargainhunterws.services;
 
-import com.bargainhunter.bargainhunterws.controllers.ISearchController;
+import com.bargainhunter.bargainhunterws.mappers.IMapper;
+import com.bargainhunter.bargainhunterws.models.DTOs.searchService.BranchDTO;
 import com.bargainhunter.bargainhunterws.models.DTOs.searchService.SearchInRadiusDTO;
+import com.bargainhunter.bargainhunterws.models.entities.Branch;
+import com.bargainhunter.bargainhunterws.models.entities.Store;
+import com.bargainhunter.bargainhunterws.repositories.IStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
-@RestController
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
+@Service
 public class SearchService implements ISearchService {
     @Autowired
-    ISearchController searchController;
+    private IStoreRepository storeRepository;
+
+    @Autowired
+    private IMapper<Branch, BranchDTO> branchDTOMapper;
 
     @Override
-    @RequestMapping(value = "/search_in_radius", method = RequestMethod.GET)
-    public HttpEntity<SearchInRadiusDTO> getAllBranchesWithStoresAndOffersInRadius(
-            @RequestParam Double latitude,
-            @RequestParam Double longitude,
-            @RequestParam Double radius) {
-        SearchInRadiusDTO searchInRadiusDTO = searchController.getAllBranchesWithStoresAndOffersInRadiusDTO(latitude, longitude, radius);
+    public SearchInRadiusDTO getAllBranchesWithStoresAndOffersInRadiusDTO(Double latitude, Double longitude, Double radius) {
+        Collection<Store> stores = storeRepository.findAllInRadius(latitude, longitude, radius);
 
-        return new ResponseEntity<>(searchInRadiusDTO, null, HttpStatus.OK);
+        return createSearchInRadiusDTO(latitude, longitude, radius, stores);
+    }
+
+    private SearchInRadiusDTO createSearchInRadiusDTO(Double latitude, Double longitude, Double radius, Collection<Store> stores) {
+        SearchInRadiusDTO searchInRadiusDTO = new SearchInRadiusDTO();
+
+        Set<Branch> branches = new HashSet<>();
+
+        searchInRadiusDTO.setLatitude(latitude);
+        searchInRadiusDTO.setLongitude(longitude);
+        searchInRadiusDTO.setRadius(radius);
+
+        Branch tempBranch;
+
+        for (Store store : stores) {
+            tempBranch = store.getBranch();
+            tempBranch.setStores(new HashSet<>());
+            branches.add(tempBranch);
+        }
+
+        for (Branch branch : branches) {
+            for (Store store : stores) {
+                if (branch.equals(store.getBranch())) {
+                    branch.getStores().add(store);
+                }
+            }
+
+            searchInRadiusDTO.getBranches().add(branchDTOMapper.map(branch, new BranchDTO()));
+        }
+
+        return searchInRadiusDTO;
     }
 }

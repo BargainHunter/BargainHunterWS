@@ -1,4 +1,4 @@
-package com.bargainhunter.bargainhunterws.services;
+package com.bargainhunter.bargainhunterws.controllers;
 
 import com.bargainhunter.bargainhunterws.models.DTOs.AboutDTO;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 @RestController
-public class AboutService implements IAboutService {
+public class AboutController implements IAboutController {
     @Override
     @RequestMapping(value = "/about", method = RequestMethod.GET)
     public AboutDTO about() {

@@ -22,19 +22,23 @@ public class Category {
         subcategories = new HashSet<>();
     }
 
-    public Category() {}
-
-    public Category(String description, Set<Subcategory> subcategories) {
-        this.description = description;
-        this.subcategories = subcategories;
+    public Category() {
     }
 
     public Long getCategoryId() {
         return categoryId;
     }
 
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
+
     public String getDescription() {
         return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Set<Subcategory> getSubcategories() {

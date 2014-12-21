@@ -1,7 +1,8 @@
 package com.bargainhunter.bargainhunterws.controllers;
 
 import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.CategoriesDTO;
+import org.springframework.http.HttpEntity;
 
 public interface ICategoryController {
-    CategoriesDTO getAllCategoryDTOs();
+    HttpEntity<CategoriesDTO> getAllCategoryDTOs();
 }
