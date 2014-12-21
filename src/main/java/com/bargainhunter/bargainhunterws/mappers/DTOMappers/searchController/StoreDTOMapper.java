@@ -1,7 +1,7 @@
-package com.bargainhunter.bargainhunterws.mappers.DTOMappers.searchService;
+package com.bargainhunter.bargainhunterws.mappers.DTOMappers.searchController;
 
 import com.bargainhunter.bargainhunterws.mappers.IMapper;
-import com.bargainhunter.bargainhunterws.models.DTOs.searchService.StoreDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.searchController.StoreDTO;
 import com.bargainhunter.bargainhunterws.models.entities.Store;
 import org.springframework.stereotype.Component;
 

@@ -1,8 +1,8 @@
 package com.bargainhunter.bargainhunterws.services;
 
 import com.bargainhunter.bargainhunterws.mappers.IMapper;
-import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.CategoriesDTO;
-import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.CategoryDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.categoriesController.CategoriesDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.categoriesController.CategoryDTO;
 import com.bargainhunter.bargainhunterws.models.entities.Category;
 import com.bargainhunter.bargainhunterws.repositories.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;

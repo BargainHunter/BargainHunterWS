@@ -1,6 +1,6 @@
 package com.bargainhunter.bargainhunterws.controllers;
 
-import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.CategoriesDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.categoriesController.CategoriesDTO;
 import com.bargainhunter.bargainhunterws.services.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;

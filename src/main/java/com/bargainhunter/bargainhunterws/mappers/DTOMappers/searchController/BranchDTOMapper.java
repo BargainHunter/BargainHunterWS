@@ -1,9 +1,9 @@
-package com.bargainhunter.bargainhunterws.mappers.DTOMappers.searchService;
+package com.bargainhunter.bargainhunterws.mappers.DTOMappers.searchController;
 
 import com.bargainhunter.bargainhunterws.mappers.IMapper;
-import com.bargainhunter.bargainhunterws.models.DTOs.searchService.BranchDTO;
-import com.bargainhunter.bargainhunterws.models.DTOs.searchService.OfferDTO;
-import com.bargainhunter.bargainhunterws.models.DTOs.searchService.StoreDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.searchController.BranchDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.searchController.OfferDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.searchController.StoreDTO;
 import com.bargainhunter.bargainhunterws.models.entities.Branch;
 import com.bargainhunter.bargainhunterws.models.entities.Offer;
 import com.bargainhunter.bargainhunterws.models.entities.Store;

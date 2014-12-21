@@ -1,8 +1,8 @@
-package com.bargainhunter.bargainhunterws.mappers.DTOMappers.searchService;
+package com.bargainhunter.bargainhunterws.mappers.DTOMappers.searchController;
 
 import com.bargainhunter.bargainhunterws.mappers.IMapper;
-import com.bargainhunter.bargainhunterws.models.DTOs.searchService.OfferDTO;
-import com.bargainhunter.bargainhunterws.models.DTOs.searchService.OfferSubcategoryDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.searchController.OfferDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.searchController.OfferSubcategoryDTO;
 import com.bargainhunter.bargainhunterws.models.entities.Offer;
 import com.bargainhunter.bargainhunterws.models.entities.Subcategory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.bargainhunter.bargainhunterws.models.DTOs.searchService;
+package com.bargainhunter.bargainhunterws.models.DTOs.searchController;
 
 import java.io.Serializable;
 

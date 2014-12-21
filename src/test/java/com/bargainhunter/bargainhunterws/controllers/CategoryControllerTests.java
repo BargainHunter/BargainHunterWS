@@ -1,8 +1,8 @@
 package com.bargainhunter.bargainhunterws.controllers;
 
-import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.CategoriesDTO;
-import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.CategoryDTO;
-import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.SubcategoryDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.categoriesController.CategoriesDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.categoriesController.CategoryDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.categoriesController.SubcategoryDTO;
 import com.bargainhunter.bargainhunterws.services.ICategoryService;
 import org.junit.Before;
 import org.junit.Test;

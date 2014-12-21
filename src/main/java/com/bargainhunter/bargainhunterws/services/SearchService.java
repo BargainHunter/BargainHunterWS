@@ -1,8 +1,8 @@
 package com.bargainhunter.bargainhunterws.services;
 
 import com.bargainhunter.bargainhunterws.mappers.IMapper;
-import com.bargainhunter.bargainhunterws.models.DTOs.searchService.BranchDTO;
-import com.bargainhunter.bargainhunterws.models.DTOs.searchService.SearchInRadiusDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.searchController.BranchDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.searchController.SearchInRadiusDTO;
 import com.bargainhunter.bargainhunterws.models.entities.Branch;
 import com.bargainhunter.bargainhunterws.models.entities.Store;
 import com.bargainhunter.bargainhunterws.repositories.IStoreRepository;

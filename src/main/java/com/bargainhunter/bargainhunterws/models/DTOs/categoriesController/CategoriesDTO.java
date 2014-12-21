@@ -1,4 +1,4 @@
-package com.bargainhunter.bargainhunterws.models.DTOs.categoriesService;
+package com.bargainhunter.bargainhunterws.models.DTOs.categoriesController;
 
 import java.util.Collection;
 import java.util.HashSet;

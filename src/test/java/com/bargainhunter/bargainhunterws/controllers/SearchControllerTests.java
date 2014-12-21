@@ -1,6 +1,6 @@
 package com.bargainhunter.bargainhunterws.controllers;
 
-import com.bargainhunter.bargainhunterws.models.DTOs.searchService.*;
+import com.bargainhunter.bargainhunterws.models.DTOs.searchController.*;
 import com.bargainhunter.bargainhunterws.services.ISearchService;
 import org.junit.Before;
 import org.junit.Test;

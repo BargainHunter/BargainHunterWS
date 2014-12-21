@@ -1,6 +1,6 @@
 package com.bargainhunter.bargainhunterws.controllers;
 
-import com.bargainhunter.bargainhunterws.models.DTOs.searchService.SearchInRadiusDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.searchController.SearchInRadiusDTO;
 import com.bargainhunter.bargainhunterws.services.ISearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;

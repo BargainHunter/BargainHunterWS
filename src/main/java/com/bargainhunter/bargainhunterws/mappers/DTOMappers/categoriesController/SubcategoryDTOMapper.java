@@ -1,7 +1,7 @@
-package com.bargainhunter.bargainhunterws.mappers.DTOMappers.categoriesService;
+package com.bargainhunter.bargainhunterws.mappers.DTOMappers.categoriesController;
 
 import com.bargainhunter.bargainhunterws.mappers.IMapper;
-import com.bargainhunter.bargainhunterws.models.DTOs.categoriesService.SubcategoryDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.categoriesController.SubcategoryDTO;
 import com.bargainhunter.bargainhunterws.models.entities.Subcategory;
 import org.springframework.stereotype.Component;
 
