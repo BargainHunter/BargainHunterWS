@@ -46,7 +46,7 @@ public class SearchService implements ISearchService {
         }
 
         for (Branch branch : branches) {
-            branch.setOffers(offerRepository.findActiveOfBranch(branch));
+            branch.setOffers(new HashSet<>(offerRepository.findActiveOfBranch(branch)));
             branch.setStores(new HashSet<>());
 
             for (Store store : stores) {
