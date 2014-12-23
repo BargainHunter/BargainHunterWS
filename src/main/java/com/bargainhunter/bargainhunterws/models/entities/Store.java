@@ -22,11 +22,11 @@ public class Store {
     @Column(name = "address_no")
     private String addressNo;
 
-    @Column(name = "latitude")
-    private Double latitude;
-
-    @Column(name = "longitude")
-    private Double longitude;
+    @AttributeOverrides({
+            @AttributeOverride(name="latitude", column = @Column(name="latitude")),
+            @AttributeOverride(name="longitude", column = @Column(name="longitude"))
+    })
+    private Coordinates coordinates;
 
     @Column(name = "zip")
     private String zip;
@@ -78,20 +78,12 @@ public class Store {
         this.addressNo = addressNo;
     }
 
-    public Double getLatitude() {
-        return latitude;
+    public Coordinates getCoordinates() {
+        return coordinates;
     }
 
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
     }
 
     public String getZip() {
