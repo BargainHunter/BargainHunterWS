@@ -1,5 +1,7 @@
 package com.bargainhunter.bargainhunterws.models.entities;
 
+import com.bargainhunter.bargainhunterws.models.entities.embeddable.Coordinates;
+
 import javax.persistence.*;
 
 @Entity

@@ -1,4 +1,4 @@
-package com.bargainhunter.bargainhunterws.models.entities;
+package com.bargainhunter.bargainhunterws.models.entities.embeddable;
 
 import org.springframework.data.geo.Point;
 
