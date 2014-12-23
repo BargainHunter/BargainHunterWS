@@ -29,16 +29,6 @@ public class SearchService implements ISearchService {
     public SearchInRadiusDTO getAllBranchesWithStoresAndOffersInRadiusDTO(Double latitude, Double longitude, Double radius) {
         Collection<Store> stores = storeRepository.findAllInRadius(latitude, longitude, radius);
 
-        return createSearchInRadiusDTO(latitude, longitude, radius, stores);
-    }
-
-    private SearchInRadiusDTO createSearchInRadiusDTO(Double latitude, Double longitude, Double radius, Collection<Store> stores) {
-        SearchInRadiusDTO searchInRadiusDTO = new SearchInRadiusDTO();
-
-        searchInRadiusDTO.setLatitude(latitude);
-        searchInRadiusDTO.setLongitude(longitude);
-        searchInRadiusDTO.setRadius(radius);
-
         Set<Branch> branches = new HashSet<>();
 
         for (Store store : stores) {
@@ -54,7 +44,19 @@ public class SearchService implements ISearchService {
                     branch.getStores().add(store);
                 }
             }
+        }
 
+        return createSearchInRadiusDTO(latitude, longitude, radius, branches);
+    }
+
+    private SearchInRadiusDTO createSearchInRadiusDTO(Double latitude, Double longitude, Double radius, Collection<Branch> branches) {
+        SearchInRadiusDTO searchInRadiusDTO = new SearchInRadiusDTO();
+
+        searchInRadiusDTO.setLatitude(latitude);
+        searchInRadiusDTO.setLongitude(longitude);
+        searchInRadiusDTO.setRadius(radius);
+
+        for (Branch branch : branches) {
             searchInRadiusDTO.getBranches().add(branchDTOMapper.map(branch, new BranchDTO()));
         }
 

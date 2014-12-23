@@ -8,6 +8,8 @@ import com.bargainhunter.bargainhunterws.repositories.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+
 @Service
 public class CategoryService implements ICategoryService {
     @Autowired
@@ -18,9 +20,13 @@ public class CategoryService implements ICategoryService {
 
     @Override
     public CategoriesDTO getAllCategoryDTOs() {
+        return createCategoriesDTO(categoryRepository.findAll());
+    }
+
+    private CategoriesDTO createCategoriesDTO(Collection<Category> categories) {
         CategoriesDTO categoriesDTO = new CategoriesDTO();
 
-        for (Category category : categoryRepository.findAll()) {
+        for (Category category : categories) {
             categoriesDTO.getCategories().add(categoryDTOMapper.map(category, new CategoryDTO()));
         }
 
