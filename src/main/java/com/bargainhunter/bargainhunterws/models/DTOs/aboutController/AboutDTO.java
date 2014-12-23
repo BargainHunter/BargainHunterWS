@@ -1,4 +1,4 @@
-package com.bargainhunter.bargainhunterws.models.DTOs;
+package com.bargainhunter.bargainhunterws.models.DTOs.aboutController;
 
 import java.io.Serializable;
 

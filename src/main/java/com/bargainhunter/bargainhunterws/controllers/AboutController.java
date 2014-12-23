@@ -1,6 +1,6 @@
 package com.bargainhunter.bargainhunterws.controllers;
 
-import com.bargainhunter.bargainhunterws.models.DTOs.AboutDTO;
+import com.bargainhunter.bargainhunterws.models.DTOs.aboutController.AboutDTO;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
