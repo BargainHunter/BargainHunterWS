@@ -5,6 +5,7 @@ import com.bargainhunter.bargainhunterws.models.DTOs.searchController.BranchDTO;
 import com.bargainhunter.bargainhunterws.models.DTOs.searchController.SearchInRadiusDTO;
 import com.bargainhunter.bargainhunterws.models.entities.Branch;
 import com.bargainhunter.bargainhunterws.models.entities.Store;
+import com.bargainhunter.bargainhunterws.repositories.IOfferRepository;
 import com.bargainhunter.bargainhunterws.repositories.IStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,9 @@ public class SearchService implements ISearchService {
     private IStoreRepository storeRepository;
 
     @Autowired
+    private IOfferRepository offerRepository;
+
+    @Autowired
     private IMapper<Branch, BranchDTO> branchDTOMapper;
 
     @Override
@@ -31,21 +35,20 @@ public class SearchService implements ISearchService {
     private SearchInRadiusDTO createSearchInRadiusDTO(Double latitude, Double longitude, Double radius, Collection<Store> stores) {
         SearchInRadiusDTO searchInRadiusDTO = new SearchInRadiusDTO();
 
-        Set<Branch> branches = new HashSet<>();
-
         searchInRadiusDTO.setLatitude(latitude);
         searchInRadiusDTO.setLongitude(longitude);
         searchInRadiusDTO.setRadius(radius);
 
-        Branch tempBranch;
+        Set<Branch> branches = new HashSet<>();
 
         for (Store store : stores) {
-            tempBranch = store.getBranch();
-            tempBranch.setStores(new HashSet<>());
-            branches.add(tempBranch);
+            branches.add(store.getBranch());
         }
 
         for (Branch branch : branches) {
+            branch.setOffers(new HashSet<>(offerRepository.findActiveOfBranch(branch)));
+            branch.setStores(new HashSet<>());
+
             for (Store store : stores) {
                 if (branch.equals(store.getBranch())) {
                     branch.getStores().add(store);

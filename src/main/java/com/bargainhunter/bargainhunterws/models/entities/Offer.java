@@ -1,7 +1,7 @@
 package com.bargainhunter.bargainhunterws.models.entities;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.Set;
 
 @Entity
@@ -25,10 +25,10 @@ public class Offer {
     private Double oldPrice;
 
     @Column(name = "start_date")
-    private Date startDate;
+    private Calendar startDate;
 
     @Column(name = "exp_date")
-    private Date expDate;
+    private Calendar expDate;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "branch_id")
@@ -86,19 +86,19 @@ public class Offer {
         this.oldPrice = oldPrice;
     }
 
-    public Date getStartDate() {
+    public Calendar getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(Calendar startDate) {
         this.startDate = startDate;
     }
 
-    public Date getExpDate() {
+    public Calendar getExpDate() {
         return expDate;
     }
 
-    public void setExpDate(Date expDate) {
+    public void setExpDate(Calendar expDate) {
         this.expDate = expDate;
     }
 

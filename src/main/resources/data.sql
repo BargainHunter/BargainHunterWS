@@ -14,12 +14,12 @@ INSERT INTO STORE (address, address_no, city, country, latitude, longitude, zip,
 INSERT INTO STORE (address, address_no, city, country, latitude, longitude, zip, branch_id) VALUES ('Tsalopoulou', '9', 'Serres', 'Greece', 41.089644, 23.550258, 62122, 3);
 INSERT INTO STORE (address, address_no, city, country, latitude, longitude, zip, branch_id) VALUES ('Tsimiski', '24', 'Thessaloniki', 'Greece', 40.6336695, 22.9410913, 54624, 3);
 
-INSERT INTO OFFER (description, exp_date, price, old_price, start_date, title, branch_id) VALUES ('Mini κρουασάν βουτύρου ALFA', '2014-11-13', 4.64, 6, '2015-3-19', 'Mini κρουασάν βουτύρου ALFA 1+1 ΔΩΡΟ!', 1);
-INSERT INTO OFFER (description, exp_date, price, old_price, start_date, title, branch_id) VALUES ('Chips Lays Xtra waves', '2014-11-13', 0.83, 1, '2015-3-19', 'Chips Lays Xtra waves 23% φθηνότερα!', 1);
-INSERT INTO OFFER (description, exp_date, price, old_price, start_date, title, branch_id) VALUES ('Ψωμί Πολύσπορο', '2014-11-13', 0.80, 1.2, '2015-3-19', 'Έκπτωση στο πολύσπορο -0,10 λεπτά!', 2);
-INSERT INTO OFFER (description, exp_date, price, old_price, start_date, title, branch_id) VALUES ('Προφιτερόλ', '2014-11-13', 1.20, 2, '2015-3-19', 'Προφιτερόλ -0,30 λεπτά!', 2);
-INSERT INTO OFFER (description, exp_date, price, old_price, start_date, title, branch_id) VALUES ('Laptop Dell Inspiron Q15R', '2014-11-13', 365, 500, '2015-3-19', 'Λάπτοπ Dell Inspiron Q15R - Laptop - Core i3-2310M 2.10 GHz - 15.6" LED 20% έκπτωση!', 3);
-INSERT INTO OFFER (description, exp_date, price, old_price, start_date, title, branch_id) VALUES ('Asus MeMo Pad 7 ME70C', '2014-11-13', 100, 120, '2015-3-19', 'Asus MeMo Pad 7 ME70C - Tablet 7" -30 ευρω έκπτωση!', 3);
+INSERT INTO OFFER (description, start_date, price, old_price, exp_date, title, branch_id) VALUES ('Mini κρουασάν βουτύρου ALFA', '2014-11-13', 4.64, 6, '2015-3-19', 'Mini κρουασάν βουτύρου ALFA 1+1 ΔΩΡΟ!', 1);
+INSERT INTO OFFER (description, start_date, price, old_price, exp_date, title, branch_id) VALUES ('Chips Lays Xtra waves', '2014-11-13', 0.83, 1, '2015-3-19', 'Chips Lays Xtra waves 23% φθηνότερα!', 1);
+INSERT INTO OFFER (description, start_date, price, old_price, exp_date, title, branch_id) VALUES ('Ψωμί Πολύσπορο', '2014-11-13', 0.80, 1.2, '2015-3-19', 'Έκπτωση στο πολύσπορο -0,10 λεπτά!', 2);
+INSERT INTO OFFER (description, start_date, price, old_price, exp_date, title, branch_id) VALUES ('Προφιτερόλ', '2014-11-13', 1.20, 2, '2015-3-19', 'Προφιτερόλ -0,30 λεπτά!', 2);
+INSERT INTO OFFER (description, start_date, price, old_price, exp_date, title, branch_id) VALUES ('Laptop Dell Inspiron Q15R', '2014-11-13', 365, 500, '2015-3-19', 'Λάπτοπ Dell Inspiron Q15R - Laptop - Core i3-2310M 2.10 GHz - 15.6" LED 20% έκπτωση!', 3);
+INSERT INTO OFFER (description, start_date, price, old_price, exp_date, title, branch_id) VALUES ('Asus MeMo Pad 7 ME70C', '2014-11-13', 100, 120, '2015-3-19', 'Asus MeMo Pad 7 ME70C - Tablet 7" -30 ευρω έκπτωση!', 3);
 
 INSERT INTO CATEGORY (description) VALUES ('Τρόφημα');
 INSERT INTO CATEGORY (description) VALUES ('Ηλεκτρονικά');

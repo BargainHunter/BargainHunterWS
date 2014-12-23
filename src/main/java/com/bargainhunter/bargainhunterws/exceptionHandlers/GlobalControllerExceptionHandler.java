@@ -11,32 +11,32 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class GlobalControllerExceptionHandler {
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such Company")
     @ExceptionHandler(CompanyNotFoundException.class)
-    public void handleCompanyNotFoundException() {
+    public void handleCompanyNotFoundException(CompanyNotFoundException e) {
     }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such Branch")
     @ExceptionHandler(BranchNotFoundException.class)
-    public void handleBranchNotFoundException() {
+    public void handleBranchNotFoundException(BranchNotFoundException e) {
     }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such Store")
     @ExceptionHandler(StoreNotFoundException.class)
-    public void handleStoreNotFoundException() {
+    public void handleStoreNotFoundException(StoreNotFoundException e) {
     }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such Offer")
     @ExceptionHandler(OfferNotFoundException.class)
-    public void handleOfferNotFoundException() {
+    public void handleOfferNotFoundException(OfferNotFoundException e) {
     }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such Category")
     @ExceptionHandler(CategoryNotFoundException.class)
-    public void handleCategoryNotFoundException() {
+    public void handleCategoryNotFoundException(CategoryNotFoundException e) {
     }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such Subcategory")
     @ExceptionHandler(SubcategoryNotFoundException.class)
-    public void handleSubcategoryNotFoundException() {
+    public void handleSubcategoryNotFoundException(SubcategoryNotFoundException e) {
     }
 
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Internal Server Error")
