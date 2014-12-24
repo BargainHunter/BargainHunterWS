@@ -27,8 +27,8 @@ INSERT INTO CATEGORY (description) VALUES ('Ηλεκτρονικά');
 INSERT INTO SUBCATEGORY (description, category_id) VALUES ('Γλυκά', 1);
 INSERT INTO SUBCATEGORY (description, category_id) VALUES ('Σνάκς', 1);
 INSERT INTO SUBCATEGORY (description, category_id) VALUES ('Αρτοσκευάσματα', 1);
-INSERT INTO SUBCATEGORY (description, category_id) VALUES ('Laptop', 2);
 INSERT INTO SUBCATEGORY (description, category_id) VALUES ('Tablet', 2);
+INSERT INTO SUBCATEGORY (description, category_id) VALUES ('Laptop', 2);
 
 INSERT INTO OFFER_SUBCATEGORY (offer_id, subcategory_id) VALUES (1, 1);
 INSERT INTO OFFER_SUBCATEGORY (offer_id, subcategory_id) VALUES (1, 3);
