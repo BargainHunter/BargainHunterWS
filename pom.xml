@@ -4,9 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <name>Bargain Hunter Web Service</name>
+    <description>Web Service for Bargain Hunter App</description>
     <groupId>com.bargainhunter</groupId>
     <artifactId>bargainhunterws</artifactId>
-    <version>0.0.5.${build.number}</version>
+    <version>${project.version.major}.${project.version.minor}.${project.version.patch}.${project.build.number}</version>
     <packaging>war</packaging>
 
     <parent>
@@ -18,6 +20,10 @@
     <properties>
         <start-class>com.bargainhunter.bargainhunterws.WebApplicationInitializer</start-class>
         <java.version>1.8</java.version>
+        <project.version.major>0</project.version.major>
+        <project.version.minor>0</project.version.minor>
+        <project.version.patch>5</project.version.patch>
+        <project.api.version>0.1</project.api.version>
     </properties>
 
     <profiles>
@@ -29,7 +35,7 @@
                 </property>
             </activation>
             <properties>
-                <build.number>0</build.number>
+                <project.build.number>0</project.build.number>
             </properties>
         </profile>
         <profile>
@@ -40,12 +46,29 @@
                 </property>
             </activation>
             <properties>
-                <build.number>${env.BUILD_NUMBER}</build.number>
+                <project.build.number>${env.BUILD_NUMBER}</project.build.number>
             </properties>
         </profile>
     </profiles>
 
     <dependencies>
+
+        <!--Security Dependencies-->
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-security</artifactId>-->
+        <!--</dependency>-->
+
+        <!--Application Monitoring Dependencies-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!--Web Service Dependencies-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -54,31 +77,25 @@
             <groupId>org.springframework.hateoas</groupId>
             <artifactId>spring-hateoas</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+
+        <!--Database Dependencies-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-        <dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.1-901.jdbc4</version>
+        </dependency>
+
+        <!--Testing Dependencies-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.dbunit</groupId>
@@ -90,6 +107,14 @@
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <!--Servlet Container Dependencies-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -107,27 +132,12 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>com.google.code.maven-replacer-plugin</groupId>
-                <artifactId>replacer</artifactId>
-                <version>1.5.3</version>
-                <executions>
-                    <execution>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>replace</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <file>target/classes/project.properties</file>
-                    <regex>false</regex>
-                    <token>$version$</token>
-                    <value>${project.version}</value>
-                </configuration>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
