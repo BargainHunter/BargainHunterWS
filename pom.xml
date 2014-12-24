@@ -18,11 +18,22 @@
     </parent>
 
     <properties>
+        <!--Starting Class-->
+
         <start-class>com.bargainhunter.bargainhunterws.WebApplicationInitializer</start-class>
+
+        <!--Java Version-->
+
         <java.version>1.8</java.version>
+
+        <!--Project Version-->
+
         <project.version.major>0</project.version.major>
         <project.version.minor>0</project.version.minor>
         <project.version.patch>5</project.version.patch>
+
+        <!--API Version-->
+
         <project.api.version>0.1</project.api.version>
     </properties>
 
@@ -52,7 +63,6 @@
     </profiles>
 
     <dependencies>
-
         <!--Security Dependencies-->
 
         <!--<dependency>-->
@@ -121,19 +131,12 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skipTests>false</skipTests>
-                </configuration>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>pl.project13.maven</groupId>
-                <artifactId>git-commit-id-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
