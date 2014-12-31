@@ -1,20 +1,13 @@
 package com.bargainhunter.bargainhunterws;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
-import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
-@ImportResource("classpath:META-INF/appContext.xml")
+@Configuration
 public class WebApplicationInitializer extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(WebApplicationInitializer.class);
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(WebApplicationInitializer.class, args);
+        return application.sources(Application.class);
     }
 }

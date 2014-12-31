@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
-        locations = "classpath:META-INF/appContext.xml",
+        locations = "classpath:META-INF/application-context.xml",
         loader = SpringApplicationContextLoader.class)
 public class CategoryControllerTests {
     @Mock

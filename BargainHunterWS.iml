@@ -5,12 +5,7 @@
       <configuration process_explicitly_annotated="false">
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/META-INF/appContext.xml</file>
-        </fileset>
-        <fileset id="fileset2" name="Spring Development Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/resources/META-INF/devContext.xml</file>
-        </fileset>
-        <fileset id="fileset3" name="Spring Test Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/resources/META-INF/testContext.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bargainhunter/bargainhunterws/WebApplicationInitializer.java</file>
         </fileset>
       </configuration>
     </facet>

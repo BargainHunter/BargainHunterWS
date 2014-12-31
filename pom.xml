@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+            http://maven.apache.org/POM/4.0.0
+            http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <name>Bargain Hunter Web Service</name>
     <description>Web Service for Bargain Hunter App</description>
     <groupId>com.bargainhunter</groupId>
     <artifactId>bargainhunterws</artifactId>
-    <version>${project.version.major}.${project.version.minor}.${project.version.patch}.${project.build.number}</version>
+    <version>
+        ${project.version.major}.${project.version.minor}.${project.version.patch}.${project.build.number}
+    </version>
     <packaging>war</packaging>
 
     <parent>
@@ -65,10 +69,12 @@
     <dependencies>
         <!--Security Dependencies-->
 
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-security</artifactId>-->
-        <!--</dependency>-->
+        <!--
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        -->
 
         <!--Application Monitoring Dependencies-->
 
