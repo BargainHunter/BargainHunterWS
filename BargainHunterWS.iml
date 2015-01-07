@@ -4,8 +4,8 @@
     <facet type="Spring" name="Spring">
       <configuration process_explicitly_annotated="false">
         <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/resources/META-INF/appContext.xml</file>
           <file>file://$MODULE_DIR$/src/main/java/com/bargainhunter/bargainhunterws/WebApplicationInitializer.java</file>
+          <file>file://$MODULE_DIR$/src/main/resources/META-INF/application-context.xml</file>
         </fileset>
       </configuration>
     </facet>
