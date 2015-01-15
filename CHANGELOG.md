@@ -1,3 +1,23 @@
+## v0.0.2
+
+* Added DTOs(`StoreDTO`, `OfferDTO`)
+* Added Services(`StoreService`, `OfferService`)
+    
+    <table>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>getAllFromStore(long storeId)</code></td>
+            <td>Returns list of all stores</td>
+        </tr>
+        <tr>
+            <td><code>getStore(int id)</code></td>
+            <td>Returns one specific store by Id</td>
+        </tr>
+    </table>
+
 ## v0.0.1
 
 * Added Hibernate to Spring
@@ -13,13 +33,13 @@
             <th>Description</th>
         </tr>
         <tr>
-            <td><code>getAllStores</code></td>
+            <td><code>getAllStores()</code></td>
             <td><code>/stores</code></td>
             <td>Returns list of all stores</td>
         </tr>
         <tr>
-            <td><code>getAllStore</code></td>
-            <td><code>/store/{id}</code></td>
+            <td><code>getStore(int id)</code></td>
+            <td><code>/stores/{id}</code></td>
             <td>Returns one specific store by Id</td>
         </tr>
     </table>
@@ -33,12 +53,12 @@
             <th>Description</th>
         </tr>
         <tr>
-            <td><code>getOffers</code></td>
+            <td><code>getOffers()</code></td>
             <td><code>/offers</code></td>
             <td>Returns list of all offers</td>
         </tr>
         <tr>
-            <td><code>getOffer</code></td>
+            <td><code>getOffer(int id)</code></td>
             <td><code>/offers/{id}</code></td>
             <td>Returns one specific offer by Id</td>
         </tr>
