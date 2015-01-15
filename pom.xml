@@ -39,6 +39,9 @@
         <!--API Version-->
 
         <project.api.version>0.1</project.api.version>
+
+        <!--Spring Security OAuth2 Version-->
+        <!--<spring-security-oauth2.version>2.0.5.RELEASE</spring-security-oauth2.version>-->
     </properties>
 
     <profiles>
@@ -68,14 +71,18 @@
 
     <dependencies>
         <!--Security Dependencies-->
-
         <!--
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        -->
 
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>${spring-security-oauth2.version}</version>
+        </dependency>
+        -->
         <!--Application Monitoring Dependencies-->
 
         <dependency>
