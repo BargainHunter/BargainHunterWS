@@ -1,3 +1,25 @@
+## v0.0.5
+
+* Renames controllers to services and vice versa
+* Added custom DTO mappers for SearchService(`BranchDTOMapper`, `StoreDTOMapper`, `OfferDTOMapper`, `OfferSubcategoryDTOMapper`)
+    * Every mapper implements the same `IMapper` interface
+    
+    ```
+        public interface IMapper<S, T> {
+            T map(S source, T target);
+        }
+    ```
+
+* Migrated Database from MySQL to PostgreSQL
+* Added support for automatic assignment of build numbers
+* Added maven plugin for generating JavaDoc
+* Added profiles in maven for building with Jenkins and without it
+* Moved store filter by radius code for `SearchService` to PostgreSQL Query
+* Added custom NotFound exceptions
+* Added default exception handler
+* Added custom JPA Query in `IOfferRepository` for retrieving active offers
+* Added `Coordinates` embeddable class
+
 ## v0.0.4
 
 * Added Entities(`Branch`, `Category`, `Subcategory`)
