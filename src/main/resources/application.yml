@@ -1,0 +1,56 @@
+# Embedded Server Configuration (ServerProperties)
+server:
+    port: 8080
+
+# Spring Configuration
+spring:
+    # IDENTITY (ContextIdApplicationContextInitializer)
+    application:
+        name: @project.name@
+
+    # HTTP Encoding (HttpEncodingProperties)
+    http:
+        encoding:
+            charset: UTF-8
+            enabled: true
+            force: true
+
+    # Data Rest (RepositoryRestConfiguration)
+    data:
+        rest:
+            #baseUri: /api
+            # OR
+            #base-uri: /api
+
+    # DataSource (DataSourceAutoConfiguration & DataSourceProperties)
+    datasource:
+        driverClassName: org.postgresql.Driver
+        url: jdbc:postgresql://bargainhunter.dyndns.org:5432/bargain_hunter
+        username: bargainhunter
+        password: bargainhunter
+
+        initialize: false
+
+# Spring Boot Actuator Info Endpoint
+info:
+    application:
+        name: @project.name@
+        description: @project.description@
+        version:
+            app: @project.version.major@.@project.version.minor@.@project.version.patch@
+            api: @project.api.version@
+
+    build:
+        version: @project.version@
+
+# Spring Boot Actuator Endpoints
+endpoints:
+    beans:
+        sensitive: true
+    shutdown:
+        enabled: true
+
+# Http Mappers
+http:
+    mappers:
+        json-pretty-print: true

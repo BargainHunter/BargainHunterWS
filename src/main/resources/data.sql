@@ -21,7 +21,7 @@ INSERT INTO OFFER (description, start_date, price, old_price, exp_date, title, b
 INSERT INTO OFFER (description, start_date, price, old_price, exp_date, title, branch_id) VALUES ('Laptop Dell Inspiron Q15R', '2014-11-13', 365, 500, '2015-3-19', 'Λάπτοπ Dell Inspiron Q15R - Laptop - Core i3-2310M 2.10 GHz - 15.6" LED 20% έκπτωση!', 3);
 INSERT INTO OFFER (description, start_date, price, old_price, exp_date, title, branch_id) VALUES ('Asus MeMo Pad 7 ME70C', '2014-11-13', 100, 120, '2015-3-19', 'Asus MeMo Pad 7 ME70C - Tablet 7" -30 ευρω έκπτωση!', 3);
 
-INSERT INTO CATEGORY (description) VALUES ('Τρόφημα');
+INSERT INTO CATEGORY (description) VALUES ('Τρόφιμα');
 INSERT INTO CATEGORY (description) VALUES ('Ηλεκτρονικά');
 
 INSERT INTO SUBCATEGORY (description, category_id) VALUES ('Γλυκά', 1);
