@@ -1,5 +1,6 @@
 package com.bargainhunter.bargainhunterws.controllers;
 
+import com.bargainhunter.bargainhunterws.Application;
 import com.bargainhunter.bargainhunterws.models.DTOs.searchController.*;
 import com.bargainhunter.bargainhunterws.services.ISearchService;
 import org.junit.Before;
@@ -25,9 +26,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(
-        locations = "classpath:META-INF/application-context.xml",
-        loader = SpringApplicationContextLoader.class)
+@ContextConfiguration(classes = Application.class, loader = SpringApplicationContextLoader.class)
 public class SearchControllerTests {
     @Mock
     private ISearchService searchService;

@@ -24,7 +24,7 @@
     <properties>
         <!--Starting Class-->
 
-        <start-class>com.bargainhunter.bargainhunterws.WebApplicationInitializer</start-class>
+        <start-class>com.bargainhunter.bargainhunterws.Application</start-class>
 
         <!--Java Version-->
 
