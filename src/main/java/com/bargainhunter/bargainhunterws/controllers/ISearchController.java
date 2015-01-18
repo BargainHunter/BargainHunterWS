@@ -4,5 +4,5 @@ import com.bargainhunter.bargainhunterws.models.DTOs.searchController.SearchInRa
 import org.springframework.http.HttpEntity;
 
 public interface ISearchController {
-    HttpEntity<SearchInRadiusDTO> getAllBranchesWithStoresAndOffersInRadius(Double latitude, Double longitude, Double radius);
+    HttpEntity<SearchInRadiusDTO> loadBranchesWithStoresAndOffersInRadius(Double latitude, Double longitude, Double radius);
 }

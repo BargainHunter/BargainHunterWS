@@ -16,6 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.nio.charset.Charset;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,6 +37,12 @@ public class SearchControllerTests {
 
     private MockMvc mockMvc;
 
+    private MediaType applicationJsonMediaType = new MediaType(
+            MediaType.APPLICATION_JSON.getType(),
+            MediaType.APPLICATION_JSON.getSubtype(),
+            Charset.forName("UTF-8")
+    );
+
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
@@ -53,9 +60,9 @@ public class SearchControllerTests {
 
         doReturn(searchInRadiusDTO).when(searchService).getAllBranchesWithStoresAndOffersInRadiusDTO(0D, 0D, 0D);
 
-        mockMvc.perform(get("/search_in_radius?latitude=0&longitude=0&radius=0").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/search/in_radius?latitude=0&longitude=0&radius=0").accept(applicationJsonMediaType))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json;charset=UTF-8"))
+                .andExpect(content().contentType(applicationJsonMediaType))
                 .andExpect(jsonPath("$.latitude").exists())
                 .andExpect(jsonPath("$.latitude", is(0D)))
                 .andExpect(jsonPath("$.longitude").exists())
@@ -120,9 +127,9 @@ public class SearchControllerTests {
 
         doReturn(searchInRadiusDTO).when(searchService).getAllBranchesWithStoresAndOffersInRadiusDTO(0D, 0D, 0D);
 
-        mockMvc.perform(get("/search_in_radius?latitude=0&longitude=0&radius=0").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/search/in_radius?latitude=0&longitude=0&radius=0").accept(applicationJsonMediaType))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json;charset=UTF-8"))
+                .andExpect(content().contentType(applicationJsonMediaType))
                 .andExpect(jsonPath("$.latitude").exists())
                 .andExpect(jsonPath("$.latitude", is(0D)))
                 .andExpect(jsonPath("$.longitude").exists())

@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(value = "/categories")
 public class CategoryController implements ICategoryController {
     @Autowired
     ICategoryService categoryService;
 
     @Override
-    @RequestMapping(value = "/categories", method = RequestMethod.GET)
-    public HttpEntity<CategoriesDTO> getAllCategoryDTOs() {
+    @RequestMapping(method = RequestMethod.GET)
+    public HttpEntity<CategoriesDTO> loadCategories() {
         CategoriesDTO categoriesDTOs = categoryService.getAllCategoryDTOs();
 
         return new ResponseEntity<>(categoriesDTOs, null, HttpStatus.OK);

@@ -18,6 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.nio.charset.Charset;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -36,6 +37,12 @@ public class CategoryControllerTests {
     private CategoryController categoryController;
 
     private MockMvc mockMvc;
+
+    private MediaType applicationJsonMediaType = new MediaType(
+            MediaType.APPLICATION_JSON.getType(),
+            MediaType.APPLICATION_JSON.getSubtype(),
+            Charset.forName("UTF-8")
+    );
 
     @Before
     public void setup() {
@@ -95,7 +102,7 @@ public class CategoryControllerTests {
 
         mockMvc.perform(get("/categories").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json;charset=UTF-8"))
+                .andExpect(content().contentType(applicationJsonMediaType))
                 .andExpect(jsonPath("$.categories").isArray())
                 .andExpect(jsonPath("$.categories", hasSize(2)))
                 .andExpect(jsonPath("$.categories[*].categoryId").exists())

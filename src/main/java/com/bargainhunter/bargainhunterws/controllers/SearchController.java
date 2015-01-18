@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(value = "/search")
 public class SearchController implements ISearchController {
     @Autowired
     ISearchService searchService;
 
     @Override
-    @RequestMapping(value = "/search_in_radius", method = RequestMethod.GET)
-    public HttpEntity<SearchInRadiusDTO> getAllBranchesWithStoresAndOffersInRadius(
+    @RequestMapping(value = "/in_radius", method = RequestMethod.GET)
+    public HttpEntity<SearchInRadiusDTO> loadBranchesWithStoresAndOffersInRadius(
             @RequestParam Double latitude,
             @RequestParam Double longitude,
             @RequestParam Double radius) {
