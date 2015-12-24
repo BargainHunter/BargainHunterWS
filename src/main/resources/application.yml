@@ -25,7 +25,7 @@ spring:
     # DataSource (DataSourceAutoConfiguration & DataSourceProperties)
     datasource:
         driverClassName: org.postgresql.Driver
-        url: jdbc:postgresql://bargainhunter.dyndns.org:5432/bargain_hunter
+        url: jdbc:postgresql://a4i.ddns.net:5432/bargain_hunter
         username: bargainhunter
         password: bargainhunter
 
